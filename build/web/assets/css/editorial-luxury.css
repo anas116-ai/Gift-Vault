@@ -124,42 +124,45 @@
   max-width: 160px;
 }
 
-/* 5 Portrait Celebration Moments Gallery */
+/* 5 Portrait Celebration Moments Gallery (Ultra-High-Definition Highlighted) */
 .gallery-cards-strip {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  gap: 18px;
   margin-bottom: 64px;
 }
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .gallery-cards-strip {
     grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .gallery-cards-strip {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
 .gallery-portrait-card {
   position: relative;
-  border-radius: 22px;
+  border-radius: 26px;
   overflow: hidden;
-  height: 330px;
-  background: #37000A;
-  border: 1.5px solid rgba(197, 160, 89, 0.3);
-  box-shadow: 0 12px 28px rgba(55, 0, 10, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  height: 380px;
+  background: #200006;
+  border: 1.5px solid rgba(197, 160, 89, 0.35);
+  box-shadow: 0 16px 36px rgba(55, 0, 10, 0.12);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px;
+  padding: 18px 16px;
+  cursor: pointer;
 }
 .gallery-portrait-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 22px 48px rgba(55, 0, 10, 0.22);
-  border-color: #9EE425;
+  transform: translateY(-8px);
+  box-shadow: 0 28px 65px -10px rgba(55, 0, 10, 0.35), 0 0 25px rgba(212, 175, 55, 0.3);
+  border-color: #D4AF37;
 }
 
 .gallery-portrait-card img {
@@ -168,17 +171,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 0;
 }
 .gallery-portrait-card:hover img {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 .gallery-card-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(55,0,10,0.1) 0%, rgba(55,0,10,0.2) 35%, rgba(32,0,6,0.92) 100%);
+  background: linear-gradient(180deg, rgba(20, 0, 4, 0.15) 0%, rgba(30, 0, 6, 0.25) 40%, rgba(25, 0, 5, 0.88) 75%, rgba(15, 0, 3, 0.98) 100%);
   z-index: 1;
 }
 
@@ -189,13 +192,14 @@
   font-size: 10px;
   font-weight: 800;
   color: #FFFFFF;
-  background: rgba(55, 0, 10, 0.82);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 3px 10px;
+  background: rgba(35, 0, 6, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  padding: 4px 12px;
   border-radius: 999px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .gallery-card-bottom {
@@ -205,17 +209,18 @@
 
 .gallery-card-title {
   font-family: 'Sen', sans-serif;
-  font-size: 16.5px;
+  font-size: 17.5px;
   font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+  letter-spacing: -0.01em;
 }
 
 .gallery-card-sub {
-  font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.82);
-  line-height: 1.4;
-  margin-bottom: 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.45;
+  margin-bottom: 14px;
 }
 
 .gallery-card-btn {
@@ -224,7 +229,7 @@
   justify-content: center;
   gap: 6px;
   width: 100%;
-  padding: 7px 12px;
+  padding: 8px 14px;
   font-size: 12px;
   font-weight: 700;
   font-family: 'Sen', sans-serif;
@@ -235,12 +240,14 @@
   cursor: pointer;
   transition: all 0.25s ease;
   text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 .gallery-card-btn:hover {
   background: #9EE425;
   color: #37000A;
   border-color: #9EE425;
-  box-shadow: 0 4px 12px rgba(158, 228, 37, 0.4);
+  box-shadow: 0 6px 18px rgba(158, 228, 37, 0.45);
+  transform: translateY(-1px);
 }
 
 /* 3 Luxury Testimonial Cards */
@@ -395,3 +402,54 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(158, 228, 37, 0.45);
 }
+
+/* Redesigned Luxury Pricing Passes */
+.pricing-luxury-container {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+@media (max-width: 768px) {
+  .pricing-luxury-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.pricing-luxury-card {
+  border-radius: 28px;
+  padding: 34px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pricing-luxury-card:hover {
+  transform: translateY(-6px);
+}
+
+.pricing-card-light {
+  background: #FFFFFF;
+  border: 1.5px solid rgba(197, 160, 89, 0.45);
+  box-shadow: 0 16px 40px rgba(55, 0, 10, 0.06);
+}
+.pricing-card-light:hover {
+  border-color: #C5A059;
+  box-shadow: 0 24px 50px rgba(197, 160, 89, 0.2);
+}
+
+.pricing-card-royal {
+  background: linear-gradient(150deg, #37000A 0%, #200006 100%);
+  border: 2px solid #FF1F3D;
+  box-shadow: 0 20px 50px rgba(55, 0, 10, 0.32);
+}
+.pricing-card-royal:hover {
+  border-color: #9EE425;
+  box-shadow: 0 28px 65px rgba(55, 0, 10, 0.45), 0 0 30px rgba(158, 228, 37, 0.25);
+}
+

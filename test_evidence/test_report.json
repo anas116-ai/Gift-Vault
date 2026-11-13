@@ -12,7 +12,7 @@
   ],
   "failed": [],
   "issues_found": [
-    "Calculator issue: Locator.fill: Timeout 6000ms exceeded.\nCall log:\n  - waiting for locator(\"#calc-guest-slider\")\n    - locator resolved to <input min=\"50\" step=\"50\" max=\"2000\" value=\"500\" type=\"range\" id=\"calc-guest-slider\"/>\n    - fill(\"500\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not visible\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not visible\n    - retrying fill action\n      - waiting 100ms\n    12 × waiting for element to be visible, enabled and editable\n       - element is not visible\n     - retrying fill action\n       - waiting 500ms\n"
+    "Calculator issue: Locator.fill: Timeout 6000ms exceeded.\nCall log:\n  - waiting for locator(\"#calc-guest-slider\")\n    - locator resolved to <input min=\"50\" step=\"50\" max=\"2000\" value=\"500\" type=\"range\" id=\"calc-guest-slider\"/>\n    - fill(\"500\")\n  - attempting fill action\n    2 × waiting for element to be visible, enabled and editable\n      - element is not visible\n    - retrying fill action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and editable\n      - element is not visible\n    - retrying fill action\n      - waiting 100ms\n    9 × waiting for element to be visible, enabled and editable\n      - element is not visible\n    - retrying fill action\n      - waiting 500ms\n"
   ],
   "events_created": [
     {
