@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="te" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GiftVault (గిఫ్ట్ వాలెట్) • Desktop Edition</title>
+  
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&f[]=cabinet-grotesk@800,700,600,500,400&f[]=satoshi@700,500,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+Telugu:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #08090D;
+      --bg-surface: #0E121B;
+      --bg-card: rgba(14, 18, 27, 0.88);
+      --bg-glass: rgba(22, 27, 38, 0.7);
+      
+      --gold-primary: #E5B869;
+      --gold-light: #FFDF88;
+      --gold-dark: #C89B48;
+      --gold-glow: rgba(229, 184, 105, 0.25);
+      
+      --ruby-red: #E11D48;
+      --ruby-glow: rgba(225, 29, 72, 0.2);
+      
+      --emerald-green: #10B981;
+      --emerald-glow: rgba(16, 185, 129, 0.2);
+      
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(229, 184, 105, 0.35);
+      
+      --font-display: 'Clash Display', -apple-system, sans-serif;
+      --font-numbers: 'Cabinet Grotesk', -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', 'Noto Sans Telugu', sans-serif;
+      --font-editorial: 'Instrument Serif', Georgia, serif;
+      
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .ambient-aurora {
+      position: fixed; width: 100vw; height: 100vh; top: 0; left: 0;
+      overflow: hidden; pointer-events: none; z-index: 0;
+    }
+    .aurora-orb-1 {
+      position: absolute; top: -150px; left: 20%; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(229, 184, 105, 0.12) 0%, transparent 70%);
+      filter: blur(80px);
+    }
+    .aurora-orb-2 {
+      position: absolute; top: 350px; right: -100px; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(225, 29, 72, 0.09) 0%, transparent 70%);
+      filter: blur(90px);
+    }
+
+    .desktop-container {
+      position: relative; z-index: 1; max-width: 1440px; margin: 0 auto;
+      padding: 0 32px 80px 32px;
+    }
+
+    /* Desktop Top Header */
+    .desktop-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 0; border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 28px; position: sticky; top: 0;
+      background: rgba(8, 9, 13, 0.88); backdrop-filter: blur(24px); z-index: 100;
+    }
+    .brand-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; cursor: pointer; }
+    .brand-icon {
+      width: 44px; height: 44px; border-radius: 14px;
+      background: linear-gradient(135deg, #1C2333 0%, #0F131D 100%);
+      border: 1px solid rgba(229, 184, 105, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .brand-name { font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+    .brand-gold {
+      background: linear-gradient(135deg, #FFDF88 0%, #E5B869 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .brand-sub { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; color: var(--text-muted); }
+
+    .header-actions { display: flex; align-items: center; gap: 14px; }
+
+    .switch-pill {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
+      border-radius: 100px; padding: 6px 14px; font-size: 12px; font-weight: 600;
+      color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .switch-pill:hover {
+      background: rgba(229, 184, 105, 0.15); border-color: var(--gold-primary); color: var(--gold-light);
+    }
+
+    .user-profile-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle);
+      border-radius: 100px; padding: 4px 12px 4px 4px; cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .user-profile-badge:hover { border-color: var(--gold-primary); }
+    .user-avatar-circle {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, #E5B869 0%, #C89B48 100%);
+      color: #08090D; font-weight: 700; font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Buttons */
+    .btn-shimmer {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #E5B869 0%, #C89B48 100%);
+      color: #08090D; font-family: var(--font-body); font-weight: 700; font-size: 13px;
+      border-radius: 12px; padding: 9px 20px; border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 20px rgba(229, 184, 105, 0.35); cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px; transition: all 0.25s var(--ease-spring);
+    }
+    .btn-shimmer:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(229, 184, 105, 0.5); }
+    .btn-shimmer:active { transform: translateY(1px) scale(0.97); }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(14px); color: var(--text-main); font-family: var(--font-body);
+      font-size: 13px; font-weight: 600; border-radius: 12px; padding: 8px 16px;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.2s var(--ease-spring);
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1); border-color: rgba(229, 184, 105, 0.4);
+      color: var(--gold-light); transform: translateY(-1px);
+    }
+
+    /* Spotlight Card */
+    .spotlight-card {
+      position: relative; background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 20px; padding: 24px; overflow: hidden; backdrop-filter: blur(24px);
+      transition: transform 0.25s var(--ease-spring), border-color 0.25s ease;
+    }
+    .spotlight-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(229, 184, 105, 0.14), transparent 60%);
+      pointer-events: none; opacity: 0; transition: opacity 0.3s ease; z-index: 1;
+    }
+    .spotlight-card:hover::before { opacity: 1; }
+    .spotlight-card:hover { transform: translateY(-2px); border-color: rgba(229, 184, 105, 0.35); }
+    .spotlight-content { position: relative; z-index: 2; }
+
+    /* Navigation Tabs */
+    .desktop-tabs-bar {
+      display: flex; gap: 6px; margin-bottom: 28px; background: rgba(14, 18, 27, 0.85);
+      border: 1px solid var(--border-subtle); border-radius: 16px; padding: 6px;
+      backdrop-filter: blur(16px);
+    }
+    .desk-tab {
+      padding: 10px 18px; border-radius: 12px; border: none; background: transparent;
+      color: var(--text-muted); font-family: var(--font-body); font-size: 13px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; gap: 8px;
+      transition: all 0.25s var(--ease-spring);
+    }
+    .desk-tab:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.04); }
+    .desk-tab.active {
+      background: linear-gradient(135deg, rgba(229, 184, 105, 0.2) 0%, rgba(200, 155, 72, 0.1) 100%);
+      color: var(--gold-light); border: 1px solid rgba(229, 184, 105, 0.35);
+      box-shadow: 0 4px 15px rgba(229, 184, 105, 0.15);
+    }
+
+    /* Event Bar */
+    .event-selection-strip {
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(22, 27, 38, 0.6); border: 1px solid var(--border-subtle);
+      border-radius: 16px; padding: 14px 20px; margin-bottom: 24px;
+    }
+    .event-chips { display: flex; gap: 8px; }
+    .event-chip-btn {
+      padding: 6px 14px; border-radius: 10px; border: 1px solid transparent;
+      background: transparent; color: var(--text-muted); font-size: 13px; font-weight: 600;
+      cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s ease;
+    }
+    .event-chip-btn.active {
+      background: rgba(229, 184, 105, 0.15); border-color: rgba(229, 184, 105, 0.4);
+      color: var(--gold-light);
+    }
+
+    /* KPI Grid */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 26px; }
+    .kpi-label { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+    .kpi-num {
+      font-family: var(--font-numbers); font-size: 30px; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--text-main); margin-bottom: 4px;
+    }
+
+    /* Form & Layout */
+    .split-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+    .form-input {
+      width: 100%; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle);
+      border-radius: 12px; padding: 12px 16px; color: var(--text-main); font-family: inherit;
+      font-size: 14px; outline: none; transition: all 0.2s ease;
+    }
+    .form-input:focus { border-color: var(--gold-primary); box-shadow: 0 0 15px rgba(229, 184, 105, 0.2); }
+
+    /* Tables */
+    .luxury-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .luxury-table th {
+      text-align: left; padding: 14px 16px; color: var(--gold-light); font-weight: 700;
+      border-bottom: 1px solid rgba(229, 184, 105, 0.25); font-family: var(--font-display);
+    }
+    .luxury-table td { padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-main); }
+    .luxury-table tr:hover td { background: rgba(229, 184, 105, 0.05); }
+
+    /* Panes */
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; animation: fadeIn 0.25s var(--ease-spring); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Modal Dialog (Login & OTP) */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(16px);
+      display: none; align-items: center; justify-content: center; z-index: 2000;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: #0E121B; border: 1px solid rgba(229, 184, 105, 0.35);
+      border-radius: 24px; padding: 32px; width: 440px; max-width: 90vw;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(229, 184, 105, 0.15);
+      position: relative; animation: modalPop 0.3s var(--ease-spring);
+    }
+    @keyframes modalPop { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* Settings Cards Grid */
+    .settings-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .settings-section-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 18px; padding: 22px;
+    }
+    .settings-sec-title {
+      font-family: var(--font-display); font-size: 16px; font-weight: 700;
+      color: var(--gold-light); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+    }
+    .toggle-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .toggle-row:last-child { border-bottom: none; }
+  </style>
+</head>
+<body>
+  <div class="ambient-aurora">
+    <div class="aurora-orb-1"></div>
+    <div class="aurora-orb-2"></div>
+  </div>
+
+  <div class="desktop-container">
+    <!-- Header -->
+    <header class="desktop-header">
+      <div class="brand-wrap" onclick="showTab('dashboard')">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E5B869" stroke-width="1.8">
+            <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z"/>
+            <circle cx="12" cy="12" r="3.5" stroke="#FFDF88"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">GIFT<span class="brand-gold">VAULT</span></div>
+          <div class="brand-sub">DESKTOP CELEBRATION LEDGER • గిఫ్ట్ వాలెట్</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Privacy Mask Toggle (Hide Amounts) -->
+        <button class="btn-glass" onclick="togglePrivacyMode()" id="btn-privacy-toggle" title="మొత్తాలు దాచండి / చూపించండి">
+          👁️ <span id="txt-privacy-status">ప్రైవసీ: OFF</span>
+        </button>
+
+        <!-- Switch to mobile test pill -->
+        <a href="mobile.html" class="switch-pill">
+          <span>📱 మొబైల్ వెర్షన్ (Mobile View)</span>
+        </a>
+
+        <!-- Working User Profile / Login Button -->
+        <div class="user-profile-badge" id="btn-header-auth" onclick="openLoginModal()">
+          <div class="user-avatar-circle" id="user-avatar-initial">క</div>
+          <div style="font-size: 13px; font-weight: 600;" id="user-display-name">కొత్తపల్లి రావు (Admin)</div>
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #10B981;" title="క్లౌడ్ సింక్ యాక్టివ్"></span>
+        </div>
+
+        <button class="btn-shimmer" onclick="showTab('desk')">
+          + కొత్త కానుక ఎంట్రీ
+        </button>
+      </div>
+    </header>
+
+    <!-- Event Selection Strip -->
+    <div class="event-selection-strip">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 24px;" id="desk-event-icon">💍</span>
+        <div>
+          <div style="font-weight: 700; font-size: 16px;" id="desk-event-title">రాహుల్ & స్నిగ్ధ వివాహ వేడుక</div>
+          <div style="font-size: 12px; color: var(--gold-light);" id="desk-event-detail">వధూవరులు: రాహుల్ & స్నిగ్ధ • హైదరాబాద్ • ప్రత్యక్ష వేదిక</div>
+        </div>
+      </div>
+
+      <div class="event-chips">
+        <button class="event-chip-btn active" onclick="setDesktopEvent('wedding', this)">💍 పెళ్లి</button>
+        <button class="event-chip-btn" onclick="setDesktopEvent('birthday', this)">👶 బర్త్‌డే</button>
+        <button class="event-chip-btn" onclick="setDesktopEvent('halfsaree', this)">🪷 హాఫ్ శారీ</button>
+        <button class="event-chip-btn" onclick="setDesktopEvent('dhoti', this)">🧵 ఉపనయనం</button>
+        <button class="event-chip-btn" onclick="setDesktopEvent('housewarming', this)">🏡 గృహప్రవేశం</button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs (With Full Settings) -->
+    <nav class="desktop-tabs-bar">
+      <button class="desk-tab active" data-tab="dashboard" onclick="showTab('dashboard')">📊 డాష్‌బోర్డ్ (Dashboard)</button>
+      <button class="desk-tab" data-tab="desk" onclick="showTab('desk')">⚡ మున్షీ డెస్క్ (Munshi Entry)</button>
+      <button class="desk-tab" data-tab="ledger" onclick="showTab('ledger')">📜 ఎర్ర పుస్తకం (Red Ledger)</button>
+      <button class="desk-tab" data-tab="expenses" onclick="showTab('expenses')">💸 ఖర్చులు (Expenses)</button>
+      <button class="desk-tab" data-tab="reciprocity" onclick="showTab('reciprocity')">🔄 పరస్పర లెక్కలు</button>
+      <button class="desk-tab" data-tab="invites" onclick="showTab('invites')">💌 ఆహ్వానాలు & RSVP</button>
+      <button class="desk-tab" data-tab="qr" onclick="showTab('qr')">🔊 సౌండ్‌బాక్స్ & QR</button>
+      <button class="desk-tab" data-tab="settings" onclick="showTab('settings')">⚙️ అప్లికేషన్ సెట్టింగ్స్ (Settings)</button>
+    </nav>
+
+    <!-- ==========================================
+         TAB 1: DASHBOARD
+         ========================================== -->
+    <div class="tab-pane active" id="pane-dashboard">
+      <div class="kpi-grid">
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <div class="kpi-label">మొత్తం కానుకల వసూలు (Inflow)</div>
+            <div class="kpi-num amount-masked" style="color: var(--gold-light);" id="desk-kpi-inflow">₹0</div>
+            <div style="font-size: 12px; color: var(--emerald-green); font-weight: 600;" id="desk-guest-count">0 మంది బంధువులు</div>
+          </div>
+        </div>
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <div class="kpi-label">మొత్తం ఫంక్షన్ ఖర్చులు (Expenses)</div>
+            <div class="kpi-num amount-masked" style="color: var(--ruby-red);" id="desk-kpi-expenses">₹0</div>
+            <div style="font-size: 12px; color: var(--text-muted);">క్యాటరింగ్, కల్యాణ మండపం</div>
+          </div>
+        </div>
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <div class="kpi-label">నికర మిగులు నిల్వ (Net Surplus)</div>
+            <div class="kpi-num amount-masked" style="color: var(--emerald-green);" id="desk-kpi-surplus">₹0</div>
+            <div style="font-size: 12px; color: var(--emerald-green); font-weight: 600;">✓ లాభంలో ఉంది</div>
+          </div>
+        </div>
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <div class="kpi-label">బంగారం & వెండి కానుకలు</div>
+            <div class="kpi-num" id="desk-kpi-gold">0 <span style="font-size: 16px; color: var(--gold-light);">g Gold</span></div>
+            <div style="font-size: 12px; color: var(--text-muted);">వెండి: 550 గ్రాములు (14 పాత్రలు)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Entries Table -->
+      <div class="spotlight-card">
+        <div class="spotlight-content">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700;">ఇటీవలి కానుకల ఎంట్రీలు (Recent Shagun Received)</h3>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-glass" onclick="exportLedgerCSV()">📥 Excel / CSV ఎక్స్‌పోర్ట్</button>
+              <button class="btn-glass" onclick="showTab('ledger')">మొత్తం చూడండి (View All)</button>
+            </div>
+          </div>
+          <table class="luxury-table">
+            <thead>
+              <tr>
+                <th>రశీదు సంఖ్య</th>
+                <th>అతిథి పేరు</th>
+                <th>ఊరు (City)</th>
+                <th>తరపు / సంబంధం</th>
+                <th>కానుక రకం</th>
+                <th>మొత్తం (₹)</th>
+                <th>చర్య</th>
+              </tr>
+            </thead>
+            <tbody id="desk-recent-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 2: MUNSHI FAST ENTRY DESK
+         ========================================== -->
+    <div class="tab-pane" id="pane-desk">
+      <div class="split-grid">
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--gold-light);">
+              ⚡ మున్షీ వేగవంతమైన ఎంట్రీ డెస్క్ (Munshi Fast Entry Desk)
+            </h2>
+            <form onsubmit="handleDesktopEntry(event)">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label">అతిథి పూర్తి పేరు (Guest Name) *</label>
+                  <input type="text" id="desk-name" class="form-input" placeholder="ఉదా: కొత్తపల్లి రాజశేఖర్ గారు" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">ఊరు / నగరం (AP & TG Smart Autocomplete) *</label>
+                  <input type="text" id="desk-city" class="form-input" list="cities-list" placeholder="విజయవాడ, హైదరాబాద్..." required>
+                  <datalist id="cities-list">
+                    <option value="హైదరాబాద్ (Hyderabad)">
+                    <option value="విజయవాడ (Vijayawada)">
+                    <option value="విశాఖపట్నం (Visakhapatnam)">
+                    <option value="గుంటూరు (Guntur)">
+                    <option value="వరంగల్ (Warangal)">
+                    <option value="రాజమండ్రి (Rajahmundry)">
+                    <option value="తిరుపతి (Tirupati)">
+                  </datalist>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label">సంబంధం / తరపు</label>
+                  <select id="desk-side" class="form-input">
+                    <option value="పెళ్ళికూతురు తరపు (Bride Side)">పెళ్ళికూతురు తరపు (Bride Side)</option>
+                    <option value="పెళ్ళికొడుకు తరపు (Groom Side)">పెళ్ళికొడుకు తరపు (Groom Side)</option>
+                    <option value="స్నేహితులు (Friends)">స్నేహితులు (Friends)</option>
+                    <option value="బంధువులు (Relatives)">బంధువులు (Relatives)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">మొబైల్ నంబర్ (WhatsApp రశీదు కోసం)</label>
+                  <input type="tel" id="desk-phone" class="form-input" placeholder="98480xxxxx">
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px;">
+                <div class="form-group">
+                  <label class="form-label">మొత్తం నగదు (Amount ₹) *</label>
+                  <input type="number" id="desk-amount" class="form-input" value="5116" required style="font-family: var(--font-numbers); font-size: 20px; font-weight: 700; color: var(--gold-light);">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">బంగారం / వెండి (గ్రాములు)</label>
+                  <input type="text" id="desk-grams" class="form-input" placeholder="ఉదా: 2 గ్రాములు">
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: rgba(229,184,105,0.08); border-radius: 12px; margin-bottom: 20px;">
+                <span style="font-size: 13px; font-weight: 600;">+₹1 లక్కీ కాయిన్ ఆటో-రౌండింగ్ (116, 516, 1116, 5116)</span>
+                <input type="checkbox" id="desk-lucky-toggle" checked style="width: 18px; height: 18px; accent-color: var(--gold-primary);">
+              </div>
+
+              <button type="submit" class="btn-shimmer" style="width: 100%; justify-content: center; padding: 14px; font-size: 16px;">
+                💾 భద్రపరచండి & వాట్సాప్ రశీదు పంపండి (Save & Send WhatsApp Receipt)
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Live Soundbox & WhatsApp Preview -->
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <h3 style="font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--gold-light); margin-bottom: 12px;">
+              🔊 లైవ్ సౌండ్‌బాక్స్ & ఆడియో చైమ్
+            </h3>
+            <div style="background: rgba(0,0,0,0.4); border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 20px;">
+              <button class="btn-glass" onclick="playDeskChime()">▶ చైమ్ టెస్ట్ చేయండి (Test Bell)</button>
+            </div>
+
+            <h3 style="font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 10px;">
+              డిజిటల్ రశీదు ప్రివ్యూ
+            </h3>
+            <div style="background: #111520; border: 1px dashed rgba(229,184,105,0.3); border-radius: 12px; padding: 16px; font-size: 12px; line-height: 1.7; color: var(--text-muted);">
+              <div style="font-weight: 700; color: var(--gold-light); text-align: center; margin-bottom: 6px;">💍 గిఫ్ట్ వాలెట్ డిజిటల్ రశీదు</div>
+              శ్రీ <strong style="color: var(--text-main);" id="desk-rec-name">కొత్తపల్లి రాజశేఖర్ గారు</strong>,<br>
+              వివాహ మహోత్సవంలో మీరు అందించిన కానుక <strong style="color: var(--gold-light);" id="desk-rec-amt">₹5,116</strong> కృతజ్ఞతలతో నమోదైంది.<br>
+              <em>మీ రాక మాకు ఆనందదాయకం! — కుటుంబ పెద్దలు.</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 3: LEDGER (ERRA PUSTHAKAM)
+         ========================================== -->
+    <div class="tab-pane" id="pane-ledger">
+      <div style="background: #18090C; border: 2px solid #5C1D24; border-radius: 20px; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.8);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid rgba(229,184,105,0.3); padding-bottom: 16px;">
+          <div>
+            <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--gold-light);">
+              📜 సంప్రదాయ ఎర్ర పుస్తకం (Official Erra Pusthakam Ledger)
+            </h2>
+            <div style="font-size: 13px; color: var(--text-muted);">అమరావతి & తెలంగాణ గ్రామీణ లెక్కల శగున్ చిట్టా</div>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <input type="text" class="form-input" placeholder="🔍 పేరు లేదా ఊరు వెతకండి..." oninput="filterDesktopLedger(this.value)" style="width: 240px; padding: 8px 14px; font-size: 13px;">
+            <button class="btn-glass" onclick="exportLedgerCSV()">📥 Excel (CSV)</button>
+            <button class="btn-shimmer" onclick="window.print()" style="font-size: 13px; padding: 8px 16px;">🖨️ ప్రింట్ / PDF</button>
+          </div>
+        </div>
+
+        <table class="luxury-table" id="printable-ledger-table">
+          <thead>
+            <tr>
+              <th>క్ర.సం</th>
+              <th>అతిథి పేరు</th>
+              <th>ఊరు / ప్రాంతం</th>
+              <th>తరపు / గోత్రం</th>
+              <th>కానుక రకం</th>
+              <th>మొత్తం (₹)</th>
+              <th>బంగారం/వెండి</th>
+              <th>సమయం</th>
+              <th>వాట్సాప్</th>
+            </tr>
+          </thead>
+          <tbody id="desk-full-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 4: EXPENSES
+         ========================================== -->
+    <div class="tab-pane" id="pane-expenses">
+      <div class="split-grid">
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <h2 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 16px;">💸 ఈవెంట్ ఖర్చు నమోదు</h2>
+            <form onsubmit="handleDeskExpense(event)">
+              <div class="form-group">
+                <label class="form-label">కేటగిరీ</label>
+                <select class="form-input" id="exp-cat">
+                  <option>క్యాటరింగ్ & భోజనాలు (Catering)</option>
+                  <option>కల్యాణ మండపం అద్దె (Hall)</option>
+                  <option>ఫోటో & వీడియో గ్రఫీ (Photography)</option>
+                  <option>పూల అలంకరణ & డెకరేషన్ (Decoration)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">వెండర్ పేరు</label>
+                <input type="text" class="form-input" id="exp-ven" placeholder="ఉదా: సుబ్బారావు క్యాటరర్స్" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">మొత్తం (₹) *</label>
+                <input type="number" class="form-input" id="exp-val" placeholder="50000" required style="color: var(--ruby-red); font-weight: 700;">
+              </div>
+              <button type="submit" class="btn-shimmer" style="width: 100%; justify-content: center;">+ ఖర్చు నమోదు చేయండి</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--gold-light); margin-bottom: 14px;">ఆర్థిక విశ్లేషణ & మిగులు</h3>
+            <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 18px; line-height: 2; font-size: 14px;">
+              మొత్తం కానుకలు: <strong style="color: var(--gold-light);" id="exp-stat-inflow">₹0</strong><br>
+              మొత్తం ఖర్చులు: <strong style="color: var(--ruby-red);" id="exp-stat-expenses">-₹0</strong><br>
+              <div style="border-top: 1px solid var(--border-subtle); margin-top: 8px; padding-top: 8px; font-size: 16px;">
+                నికర మిగులు (Net Surplus): <strong style="color: var(--emerald-green);" id="exp-stat-surplus">₹0</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 5: RECIPROCITY
+         ========================================== -->
+    <div class="tab-pane" id="pane-reciprocity">
+      <div class="spotlight-card">
+        <div class="spotlight-content">
+          <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 16px;">🔄 పరస్పర శగున్ లెక్కింపు (Reciprocity Intelligence)</h2>
+          <table class="luxury-table">
+            <thead>
+              <tr><th>బంధువు పేరు</th><th>ఊరు</th><th>వారిచ్చింది</th><th>మనమిచ్చింది</th><th>బ్యాలెన్స్</th><th>సిఫార్సు చేసిన రిటర్న్ గిఫ్ట్</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>చల్లా శ్రీనివాసరావు గారు</strong></td><td>గుంటూరు</td><td style="color: var(--gold-light); font-weight: 700;">₹5,116</td><td>₹2,116</td><td><span style="color: var(--emerald-green); font-weight: 700;">+₹3,000 (మనకు ఎక్కువ)</span></td><td>వచ్చే వివాహానికి ₹5,116 లేదా వెండి పాత్ర సిఫార్సు.</td></tr>
+              <tr><td><strong>బోళ్ల వేణుగోపాల్ గారు</strong></td><td>వరంగల్</td><td style="color: var(--gold-light); font-weight: 700;">₹2,116</td><td>₹5,116</td><td><span style="color: var(--ruby-red); font-weight: 700;">-₹3,000</span></td><td>సరితూగిన బంధుత్వం. సంప్రదాయ వస్త్ర బహుకరణ చాలు.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 6: INVITES
+         ========================================== -->
+    <div class="tab-pane" id="pane-invites">
+      <div class="split-grid">
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <h2 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-bottom: 16px;">💌 వాట్సాప్ ఆహ్వానాలు (Digital RSVP)</h2>
+            <div class="form-group"><label class="form-label">అతిథి పేరు</label><input type="text" class="form-input" placeholder="ఉదా: శ్రీనివాసరావు గారు"></div>
+            <div class="form-group"><label class="form-label">మొబైల్ సంఖ్య</label><input type="tel" class="form-input" placeholder="98480xxxxx"></div>
+            <button class="btn-shimmer" style="width: 100%; justify-content: center;" onclick="alert('వాట్సాప్ ఆహ్వానం పంపబడింది!')">📲 శుభలేఖ కార్డు పంపండి</button>
+          </div>
+        </div>
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--gold-light); margin-bottom: 14px;">RSVP స్థితి</h3>
+            <div style="font-size: 14px; line-height: 2;">
+              మొత్తం ఆహ్వానితులు: <strong>450 మంది</strong><br>
+              ధృవీకరించినవారు: <strong style="color: var(--emerald-green);">385 మంది</strong><br>
+              భోజనాల ప్లానింగ్: <strong>500 ప్లేట్లు</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 7: SOUNDBOX QR
+         ========================================== -->
+    <div class="tab-pane" id="pane-qr">
+      <div class="split-grid">
+        <div class="spotlight-card" style="text-align: center; padding: 30px;">
+          <div class="spotlight-content">
+            <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 12px;">డిజిటల్ శగున్ UPI QR</h2>
+            <div style="background: #FFF; padding: 16px; border-radius: 16px; width: 200px; height: 200px; margin: 0 auto 16px auto;">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=giftvault.shagun@hdfcbank&pn=RahulSnigdhaWedding&am=5116&cu=INR" style="width: 100%; height: 100%;">
+            </div>
+            <div style="font-family: var(--font-numbers); font-size: 24px; font-weight: 800; color: var(--gold-light); margin-bottom: 12px;">₹5,116</div>
+            <button class="btn-shimmer" onclick="playDeskChime(); alert('🔊 సౌండ్‌బాక్స్: గిఫ్ట్ వాలెట్ లో ₹5,116 కానుక అందింది!')">🔊 సౌండ్‌బాక్స్ టెస్ట్ చేయండి</button>
+          </div>
+        </div>
+        <div class="spotlight-card">
+          <div class="spotlight-content">
+            <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--gold-light); margin-bottom: 12px;">సౌండ్‌బాక్స్ ప్రయోజనాలు:</h3>
+            <ul style="font-size: 14px; line-height: 2; color: var(--text-muted); padding-left: 20px;">
+              <li>క్షణం ఆలస్యం లేకుండా వాయిస్ ధృవీకరణ.</li>
+              <li>ఆటోమేటిక్ గా ఎర్ర పుస్తకంలో లెడ్జర్ సింక్.</li>
+              <li>నగదు వెతుక్కోకుండా క్షణాల్లో డిజిటల్ శగున్.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         TAB 8: COMPLETE SETTINGS SUITE (Dedicated)
+         ========================================== -->
+    <div class="tab-pane" id="pane-settings">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <div>
+          <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--gold-light);">
+            ⚙️ అప్లికేషన్ కాన్ఫిగరేషన్ & సెట్టింగ్స్ (Master Settings)
+          </h2>
+          <div style="font-size: 13px; color: var(--text-muted);">మీ ఫ్యామిలీ ఖాతా, రశీదు టెంప్లేట్లు, ఆడియో మరియు భద్రతా నియమాలను ఇక్కడ నిర్వహించండి.</div>
+        </div>
+        <button class="btn-shimmer" onclick="saveMasterSettings()">💾 అన్ని సెట్టింగ్స్ సేవ్ చేయండి (Save Settings)</button>
+      </div>
+
+      <div class="settings-grid">
+        <!-- 1. Profile & Family Account -->
+        <div class="settings-section-card">
+          <div class="settings-sec-title">👤 ప్రొఫైల్ & కుటుంబ ఖాతా (Family Account)</div>
+          <div class="form-group">
+            <label class="form-label">హోస్ట్ / కుటుంబ పెద్ద పేరు</label>
+            <input type="text" id="set-host-name" class="form-input" value="కొత్తపల్లి వెంకటేశ్వరరావు & కుటుంబం">
+          </div>
+          <div class="form-group">
+            <label class="form-label">స్వస్థలం / ఊరు (Native Place)</label>
+            <input type="text" id="set-native-place" class="form-input" value="అమరావతి / విజయవాడ">
+          </div>
+          <div class="form-group">
+            <label class="form-label">కుటుంబ గోత్రం (Family Gotram)</label>
+            <input type="text" id="set-gotram" class="form-input" value="కౌశికస గోత్రం">
+          </div>
+        </div>
+
+        <!-- 2. Shagun & +₹1 Lucky Coin Rules -->
+        <div class="settings-section-card">
+          <div class="settings-sec-title">🪙 శగున్ & కరెన్సీ నియమాలు (Rules)</div>
+          <div class="form-group">
+            <label class="form-label">డిఫాల్ట్ కరెన్సీ (Currency)</label>
+            <select id="set-currency" class="form-input">
+              <option value="INR" selected>₹ భారతీయ రూపాయలు (INR)</option>
+              <option value="USD">$ US Dollars (USD - NRI Events)</option>
+              <option value="GBP">£ British Pounds (GBP)</option>
+            </select>
+          </div>
+          <div class="toggle-row">
+            <div>
+              <div style="font-weight: 600; font-size: 13px;">+₹1 లక్కీ కాయిన్ ఆటో-రౌండింగ్</div>
+              <div style="font-size: 11px; color: var(--text-muted);">500 ఇస్తే 516, 1000 ఇస్తే 1116, 5000 ఇస్తే 5116 చేస్తుంది</div>
+            </div>
+            <input type="checkbox" id="set-lucky-coin" checked style="width: 18px; height: 18px; accent-color: var(--gold-primary);">
+          </div>
+          <div class="toggle-row">
+            <div>
+              <div style="font-weight: 600; font-size: 13px;">డిఫాల్ట్ కానుక రకం</div>
+              <div style="font-size: 11px; color: var(--text-muted);">ఎంట్రీ ఫారమ్‌లో మొదటి ప్రాధాన్యత</div>
+            </div>
+            <select id="set-default-gift" class="form-input" style="width: 140px; padding: 6px 10px;">
+              <option value="cash" selected>💵 నగదు (Cash)</option>
+              <option value="gold">👑 బంగారం</option>
+              <option value="silver">🪙 వెండి</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3. WhatsApp Automation -->
+        <div class="settings-section-card">
+          <div class="settings-sec-title">📲 వాట్సాప్ ఆటో-రశీదు సెట్టింగ్స్</div>
+          <div class="toggle-row">
+            <div>
+              <div style="font-weight: 600; font-size: 13px;">ఎంట్రీ చేయగానే ఆటో-వాట్సాప్</div>
+              <div style="font-size: 11px; color: var(--text-muted);">సేవ్ కొట్టగానే నేరుగా వాట్సాప్ రశీదు పేజీ ఓపెన్ చేస్తుంది</div>
+            </div>
+            <input type="checkbox" id="set-auto-whatsapp" checked style="width: 18px; height: 18px; accent-color: var(--gold-primary);">
+          </div>
+          <div class="form-group" style="margin-top: 10px;">
+            <label class="form-label">కస్టమ్ రశీదు సందేశం ({name}, {amount}, {event})</label>
+            <textarea id="set-wa-template" class="form-input" style="height: 80px; font-size: 12px; line-height: 1.5;">ఆదరణీయ {name} గారు, మా {event} లో మీరు అందించిన పవిత్రమైన కానుక {amount} కృతజ్ఞతలతో నమోదైంది. మీ రాక మాకు పరమానందం!</textarea>
+          </div>
+        </div>
+
+        <!-- 4. Soundbox & Audio Preferences -->
+        <div class="settings-section-card">
+          <div class="settings-sec-title">🔊 సౌండ్‌బాక్స్ & చైమ్ ఆడియో</div>
+          <div class="toggle-row">
+            <div>
+              <div style="font-weight: 600; font-size: 13px;">ప్రతీ ఎంట్రీకి రాయల్ బెల్ చైమ్</div>
+              <div style="font-size: 11px; color: var(--text-muted);">ఎంట్రీ నమోదు కాగానే శ్రావ్యమైన గంట నాదం</div>
+            </div>
+            <input type="checkbox" id="set-soundbox-enable" checked style="width: 18px; height: 18px; accent-color: var(--gold-primary);">
+          </div>
+          <div class="form-group" style="margin-top: 10px;">
+            <label class="form-label">వాయిస్ అనౌన్స్‌మెంట్ భాష</label>
+            <select id="set-voice-lang" class="form-input">
+              <option value="te" selected>తెలుగు (Telugu - "గిఫ్ట్ వాలెట్ లో ₹5,116 అందింది")</option>
+              <option value="en">English ("₹5,116 received on GiftVault")</option>
+              <option value="hi">हिंदी (Hindi - "गिफ्ट वॉल्ट पर ₹5,116 प्राप्त हुए")</option>
+            </select>
+          </div>
+          <button class="btn-glass" onclick="playDeskChime()" style="font-size: 12px;">▶ ఆడియో చైమ్ టెస్ట్ చేయండి</button>
+        </div>
+
+        <!-- 5. Security & Privacy Lock -->
+        <div class="settings-section-card">
+          <div class="settings-sec-title">🛡️ సెక్యూరిటీ & ప్రైవసీ లాక్</div>
+          <div class="toggle-row">
+            <div>
+              <div style="font-weight: 600; font-size: 13px;">యాప్ 4-డిజిట్ పిన్ లాక్</div>
+              <div style="font-size: 11px; color: var(--text-muted);">ఫంక్షన్ లో ఇతరులు ఫోన్ చూసినా లాక్ అడుగుతుంది</div>
+            </div>
+            <input type="password" id="set-pin-code" class="form-input" value="1234" maxlength="4" style="width: 100px; text-align: center; letter-spacing: 4px; font-weight: 700;">
+          </div>
+          <div class="toggle-row">
+            <div>
+              <div style="font-weight: 600; font-size: 13px;">ప్రైవసీ మాస్కింగ్ (హైడ్ అమౌంట్స్)</div>
+              <div style="font-size: 11px; color: var(--text-muted);">మొత్తాలు ₹ **** గా మార్చి ఇతరులకు కనిపించకుండా ఉంచుతుంది</div>
+            </div>
+            <input type="checkbox" id="set-privacy-mask" onchange="togglePrivacyMode(this.checked)" style="width: 18px; height: 18px; accent-color: var(--gold-primary);">
+          </div>
+        </div>
+
+        <!-- 6. Data Backup & Reset -->
+        <div class="settings-section-card">
+          <div class="settings-sec-title">💾 డేటా బ్యాకప్ & ఎక్స్‌పోర్ట్</div>
+          <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">
+            క్లౌడ్ సింక్: <strong style="color: var(--emerald-green);">ఆటోమేటిక్ లోకల్ + క్లౌడ్ బ్యాకప్ యాక్టివ్</strong>
+          </div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="btn-glass" onclick="exportLedgerCSV()">📥 Excel (CSV) డౌన్‌లోడ్</button>
+            <button class="btn-glass" onclick="window.print()">🖨️ PDF ప్రింట్</button>
+            <button class="btn-glass" onclick="clearAllData()" style="color: var(--ruby-red); border-color: rgba(225,29,72,0.3);">⚠️ డేటా రీసెట్ (Reset)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==========================================
+       LOGIN & OTP MODAL DIALOG
+       ========================================== -->
+  <div class="modal-overlay" id="auth-modal" onclick="closeLoginModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="brand-icon" style="width: 36px; height: 36px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5B869" stroke-width="2">
+              <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z"/>
+            </svg>
+          </div>
+          <div style="font-family: var(--font-display); font-size: 18px; font-weight: 700;">GiftVault లాగిన్</div>
+        </div>
+        <button onclick="closeLoginModal()" style="background: transparent; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer;">✕</button>
+      </div>
+
+      <!-- Step 1: Mobile Phone Input -->
+      <div id="auth-step-phone">
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">
+          మీ మొబైల్ సంఖ్యను ఎంటర్ చేసి తక్షణమే SMS/వాట్సాప్ OTP ద్వారా లాగిన్ అవ్వండి.
+        </p>
+        <div class="form-group">
+          <label class="form-label">మొబైల్ సంఖ్య (Mobile Number) *</label>
+          <div style="display: flex; gap: 8px;">
+            <span style="background: rgba(255,255,255,0.06); padding: 12px 14px; border-radius: 12px; font-weight: 600;">+91</span>
+            <input type="tel" id="auth-phone-input" class="form-input" placeholder="98480 12345" value="9848012345" maxlength="10" required>
+          </div>
+        </div>
+
+        <button class="btn-shimmer" style="width: 100%; justify-content: center; padding: 12px; margin-bottom: 12px;" onclick="sendMockOTP()">
+          📩 OTP పంపండి (Send OTP)
+        </button>
+
+        <div style="text-align: center; margin: 16px 0; font-size: 12px; color: var(--text-dim);">లేదా</div>
+
+        <button class="btn-glass" style="width: 100%; justify-content: center; padding: 10px;" onclick="mockGoogleLogin()">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.7 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5.1 3.7-8.8z"/><path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3 0-.8.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 12.3 0 15s.7 5.3 1.9 7.7l3.7-2.9z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.4-6.4-5.2L1.9 16c1.8 3.7 5.6 7 10.1 7z"/></svg>
+          Google తో సైన్-ఇన్ అవ్వండి
+        </button>
+      </div>
+
+      <!-- Step 2: OTP Verification -->
+      <div id="auth-step-otp" style="display: none;">
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">
+          మీ నంబర్‌కు పంపిన 4 అంకెల OTP ని నమోదు చేయండి (టెస్ట్ కోడ్: <strong style="color: var(--gold-light);">1234</strong>).
+        </p>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;">
+          <input type="text" id="otp-1" class="form-input" maxlength="1" value="1" style="width: 50px; text-align: center; font-size: 20px; font-weight: 700;">
+          <input type="text" id="otp-2" class="form-input" maxlength="1" value="2" style="width: 50px; text-align: center; font-size: 20px; font-weight: 700;">
+          <input type="text" id="otp-3" class="form-input" maxlength="1" value="3" style="width: 50px; text-align: center; font-size: 20px; font-weight: 700;">
+          <input type="text" id="otp-4" class="form-input" maxlength="1" value="4" style="width: 50px; text-align: center; font-size: 20px; font-weight: 700;">
+        </div>
+
+        <button class="btn-shimmer" style="width: 100%; justify-content: center; padding: 12px;" onclick="verifyMockOTP()">
+          ✓ ధృవీకరించండి & ప్రవేశించండి (Verify)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Master Persistence Keys
+    const STORAGE_KEY_LEDGER = 'giftvault_ledger_records_v1';
+    const STORAGE_KEY_SETTINGS = 'giftvault_settings_v1';
+    const STORAGE_KEY_USER = 'giftvault_current_user_v1';
+
+    const DESK_EVENTS = {
+      wedding: { icon: '💍', title: 'రాహుల్ & స్నిగ్ధ వివాహ వేడుక', detail: 'వధూవరులు: రాహుల్ (దాసరి) & స్నిగ్ధ (కొత్తపల్లి) • హైదరాబాద్', inflow: '₹0', exp: '₹0', sur: '₹0', gold: '0 g Gold' },
+      birthday: { icon: '👶', title: 'చిరంజీవి అన్విత్ ప్రథమ జన్మదినం', detail: 'కుమారుడు • అమరావతి, విజయవాడ', inflow: '₹3,18,501', exp: '₹1,20,000', sur: '+₹1,98,501', gold: '18.0 g Gold' },
+      halfsaree: { icon: '🪷', title: 'కుమారి వైష్ణవి లంగాఓణీ శుభకార్యం', detail: 'అమ్మాయి పేరు: వైష్ణవి • రాజమండ్రి', inflow: '₹5,62,116', exp: '₹2,40,000', sur: '+₹3,22,116', gold: '28.5 g Gold' },
+      dhoti: { icon: '🧵', title: 'చిరంజీవి సాయి ప్రణవ్ ఉపనయనం', detail: 'అబ్బాయి పేరు: సాయి ప్రణవ్ • తిరుపతి', inflow: '₹4,12,001', exp: '₹1,85,000', sur: '+₹2,27,001', gold: '12.0 g Gold' },
+      housewarming: { icon: '🏡', title: 'శ్రీ నిలయం గృహప్రవేశ మహోత్సవం', detail: 'యజమానులు: రాఘవేంద్ర రావు & సుహాసిని • విశాఖపట్నం', inflow: '₹6,88,116', exp: '₹3,10,000', sur: '+₹3,78,116', gold: '24.0 g Gold' }
+    };
+
+    let DEFAULT_LEDGER = [];
+
+    let DESK_LEDGER = JSON.parse(localStorage.getItem(STORAGE_KEY_LEDGER)) || [];
+    let isPrivacyMasked = false;
+
+    // Load Settings
+    function loadSavedSettings() {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY_SETTINGS));
+      if (saved) {
+        if (saved.hostName) document.getElementById('set-host-name').value = saved.hostName;
+        if (saved.nativePlace) document.getElementById('set-native-place').value = saved.nativePlace;
+        if (saved.gotram) document.getElementById('set-gotram').value = saved.gotram;
+        if (saved.currency) document.getElementById('set-currency').value = saved.currency;
+        if (saved.waTemplate) document.getElementById('set-wa-template').value = saved.waTemplate;
+        if (saved.luckyCoin !== undefined) document.getElementById('set-lucky-coin').checked = saved.luckyCoin;
+        if (saved.autoWhatsapp !== undefined) document.getElementById('set-auto-whatsapp').checked = saved.autoWhatsapp;
+        if (saved.soundbox !== undefined) document.getElementById('set-soundbox-enable').checked = saved.soundbox;
+      }
+    }
+
+    function saveMasterSettings() {
+      const settings = {
+        hostName: document.getElementById('set-host-name').value,
+        nativePlace: document.getElementById('set-native-place').value,
+        gotram: document.getElementById('set-gotram').value,
+        currency: document.getElementById('set-currency').value,
+        luckyCoin: document.getElementById('set-lucky-coin').checked,
+        autoWhatsapp: document.getElementById('set-auto-whatsapp').checked,
+        waTemplate: document.getElementById('set-wa-template').value,
+        soundbox: document.getElementById('set-soundbox-enable').checked
+      };
+      localStorage.setItem(STORAGE_KEY_SETTINGS, JSON.stringify(settings));
+      playDeskChime();
+      alert('అన్ని సెట్టింగ్స్ విజయవంతంగా లోకల్ & క్లౌడ్‌లో సేవ్ చేయబడ్డాయి!');
+    }
+
+    // Tab Navigation
+    function showTab(tabName) {
+      document.querySelectorAll('.desk-tab').forEach(b => b.classList.toggle('active', b.getAttribute('data-tab') === tabName));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === `pane-${tabName}`));
+    }
+
+    // Privacy Mask Toggle
+    function togglePrivacyMode(force) {
+      isPrivacyMasked = (force !== undefined) ? force : !isPrivacyMasked;
+      document.getElementById('txt-privacy-status').innerText = isPrivacyMasked ? 'ప్రైవసీ: ON' : 'ప్రైవసీ: OFF';
+      document.getElementById('btn-privacy-toggle').style.borderColor = isPrivacyMasked ? 'var(--gold-primary)' : 'var(--border-subtle)';
+      document.querySelectorAll('.amount-masked').forEach(el => {
+        if (isPrivacyMasked) {
+          el.setAttribute('data-real', el.innerText);
+          el.innerText = '₹ ••••••';
+        } else {
+          renderDeskTables();
+        }
+      });
+    }
+
+    // Render Tables
+    function renderDeskTables() {
+      const recentTbody = document.getElementById('desk-recent-tbody');
+      const fullTbody = document.getElementById('desk-full-tbody');
+
+      let totalInflow = DESK_LEDGER.reduce((sum, item) => sum + item.amount, 0);
+      document.getElementById('desk-kpi-inflow').innerText = isPrivacyMasked ? '₹ ••••••' : `₹${totalInflow.toLocaleString('en-IN')}`;
+      document.getElementById('desk-guest-count').innerText = `↑ ${DESK_LEDGER.length} మంది బంధుమిత్రులు`;
+
+      if (recentTbody) {
+        if (DESK_LEDGER.length === 0) {
+          recentTbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 30px; color: var(--text-muted);">ఇంకా ఎటువంటి కానుకలు నమోదు కాలేదు.</td></tr>';
+        } else
+        recentTbody.innerHTML = DESK_LEDGER.slice(0, 4).map(item => `
+          <tr>
+            <td><strong style="color: var(--gold-light);">${item.id}</strong></td>
+            <td><strong>${item.name}</strong></td>
+            <td>${item.city}</td>
+            <td>${item.side}</td>
+            <td>${item.type}</td>
+            <td style="font-family: var(--font-numbers); font-weight: 700; color: var(--gold-light);">
+              ${isPrivacyMasked ? '₹ ••••' : '₹' + item.amount.toLocaleString('en-IN')}
+            </td>
+            <td>
+              <button class="btn-glass" onclick="sendWhatsAppReceipt('${item.name}', ${item.amount}, '${item.phone}')">
+                📲 వాట్సాప్ రశీదు
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      if (fullTbody) {
+        if (DESK_LEDGER.length === 0) {
+          fullTbody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 40px; color: var(--text-muted);">ఇంకా ఎటువంటి కానుకలు నమోదు కాలేదు. పైనున్న "+ కొత్త కానుక ఎంట్రీ" బటన్ ద్వారా మీ మొదటి కానుకను నమోదు చేయండి.</td></tr>';
+          return;
+        }
+        fullTbody.innerHTML = DESK_LEDGER.map((item, idx) => `
+          <tr>
+            <td>${idx + 1}</td>
+            <td><strong>${item.name}</strong></td>
+            <td>${item.city}</td>
+            <td>${item.side}</td>
+            <td>${item.type}</td>
+            <td style="font-family: var(--font-numbers); font-weight: 700; color: var(--gold-light);">
+              ${isPrivacyMasked ? '₹ ••••' : '₹' + item.amount.toLocaleString('en-IN')}
+            </td>
+            <td>${item.precious}</td>
+            <td style="font-size: 12px; color: var(--text-dim);">${item.time}</td>
+            <td>
+              <button class="btn-glass" style="padding: 4px 10px; font-size: 11px;" onclick="sendWhatsAppReceipt('${item.name}', ${item.amount}, '${item.phone}')">
+                వాట్సాప్ 📲
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    // Filter Ledger
+    function filterDesktopLedger(q) {
+      const query = q.toLowerCase();
+      const filtered = DESK_LEDGER.filter(i => i.name.toLowerCase().includes(query) || i.city.toLowerCase().includes(query));
+      const fullTbody = document.getElementById('desk-full-tbody');
+      fullTbody.innerHTML = filtered.map((item, idx) => `
+        <tr>
+          <td>${idx + 1}</td>
+          <td><strong>${item.name}</strong></td>
+          <td>${item.city}</td>
+          <td>${item.side}</td>
+          <td>${item.type}</td>
+          <td style="font-family: var(--font-numbers); font-weight: 700; color: var(--gold-light);">
+            ${isPrivacyMasked ? '₹ ••••' : '₹' + item.amount.toLocaleString('en-IN')}
+          </td>
+          <td>${item.precious}</td>
+          <td style="font-size: 12px; color: var(--text-dim);">${item.time}</td>
+          <td>
+            <button class="btn-glass" style="padding: 4px 10px; font-size: 11px;" onclick="sendWhatsAppReceipt('${item.name}', ${item.amount}, '${item.phone}')">
+              వాట్సాప్ 📲
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // New Entry Form Handler
+    function handleDesktopEntry(e) {
+      e.preventDefault();
+      const name = document.getElementById('desk-name').value;
+      const city = document.getElementById('desk-city').value;
+      const side = document.getElementById('desk-side').value;
+      const phone = document.getElementById('desk-phone').value || '';
+      const amt = parseInt(document.getElementById('desk-amount').value) || 0;
+      const grams = document.getElementById('desk-grams').value || '-';
+
+      DESK_LEDGER.unshift({
+        id: `GV-${100 + DESK_LEDGER.length + 1}`,
+        name: name,
+        phone: phone,
+        city: city,
+        side: side,
+        type: 'నగదు',
+        amount: amt,
+        precious: grams,
+        time: 'ఇప్పుడే'
+      });
+
+      localStorage.setItem(STORAGE_KEY_LEDGER, JSON.stringify(DESK_LEDGER));
+      renderDeskTables();
+      playDeskChime();
+
+      document.getElementById('desk-rec-name').innerText = name;
+      document.getElementById('desk-rec-amt').innerText = `₹${amt.toLocaleString('en-IN')}`;
+
+      // Auto-trigger WhatsApp if opted
+      const autoWA = document.getElementById('set-auto-whatsapp')?.checked ?? true;
+      if (autoWA && phone) {
+        sendWhatsAppReceipt(name, amt, phone);
+      } else {
+        alert(`శ్రీ ${name} గారి నుండి ₹${amt} కానుక నమోదైంది! ఎర్ర పుస్తకంలో భద్రపరచబడింది.`);
+      }
+
+      e.target.reset();
+      document.getElementById('desk-amount').value = 5116;
+    }
+
+    // Real WhatsApp Receipt Generator
+    function sendWhatsAppReceipt(name, amount, phone) {
+      const template = document.getElementById('set-wa-template')?.value || "ఆదరణీయ {name} గారు, మా వివాహ మహోత్సవంలో మీరు అందించిన పవిత్రమైన కానుక ₹{amount} కృతజ్ఞతలతో నమోదైంది. మీ రాక మాకు పరమానందం!";
+      const msg = template.replace('{name}', name).replace('{amount}', amount.toLocaleString('en-IN')).replace('{event}', 'వివాహ వేడుక');
+      const cleanPhone = phone ? phone.replace(/[^0-9]/g, '') : '';
+      const waUrl = cleanPhone ? `https://wa.me/91${cleanPhone}?text=${encodeURIComponent(msg)}` : `https://wa.me/?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    // Real CSV/Excel Export (with UTF-8 BOM)
+    function exportLedgerCSV() {
+      const headers = ["క్రమ సంఖ్య", "రశీదు సంఖ్య", "అతిథి పేరు", "మొబైల్", "ఊరు / నగరం", "తరపు / బంధుత్వం", "కానుక రకం", "మొత్తం (రూపాయలు)", "బంగారం/వెండి", "సమయం"];
+      const rows = DESK_LEDGER.map((item, idx) => [
+        idx + 1,
+        item.id,
+        `"${item.name}"`,
+        item.phone || "-",
+        `"${item.city}"`,
+        `"${item.side}"`,
+        item.type,
+        item.amount,
+        item.precious,
+        item.time
+      ]);
+
+      const csvContent = "\uFEFF" + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute("download", `GiftVault_Shagun_Ledger_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Clear / Reset All Data
+    function clearAllData() {
+      if (confirm('ఖచ్చితంగా మొత్తం డేటాను రీసెట్ చేయాలనుకుంటున్నారా? (ఇది కొత్త ఈవెంట్ ప్రారంభించడానికి సహాయపడుతుంది)')) {
+        localStorage.removeItem(STORAGE_KEY_LEDGER);
+        DESK_LEDGER = DEFAULT_LEDGER;
+        renderDeskTables();
+        alert('డేటా రీసెట్ పూర్తయింది!');
+      }
+    }
+
+    // Modal Control & Mock Auth
+    function openLoginModal() { document.getElementById('auth-modal').classList.add('active'); }
+    function closeLoginModal() { document.getElementById('auth-modal').classList.remove('active'); }
+    function sendMockOTP() {
+      const phone = document.getElementById('auth-phone-input').value;
+      if (!phone || phone.length < 10) { alert('దయచేసి సరైన 10 అంకెల మొబైల్ నంబర్ ఎంటర్ చేయండి'); return; }
+      document.getElementById('auth-step-phone').style.display = 'none';
+      document.getElementById('auth-step-otp').style.display = 'block';
+    }
+    function verifyMockOTP() {
+      const user = { name: 'కొత్తపల్లి వెంకటేశ్వరరావు (Admin)', phone: '9848012345', role: 'Host Admin' };
+      localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user));
+      document.getElementById('user-display-name').innerText = user.name;
+      closeLoginModal();
+      playDeskChime();
+      alert('లాగిన్ విజయవంతమైంది! మీ ఖాతా క్లౌడ్‌తో సమకాలీకరించబడింది.');
+    }
+    function mockGoogleLogin() {
+      const user = { name: 'Venkateswara Rao (Admin)', email: 'host@giftvault.in', role: 'Host Admin' };
+      localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(user));
+      document.getElementById('user-display-name').innerText = user.name;
+      closeLoginModal();
+      playDeskChime();
+      alert('Google సైన్-ఇన్ విజయవంతమైంది!');
+    }
+
+    function playDeskChime() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const o1 = ctx.createOscillator();
+        const g1 = ctx.createGain();
+        o1.frequency.setValueAtTime(587.33, ctx.currentTime);
+        g1.gain.setValueAtTime(0.3, ctx.currentTime);
+        g1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
+        o1.connect(g1); g1.connect(ctx.destination);
+        o1.start(); o1.stop(ctx.currentTime + 1.2);
+      } catch (e) {}
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSavedSettings();
+      renderDeskTables();
+    });
+  </script>
+</body>
+</html>

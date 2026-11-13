@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="title-b">
+  <title id="title-b">GiftVault Sovereign Treasury Medallion</title>
+  <defs>
+    <linearGradient id="gold-grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF8F0"/>
+      <stop offset="35%" stop-color="#D4AF37"/>
+      <stop offset="85%" stop-color="#A6823F"/>
+      <stop offset="100%" stop-color="#644A20"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="#0B0D13"/>
+
+  <!-- Beaded Kasu Rim (48 Decorative Dots around rim) -->
+  <g fill="url(#gold-grad-b)" opacity="0.8">
+    <circle cx="128" cy="128" r="110" fill="none" stroke="url(#gold-grad-b)" stroke-width="2.5"/>
+    <circle cx="128" cy="128" r="98" fill="none" stroke="url(#gold-grad-b)" stroke-width="1" stroke-dasharray="2 6"/>
+  </g>
+
+  <!-- Central Crest: Geometric Kalasam & Intertwined GV -->
+  <g id="crest-b">
+    <!-- Sacred Kalasam Silhouette -->
+    <path fill="#9B1B30" stroke="url(#gold-grad-b)" stroke-width="2" d="M104 128 L152 128 C158 128 164 134 162 142 L154 178 C152 186 142 192 128 192 C114 192 104 186 102 178 L94 142 C92 134 98 128 104 128 Z"/>
+    
+    <!-- Blooming Lotus on Kalasam Neck -->
+    <path fill="url(#gold-grad-b)" d="M128 72 C134 84 140 102 128 116 C116 102 122 84 128 72 Z"/>
+    <path fill="url(#gold-grad-b)" d="M128 116 C118 104 98 94 92 108 C96 118 116 118 128 116 Z"/>
+    <path fill="url(#gold-grad-b)" d="M128 116 C138 104 158 94 164 108 C160 118 140 118 128 116 Z"/>
+
+    <!-- Intertwined Geometric 'G' & 'V' -->
+    <!-- The 'G' Arc -->
+    <path fill="none" stroke="url(#gold-grad-b)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"
+          d="M172 104 C158 84 136 76 116 80 C84 86 64 114 64 146 C64 180 88 206 124 206 C158 206 182 184 184 152 L140 152"/>
+    
+    <!-- The 'V' Downward Chevron -->
+    <path fill="none" stroke="url(#gold-grad-b)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"
+          d="M104 116 L128 168 L152 116"/>
+    
+    <!-- Central Shagun Sunburst Coin -->
+    <circle cx="128" cy="144" r="9" fill="url(#gold-grad-b)"/>
+  </g>
+</svg>

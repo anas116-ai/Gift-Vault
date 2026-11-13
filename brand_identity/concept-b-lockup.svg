@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 256" width="960" height="256" role="img" aria-labelledby="title-lockup">
+  <title id="title-lockup">Sovereign Treasury Medallion Horizontal Lockup</title>
+  <defs>
+    <linearGradient id="gold-text-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF8F0"/>
+      <stop offset="40%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#947219"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="256" rx="40" fill="#0B0D13"/>
+
+  <!-- Left Symbol (216x216) -->
+  <g transform="translate(24, 20) scale(0.84)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="title-b">
+  <title id="title-b">GiftVault Sovereign Treasury Medallion</title>
+  <defs>
+    <linearGradient id="gold-grad-b" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF8F0"/>
+      <stop offset="35%" stop-color="#D4AF37"/>
+      <stop offset="85%" stop-color="#A6823F"/>
+      <stop offset="100%" stop-color="#644A20"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="#0B0D13"/>
+
+  <!-- Beaded Kasu Rim (48 Decorative Dots around rim) -->
+  <g fill="url(#gold-grad-b)" opacity="0.8">
+    <circle cx="128" cy="128" r="110" fill="none" stroke="url(#gold-grad-b)" stroke-width="2.5"/>
+    <circle cx="128" cy="128" r="98" fill="none" stroke="url(#gold-grad-b)" stroke-width="1" stroke-dasharray="2 6"/>
+  </g>
+
+  <!-- Central Crest: Geometric Kalasam & Intertwined GV -->
+  <g id="crest-b">
+    <!-- Sacred Kalasam Silhouette -->
+    <path fill="#9B1B30" stroke="url(#gold-grad-b)" stroke-width="2" d="M104 128 L152 128 C158 128 164 134 162 142 L154 178 C152 186 142 192 128 192 C114 192 104 186 102 178 L94 142 C92 134 98 128 104 128 Z"/>
+    
+    <!-- Blooming Lotus on Kalasam Neck -->
+    <path fill="url(#gold-grad-b)" d="M128 72 C134 84 140 102 128 116 C116 102 122 84 128 72 Z"/>
+    <path fill="url(#gold-grad-b)" d="M128 116 C118 104 98 94 92 108 C96 118 116 118 128 116 Z"/>
+    <path fill="url(#gold-grad-b)" d="M128 116 C138 104 158 94 164 108 C160 118 140 118 128 116 Z"/>
+
+    <!-- Intertwined Geometric 'G' & 'V' -->
+    <!-- The 'G' Arc -->
+    <path fill="none" stroke="url(#gold-grad-b)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"
+          d="M172 104 C158 84 136 76 116 80 C84 86 64 114 64 146 C64 180 88 206 124 206 C158 206 182 184 184 152 L140 152"/>
+    
+    <!-- The 'V' Downward Chevron -->
+    <path fill="none" stroke="url(#gold-grad-b)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"
+          d="M104 116 L128 168 L152 116"/>
+    
+    <!-- Central Shagun Sunburst Coin -->
+    <circle cx="128" cy="144" r="9" fill="url(#gold-grad-b)"/>
+  </g>
+</svg>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="250" y1="48" x2="250" y2="208" stroke="#D4AF37" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Right Typography: GIFTVAULT + Telugu Tagline -->
+  <g transform="translate(290, 0)">
+    <!-- English Luxury Brand Name (Cinzel Style Pathing) -->
+    <text x="0" y="128" fill="url(#gold-text-grad)" font-family="'Cinzel Decorative', 'Cinzel', serif" font-size="64" font-weight="800" letter-spacing="8">GIFTVAULT</text>
+    
+    <!-- Telugu Tagline: చదివింపుల డిజిటల్ ఖజానా -->
+    <text x="4" y="176" fill="#F4EFEA" font-family="'Anek Telugu', 'Ramabhadra', sans-serif" font-size="24" font-weight="600" letter-spacing="1">రాయల్ చదివింపుల డిజిటల్ ఖజానా</text>
+    
+    <!-- Auspicious Seal Dots -->
+    <circle cx="368" cy="170" r="3" fill="#9B1B30"/>
+    <text x="382" y="175" fill="#D4AF37" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" letter-spacing="2">SHAGUN LEDGER</text>
+  </g>
+</svg>

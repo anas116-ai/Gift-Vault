@@ -1,0 +1,331 @@
+/**
+ * GiftVault Components System
+ * Senior Staff Engineer Standard: High contrast, accessible focus rings, responsive micro-interactions
+ */
+
+/* ==========================================================================
+   BUTTONS (ThreeUI Tactile Button Specification - Physical Specular Depth)
+   ========================================================================== */
+.btn-gold, .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: linear-gradient(180deg, #B22234 0%, #8B1224 100%);
+  color: #FFFFFF !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.03em;
+  padding: 10px 22px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  isolation: isolate;
+  /* Multi-tier Tactile Specular Lighting */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.32),
+    0 8px 24px -4px rgba(158, 27, 50, 0.42),
+    0 3px 8px -2px rgba(15, 23, 42, 0.12);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.btn-gold::before, .btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.35), transparent 70%);
+  opacity: 0.85;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Shimmer shine sweep on hover */
+.btn-gold::after, .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 65%
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.55s ease;
+  pointer-events: none;
+}
+
+.btn-gold:hover, .btn-primary:hover {
+  transform: translateY(-2.5px);
+  background: linear-gradient(180deg, #C41E3A 0%, #981427 100%);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.32),
+    0 16px 36px -6px rgba(158, 27, 50, 0.54),
+    0 6px 14px -2px rgba(15, 23, 42, 0.18);
+  color: #FFFFFF !important;
+}
+
+.btn-gold:hover::after, .btn-primary:hover::after {
+  transform: rotate(25deg) translateY(100%);
+}
+
+.btn-gold:active, .btn-primary:active {
+  transform: translateY(2px) scale(0.975);
+  box-shadow: 
+    inset 0 1px 0 rgba(0, 0, 0, 0.25),
+    inset 0 2px 5px rgba(0, 0, 0, 0.35),
+    0 2px 6px rgba(158, 27, 50, 0.25);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #FFFFFF;
+  color: #0F172A;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(158, 27, 50, 0.2);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(158, 27, 50, 0.06),
+    0 4px 14px -3px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.btn-secondary:hover {
+  background: #FFFDF9;
+  border-color: var(--c-primary);
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 8px 20px -4px rgba(158, 27, 50, 0.16);
+  color: var(--c-primary);
+}
+.btn-secondary:active {
+  transform: translateY(1.5px) scale(0.985);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Backward compatibility aliases */
+.btn-gold-action { @extend .btn-gold; }
+.btn-glass-action { @extend .btn-secondary; }
+
+/* ==========================================================================
+   ThreeUI Tactile Button System (Canonical Nexus-Tactile Architecture)
+   ========================================================================== */
+.threeui-tactile-wrapper {
+  display: inline-block;
+  padding: 1.5px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.5) 0%, rgba(158, 27, 50, 0.3) 50%, rgba(15, 23, 42, 0.3) 100%);
+  box-shadow: 0 10px 25px -4px rgba(158, 27, 50, 0.35);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.threeui-tactile-wrapper:hover {
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.8) 0%, rgba(196, 30, 58, 0.5) 50%, rgba(15, 23, 42, 0.4) 100%);
+  box-shadow: 0 16px 36px -4px rgba(158, 27, 50, 0.48);
+  transform: translateY(-2px);
+}
+.threeui-tactile-wrapper:active {
+  transform: translateY(1.5px) scale(0.985);
+  box-shadow: 0 4px 14px -2px rgba(158, 27, 50, 0.25);
+}
+
+.threeui-tactile-btn {
+  width: 100%;
+  border: none;
+  border-radius: 12.5px;
+  padding: 11px 22px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #9E1B32 0%, #750F20 100%);
+  color: #FFFFFF !important;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.32),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: all 0.22s ease-out;
+}
+.threeui-tactile-btn:hover {
+  background: linear-gradient(180deg, #B22234 0%, #8A1226 100%);
+}
+
+/* ==========================================================================
+   INPUTS & SELECTS
+   ========================================================================== */
+.input-dark, .input-field-dark {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid var(--border-moderate);
+  border-radius: var(--radius-md);
+  padding: 11px 14px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  outline: none;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+.input-dark:focus, .input-field-dark:focus {
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 3px rgba(158, 27, 50, 0.12);
+  background: #FFFFFF;
+}
+.input-dark::placeholder, .input-field-dark::placeholder {
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   WORKSPACE TABS (Cluster Design)
+   ========================================================================== */
+.ws-tabs-cluster {
+  display: flex;
+  background: #EFEAE2;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.ws-tab-btn, .ws-tab-btn-lux {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+.ws-tab-btn:hover, .ws-tab-btn-lux:hover {
+  color: var(--text-primary);
+}
+.ws-tab-btn.active, .ws-tab-btn-lux.active {
+  background: #FFFFFF;
+  color: var(--c-primary);
+  font-weight: 700;
+  border: 1px solid #E2D9CC;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
+   CARDS & CONTAINERS
+   ========================================================================== */
+.card-luxury, .event-card-luxury {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+.card-luxury:hover, .event-card-luxury:hover {
+  border-color: var(--border-moderate);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+/* ==========================================================================
+   MODALS & OVERLAYS
+   ========================================================================== */
+.modal-backdrop, .modal-backdrop-lux {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-backdrop.active, .modal-backdrop-lux.active {
+  display: flex;
+}
+
+.modal-dialog {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  max-width: 540px;
+  width: 100%;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.16);
+  animation: modalPop 0.25s var(--ease-spring) forwards;
+}
+
+@keyframes modalPop {
+  0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ==========================================================================
+   TOAST NOTIFICATIONS
+   ========================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast-pill-lux {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(12, 16, 28, 0.96);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  color: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 600;
+  animation: toastSlide 0.3s var(--ease-spring) forwards;
+}
+
+@keyframes toastSlide {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 256" width="960" height="256" role="img" aria-labelledby="title-lockup">
+  <title id="title-lockup">Architectural Beveled GV Horizontal Lockup</title>
+  <defs>
+    <linearGradient id="gold-text-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF8F0"/>
+      <stop offset="40%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#947219"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="256" rx="40" fill="#0B0D13"/>
+
+  <!-- Left Symbol (216x216) -->
+  <g transform="translate(24, 20) scale(0.84)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="title-c">
+  <title id="title-c">GiftVault Architectural Beveled GV Monogram</title>
+  <defs>
+    <!-- Facet Highlighting Gradients -->
+    <linearGradient id="gold-light-c" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF9"/>
+      <stop offset="50%" stop-color="#E5C158"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+    <linearGradient id="gold-shadow-c" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B89225"/>
+      <stop offset="60%" stop-color="#84642C"/>
+      <stop offset="100%" stop-color="#483415"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="256" height="256" rx="48" fill="#0B0D13"/>
+
+  <!-- Elegant Octagonal Framing Chamfer -->
+  <polygon points="128,18 226,58 226,198 128,238 30,198 30,58" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Sculpted 3D Beveled Monogram Structure -->
+  <g id="beveled-gv-c">
+    <!-- Left Wing of 'G' (Light side) -->
+    <path fill="url(#gold-light-c)" d="M128 52 C84 52 50 86 50 132 C50 178 84 212 128 212 C164 212 192 188 198 154 L180 154 C174 176 154 194 128 194 C94 194 68 168 68 132 C68 96 94 70 128 70 C146 70 162 78 172 92 L188 80 C174 62 152 52 128 52 Z"/>
+
+    <!-- Inward Crossbar of 'G' (Shadow side) -->
+    <path fill="url(#gold-shadow-c)" d="M142 142 L198 142 L198 158 L158 158 L158 174 L142 174 Z"/>
+
+    <!-- Sharp Beveled 'V' - Left Blade (Light) -->
+    <path fill="url(#gold-light-c)" d="M102 82 L128 174 L138 174 L118 82 Z"/>
+    
+    <!-- Sharp Beveled 'V' - Right Blade (Shadow) -->
+    <path fill="url(#gold-shadow-c)" d="M154 82 L128 174 L138 174 L164 82 Z"/>
+
+    <!-- Royal Lotus Coronet at Top Apex -->
+    <g id="crown-c">
+      <polygon points="128,42 135,62 128,70 121,62" fill="url(#gold-light-c)"/>
+      <polygon points="128,70 148,60 145,72 132,74" fill="url(#gold-shadow-c)"/>
+      <polygon points="128,70 108,60 111,72 124,74" fill="url(#gold-light-c)"/>
+    </g>
+
+    <!-- Center Minted Shagun Coin -->
+    <circle cx="128" cy="132" r="12" fill="#9B1B30" stroke="url(#gold-light-c)" stroke-width="2"/>
+    <circle cx="128" cy="132" r="6" fill="url(#gold-light-c)"/>
+  </g>
+</svg>
+  </g>
+
+  <!-- Divider Line -->
+  <line x1="250" y1="48" x2="250" y2="208" stroke="#D4AF37" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Right Typography: GIFTVAULT + Telugu Tagline -->
+  <g transform="translate(290, 0)">
+    <!-- English Luxury Brand Name (Cinzel Style Pathing) -->
+    <text x="0" y="128" fill="url(#gold-text-grad)" font-family="'Cinzel Decorative', 'Cinzel', serif" font-size="64" font-weight="800" letter-spacing="8">GIFTVAULT</text>
+    
+    <!-- Telugu Tagline: చదివింపుల డిజిటల్ ఖజానా -->
+    <text x="4" y="176" fill="#F4EFEA" font-family="'Anek Telugu', 'Ramabhadra', sans-serif" font-size="24" font-weight="600" letter-spacing="1">రాయల్ చదివింపుల డిజిటల్ ఖజానా</text>
+    
+    <!-- Auspicious Seal Dots -->
+    <circle cx="368" cy="170" r="3" fill="#9B1B30"/>
+    <text x="382" y="175" fill="#D4AF37" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" letter-spacing="2">SHAGUN LEDGER</text>
+  </g>
+</svg>

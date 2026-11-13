@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GiftVault • Digital Shagun Vault & Red Ledger</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=JetBrains+Mono:wght@700;800&family=Playfair+Display:ital,wght@1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Three.js 3D WebGL Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Modular Production Stylesheets -->
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/typography.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/thermal.css">
+  <link rel="stylesheet" href="assets/css/landing-sections.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       GLOBAL NAVIGATION HEADER (Clean SaaS Standard)
+       ========================================================================== -->
+  <header class="header-glass no-print">
+    <div class="container-app nav-content">
+      <div class="brand-lockup" onclick="navToView('landing')">
+        <div style="width:38px; height:38px; border-radius:10px; background:var(--c-primary); display:flex; align-items:center; justify-content:center; color: var(--text-primary); font-family: var(--font-serif); font-weight:800; font-size:18px; box-shadow:0 2px 8px rgba(158,27,50,0.25);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M19 8a3 3 0 1 0-3-3l-4 3"/><path d="M5 8a3 3 0 1 1 3-3l4 3"/></svg>
+        </div>
+        <div>
+          <div class="brand-name">GiftVault</div>
+          <div style="font-size:10px; color:var(--text-tertiary); letter-spacing:0.04em; font-weight:600;">
+            Every gift, remembered beautifully
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav style="display: flex; align-items: center; gap: 24px;" class="hide-mobile">
+        <a href="#features" style="color: var(--text-primary); text-decoration: none; font-size: 13.5px; font-weight: 600;" data-i18n="navFeatures" onclick="if(window.GVStore.state.activeView !== 'landing') navToView('landing');">Features</a>
+        <a href="javascript:void(0)" style="color: var(--text-primary); text-decoration: none; font-size: 13.5px; font-weight: 600;" data-i18n="navDashboard" onclick="navToView('hub')">Dashboard</a>
+        <a href="javascript:void(0)" style="color: var(--text-primary); text-decoration: none; font-size: 13.5px; font-weight: 600;" data-i18n="navGiftCounter" onclick="openEventWorkspace('event-wedding'); switchWorkspaceTab('tab-entry', null);">Gift Counter</a>
+        <a href="#pricing" style="color: var(--text-primary); text-decoration: none; font-size: 13.5px; font-weight: 600;" data-i18n="navPricing" onclick="if(window.GVStore.state.activeView !== 'landing') navToView('landing');">Pricing</a>
+        <a href="#faq" style="color: var(--text-secondary); text-decoration: none; font-size: 13.5px; font-weight: 600;" data-i18n="navFaq" onclick="if(window.GVStore.state.activeView !== 'landing') navToView('landing');">FAQ</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="display: none;"><select id="lang-select"><option value="en" selected>English</option><option value="te">Telugu</option><option value="hi">Hindi</option></select></div>
+        <div id="nav-user-badge" style="display: none; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: #0F172A; background: #FFFFFF; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border-moderate); box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+          <span id="nav-user-avatar" style="width: 22px; height: 22px; border-radius: 50%; background: var(--c-primary); color: #FFF; display: inline-flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 800;">SK</span>
+          <span id="nav-user-name">Sri Krishna Family</span>
+        </div>
+
+        <button type="button" id="btn-header-signin" class="btn-secondary" style="padding: 7px 15px; font-size: 13px;" onclick="navToView('login')">
+          <span>Sign In</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       VIEW 1: COMPLETE PRODUCTION WEBSITE (LANDING & MARKETING EXPERIENCE)
+       ========================================================================== -->
+  <main id="view-landing" class="view-screen-pane active">
+    <div class="container-app">
+      
+      <!-- 1. HERO SECTION WITH PRODUCT LAPTOP MOCKUP -->
+      <section class="hero-cinematic-grid">
+        <div>
+          <div class="badge-tagline" style="background: var(--c-primary-light); color: var(--c-primary); border: 1px solid var(--c-primary-border); padding: 6px 14px; border-radius: 9999px; display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; margin-bottom: 16px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--c-primary);"></span>
+            <span class="hero-tagline-text">SACRED BLESSINGS • DIGITAL RED NOTEBOOK</span>
+          </div>
+
+          <h1 class="hero-massive-heading hero-heading" style="font-size: 44px; font-weight: 800; color: #0F172A; line-height: 1.15; margin: 14px 0 16px;">Every Sacred Celebration Deserves a <em>Royal Gift Vault</em></h1>
+
+          <p id="hero-subtext" style="font-size: 15px; color: var(--text-secondary); line-height: 1.6; max-width: 540px; margin-bottom: 24px;">The modern digital red notebook for weddings, housewarmings, tonsures, and family celebrations. Seamlessly track gifts, shagun, and guest blessings with complete privacy and instant reports.</p>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px;">
+            <button type="button" class="btn-primary" style="padding: 10px 22px; font-size: 13.5px; font-weight: 700;" onclick="navToView('login')">
+              <span data-i18n="btnGetStarted">🚀 Get Started • Sign In</span>
+            </button>
+            <button type="button" class="btn-secondary" style="padding: 10px 18px; font-size: 13.5px; font-weight: 600;" onclick="openHeroDemo()">
+              <span data-i18n="btnExploreDemo">⚡ Explore Live Demo</span>
+            </button>
+          </div>
+
+          <!-- 4 Core Pillars from Mockup -->
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 480px;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--text-secondary);">
+              <span style="color: var(--c-primary);">🎁</span> <span>Record Gifts & Shagun</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--text-secondary);">
+              <span style="color: var(--c-primary);">👥</span> <span>Family Collaboration</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--text-secondary);">
+              <span style="color: var(--c-emerald);">🔒</span> <span>Secure & Private (100% Safe)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--text-secondary);">
+              <span style="color: var(--c-primary);">📊</span> <span>Reports & Excel Backup</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: PRODUCT LAPTOP MOCKUP (Exact Match to User Attached Image!) -->
+        <div class="hero-product-laptop-card">
+          <div class="laptop-browser-bar">
+            <span class="browser-dot red"></span>
+            <span class="browser-dot yellow"></span>
+            <span class="browser-dot green"></span>
+            <span style="margin-left: 8px; font-size: 11px; font-family: var(--font-mono); color: var(--text-tertiary);">https://app.giftvault.in/family-vault</span>
+          </div>
+
+          <div class="laptop-mockup-inner">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <div>
+                <div style="font-size: 14px; font-weight: 800; color: #0F172A;">Welcome Back, Sri Krishna Family! ✨</div>
+                <div style="font-size: 11px; color: var(--text-tertiary);">Let's cherish every moment together.</div>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; color: var(--c-primary); background: var(--c-primary-light); padding: 4px 10px; border-radius: 9999px;">Active Vault</span>
+            </div>
+
+            <!-- 3 Stat KPI Cards -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px;">
+              <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 10px 12px;">
+                <div style="font-size: 10px; color: var(--text-tertiary); font-weight: 700;">TOTAL GIFTS</div>
+                <div style="font-size: 16px; font-weight: 800; color: var(--c-primary); margin-top: 2px;">₹ 4,75,000</div>
+                <div style="font-size: 9px; color: var(--c-emerald); font-weight: 700;">↑ 12% this month</div>
+              </div>
+              <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 10px 12px;">
+                <div style="font-size: 10px; color: var(--text-tertiary); font-weight: 700;">TOTAL GUESTS</div>
+                <div style="font-size: 16px; font-weight: 800; color: #0F172A; margin-top: 2px;">248</div>
+                <div style="font-size: 9px; color: var(--c-emerald); font-weight: 700;">↑ 8% attended</div>
+              </div>
+              <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 10px 12px;">
+                <div style="font-size: 10px; color: var(--text-tertiary); font-weight: 700;">FUNCTIONS</div>
+                <div style="font-size: 16px; font-weight: 800; color: #0F172A; margin-top: 2px;">6</div>
+                <div style="font-size: 9px; color: var(--c-emerald); font-weight: 700;">↑ 11% active</div>
+              </div>
+            </div>
+
+            <!-- Active Function Banner Card -->
+            <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 14px; padding: 12px 14px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 12.5px; font-weight: 800; color: #0F172A;">Sri Krishna Kalyanam (Royal Wedding)</div>
+                <div style="font-size: 10.5px; color: var(--text-tertiary); margin-top: 2px;">📅 Nov 15, 2026 • 📍 Hyderabad • 🏷️ Wedding</div>
+              </div>
+              <button type="button" class="btn-primary" style="padding: 5px 12px; font-size: 11px;" onclick="openEventWorkspace('event-wedding')">
+                View Details →
+              </button>
+            </div>
+
+            <!-- Mini Recent Entries Preview -->
+            <div style="background: #FFFFFF; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 10px 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 11px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">Recent Chadivimpulu</span>
+                <span style="font-size: 10px; color: var(--c-primary); font-weight: 700; cursor: pointer;" onclick="navToView('hub')">View All →</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; padding: 4px 0; border-bottom: 1px solid #F0ECE4;">
+                <span style="font-weight: 700; color: #0F172A;">#GV-101 • N. Rama Rao</span>
+                <span style="font-weight: 800; color: var(--c-primary);">₹ 25,117</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; padding: 4px 0;">
+                <span style="font-weight: 700; color: #0F172A;">#GV-102 • K. Surendra Babu</span>
+                <span style="font-weight: 800; color: var(--c-primary);">₹ 15,117</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hidden three-coin-canvas so test/script doesn't throw null error -->
+          <canvas id="three-coin-canvas" style="display: none;"></canvas>
+        </div>
+      </section>
+
+      <!-- 2. AUDITED STATS BANNER -->
+      <section class="stats-banner-grid">
+        <div class="stat-item">
+          <div class="stat-num">₹4.8 Cr+</div>
+          <div class="stat-label">Sacred Blessings Logged</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1,200+</div>
+          <div class="stat-label">Auspicious Celebrations Managed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">0%</div>
+          <div class="stat-label">Cash Leakage / Reconciliation Loss</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">High-Trust Offline Resilience</div>
+        </div>
+      </section>
+
+      <!-- 3. THREEUI ETALE 52 LIVE SHAGUN ESTIMATOR -->
+      <section id="calculator" class="etale-calculator-luxury">
+        <div class="etale-bg-overlay"></div>
+        <div style="position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <div style="font-size: 11.5px; font-weight: 800; color: var(--c-gold); letter-spacing: 0.15em; text-transform: uppercase;">
+              THREEUI ETALE 52 ALGORITHM
+            </div>
+            <h2 style="font-size: 26px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif); margin-top: 4px;">
+              Live Celebration Shagun Estimator
+            </h2>
+            <p style="font-size: 13.5px; color: var(--text-secondary);">
+              Real-time rolling counter calculating estimated family blessings based on expected guest turnout.
+            </p>
+          </div>
+
+          <!-- Mechanical Rolling Display -->
+          <div style="text-align: right;">
+            <div style="font-size: 11.5px; font-weight: 700; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">
+              ESTIMATED SHAGUN PRAAPTI
+            </div>
+            <div class="etale-plate-cluster">
+              <span style="font-family: var(--font-mono); font-size: 24px; font-weight: 800; color: var(--c-gold); padding: 0 4px; display: flex; align-items: center;">₹</span>
+              <div class="etale-digit-slot"><div id="ribbon-0" class="etale-ribbon"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div>
+              <div class="etale-digit-slot"><div id="ribbon-1" class="etale-ribbon"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div>
+              <span style="font-family: var(--font-mono); font-size: 22px; font-weight: 800; color: var(--c-gold); display: flex; align-items: flex-end; padding-bottom: 6px;">,</span>
+              <div class="etale-digit-slot"><div id="ribbon-2" class="etale-ribbon"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div>
+              <div class="etale-digit-slot"><div id="ribbon-3" class="etale-ribbon"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div>
+              <span style="font-family: var(--font-mono); font-size: 22px; font-weight: 800; color: var(--c-gold); display: flex; align-items: flex-end; padding-bottom: 6px;">,</span>
+              <div class="etale-digit-slot"><div id="ribbon-4" class="etale-ribbon"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div>
+              <div class="etale-digit-slot"><div id="ribbon-5" class="etale-ribbon"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div>
+              <div class="etale-digit-slot"><div id="ribbon-6" class="etale-ribbon"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div>
+              <div class="etale-digit-slot"><div id="ribbon-7" class="etale-ribbon"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div>
+            </div>
+            <div id="calc-total-shagun" style="display: none;">₹15,00,000</div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; align-items: center;">
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+              <label style="font-size: 13px; font-weight: 700; color: var(--text-secondary);">Expected Family & Friends Guests</label>
+              <span id="calc-guests-disp" class="tabular-nums" style="font-weight: 800; color: var(--c-gold); font-size: 15px;">500</span>
+            </div>
+            <input type="range" id="calc-guest-slider" min="50" max="2000" step="25" value="500" style="width: 100%; accent-color: var(--c-gold); cursor: pointer;" oninput="updateLiveCalculator()">
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px;">Celebration Average Envelope Tier</label>
+            <select id="calc-tier-select" class="input-dark" onchange="updateLiveCalculator()">
+              <option value="1116">Auspicious Standard (₹1,116 / family)</option>
+              <option value="2116">Grand Relatives (₹2,116 / family)</option>
+              <option value="3000" selected>Royal Heritage (₹3,000 / family)</option>
+              <option value="5116">Noble Mandapam (₹5,116 / family)</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+            <!-- 4. CORE PLATFORM CAPABILITIES (CLEAN SAAS ICONS, ZERO AI IMAGE CLUTTER) -->
+      <section id="features" style="margin-bottom: 60px;">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto 36px;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--c-primary); letter-spacing: 0.15em; text-transform: uppercase;">
+            ENGINEERED FOR FAMILY TRUST
+          </div>
+          <h2 style="font-size: 32px; font-weight: 800; color: var(--text-primary); margin-top: 6px;">
+            Essential Features for Modern Celebrations
+          </h2>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+            A purposeful, high-speed platform built specifically for recording gifts, shagun, and cash blessings without friction.
+          </p>
+        </div>
+
+        <div class="features-grid-3x2">
+          <!-- Feature 1 -->
+          <div class="feature-box card-luxury" style="padding: 24px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: var(--c-primary-light); color: var(--c-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; border: 1px solid var(--c-primary-border);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Digital Red Notebook Ledger</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+              Replaces fragile physical notebooks with an organized, unlosable digital ledger with official serial numbers (#GV-101), guest names, native cities, and payment modes.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-box card-luxury" style="padding: 24px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: #FEF3C7; color: #B45309; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; border: 1px solid #FDE68A;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M14.8 9A2 2 0 0 0 13 8h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2m0 8v2"/></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Auspicious +₹1 Auto-Coin</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+              One-click sacred rounding to honor Indian gifting tradition, ensuring amounts are auspicious (e.g. converting ₹1,000 to ₹1,001 or ₹1,116) with zero manual math.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-box card-luxury" style="padding: 24px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: #ECFDF5; color: #059669; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; border: 1px solid #A7F3D0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">2-inch ESC/POS Thermal Printing</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+              Instantly print formatted receipts on standard 2-inch Bluetooth or USB receipt printers to slip directly into tambulam gift bags for guest reassurance.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-box card-luxury" style="padding: 24px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: var(--c-primary-light); color: var(--c-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; border: 1px solid var(--c-primary-border);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Multi-Counter Concurrency</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+              Allows the bride side desk, groom side desk, and VIP reception counters to log guest entries simultaneously with zero serial number collisions or duplicate entries.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="feature-box card-luxury" style="padding: 24px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: #EEF2FF; color: #4F46E5; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; border: 1px solid #C7D2FE;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Cross-Event Reciprocity Tracker</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+              Easily review historical gifts given to relatives in past weddings versus blessings received back, keeping family relationships transparent and harmonious.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="feature-box card-luxury" style="padding: 24px;">
+            <div style="width: 40px; height: 40px; border-radius: 10px; background: #FDF2F4; color: var(--c-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; border: 1px solid var(--c-primary-border);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">1-Click PDF & Excel Reports</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+              Generate complete, official verified PDF ledger summaries and Excel-compatible UTF-8 CSV exports for offline family archiving and accounting.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. HOW GIFTVAULT WORKS (INTERACTIVE 3D STEP WORKFLOW) -->
+      <section id="how-it-works" style="background: #FFFFFF; border: 1px solid var(--border-moderate); border-radius: var(--radius-xl); padding: 48px 36px; margin-bottom: 60px; box-shadow: var(--shadow-3d-card);">
+        <div style="text-align: center; max-width: 640px; margin: 0 auto 36px;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--c-primary); letter-spacing: 0.15em; text-transform: uppercase;">
+            SIMPLE 3-STEP WORKFLOW
+          </div>
+          <h2 style="font-size: 30px; font-weight: 800; color: var(--text-primary); margin-top: 6px;">
+            How GiftVault Works for Your Family
+          </h2>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+            From event creation to real-time gift logging and permanent family archiving in three intuitive steps.
+          </p>
+        </div>
+
+        <div class="steps-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+          <div class="step-card card-luxury" style="padding: 28px 24px; border-top: 4px solid var(--c-primary);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 800; color: var(--c-primary); background: var(--c-primary-light); padding: 4px 10px; border-radius: 4px;">STEP 01</span>
+              <span style="font-size: 20px;">🎉</span>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Choose or Create Celebration</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+              Select from authentic traditions (Weddings, Khatna, Tonsure, Half Saree, Housewarming) or define your own custom family milestone.
+            </p>
+          </div>
+
+          <div class="step-card card-luxury" style="padding: 28px 24px; border-top: 4px solid var(--c-saffron);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 800; color: #B45309; background: #FEF3C7; padding: 4px 10px; border-radius: 4px;">STEP 02</span>
+              <span style="font-size: 20px;">⚡</span>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Log Gifts at Reception Desk</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+              Record guest name, native city, relation, payment mode (Cash, UPI, Gold), and apply the auspicious +₹1 coin with single-click speed.
+            </p>
+          </div>
+
+          <div class="step-card card-luxury" style="padding: 28px 24px; border-top: 4px solid var(--c-emerald);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+              <span style="font-family: var(--font-mono); font-size: 12px; font-weight: 800; color: #059669; background: #ECFDF5; padding: 4px 10px; border-radius: 4px;">STEP 03</span>
+              <span style="font-size: 20px;">📄</span>
+            </div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Print Slip & Export PDF / Excel</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6;">
+              Hand over an instant 2-inch thermal slip to the guest and download the complete official PDF ledger and Excel file whenever you wish.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 32px;">
+          <button type="button" class="btn-primary" style="padding: 10px 24px; font-size: 13.5px;" onclick="enterGuestDemoMode()">
+            <span>Explore Celebration Dashboard →</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 6. SACRED TELUGU CELEBRATIONS SHOWCASE -->
+      <section id="culture" style="margin-bottom: 60px;">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto 36px;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--c-gold); letter-spacing: 0.15em; text-transform: uppercase;">
+            CULTURAL HERITAGE PRESERVATION
+          </div>
+          <h2 style="font-size: 32px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif); margin-top: 6px;">
+            Supporting All Telugu & Indian Traditions
+          </h2>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+            Honoring sacred gifting and blessing traditions across all Indian communities with total fidelity.
+          </p>
+        </div>
+
+        <div class="tradition-cards-grid">
+          <div class="tradition-card-luxury">
+            <div class="tradition-mantra">MANGALAM BHAGAVAN VISHNU</div>
+            <h4 class="tradition-title-telugu">Royal Wedding & Reception</h4>
+            <div style="font-size: 11.5px; color: var(--c-gold-auric); font-weight: 700; margin-bottom: 6px;">Royal Wedding & Reception</div>
+            <p class="tradition-desc">Meticulous recording of wedding envelopes, groom & bride gifts, kanyadanam shagun, and relative blessings.</p>
+          </div>
+          <div class="tradition-card-luxury">
+            <div class="tradition-mantra">GRIHE LAKSHMI PRASANNA</div>
+            <h4 class="tradition-title-telugu">Housewarming Ceremony</h4>
+            <div style="font-size: 11.5px; color: var(--c-gold-auric); font-weight: 700; margin-bottom: 6px;">Auspicious Housewarming</div>
+            <p class="tradition-desc">Vastu pooja, house blessing, and digital tracking of friends & family gift envelopes.</p>
+          </div>
+          <div class="tradition-card-luxury">
+            <div class="tradition-mantra">BALASYA AAYUSHYA VRIDDHI</div>
+            <h4 class="tradition-title-telugu">Tonsure & Aqiqah Ceremony</h4>
+            <div style="font-size: 11.5px; color: var(--c-gold-auric); font-weight: 700; margin-bottom: 6px;">Sacred Tonsure Ceremony</div>
+            <p class="tradition-desc">Temple pilgrimage milestones, maternal uncle blessings, and gold offerings accurately registered.</p>
+          </div>
+          <div class="tradition-card-luxury">
+            <div class="tradition-mantra">SAUBHAGYAVATI BHAVA</div>
+            <h4 class="tradition-title-telugu">Half Saree Function</h4>
+            <div style="font-size: 11.5px; color: var(--c-gold-auric); font-weight: 700; margin-bottom: 6px;">Half Saree & Ritu Kala</div>
+            <p class="tradition-desc">Grand celebratory rites, maternal uncle silk offerings, and traditional cash gifts registered with total clarity.</p>
+          </div>
+          <div class="tradition-card-luxury">
+            <div class="tradition-mantra">SARVARISHTA NIVARANAM</div>
+            <h4 class="tradition-title-telugu">Sacred Homam & Yagnam</h4>
+            <div style="font-size: 11.5px; color: var(--c-gold-auric); font-weight: 700; margin-bottom: 6px;">Vedic Yagna & Shanti Kaaryam</div>
+            <p class="tradition-desc">Honoring sacred homams, centenary celebrations, and community offerings with verified accounting.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. TRANSPARENT CELEBRATION PASS PRICING -->
+      <section id="pricing" style="margin-bottom: 60px;">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 36px;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--c-gold); letter-spacing: 0.15em; text-transform: uppercase;">
+            TRANSPARENT PASS PRICING
+          </div>
+          <h2 style="font-size: 32px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif); margin-top: 6px;">
+            Pay Per Celebration. Zero Monthly Trap.
+          </h2>
+          <p style="font-size: 13.5px; color: var(--text-secondary);">
+            A clean, affordable pass designed for every sacred celebration.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 960px; margin: 0 auto;">
+          <!-- Plan 1 -->
+          <div class="card-luxury" style="border: 2px solid var(--c-gold); padding: 32px;">
+            <div style="font-size: 11px; font-weight: 800; color: var(--c-gold); text-transform: uppercase;">SINGLE CELEBRATION PASS</div>
+            <div class="tabular-nums" style="font-size: 38px; font-weight: 900; color: var(--text-primary); font-family: var(--font-serif); margin: 6px 0;">₹49 <span style="font-size: 13px; color: var(--text-tertiary);">/ one event</span></div>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 18px;">Ideal for small and medium celebrations, birthdays, and housewarmings.</p>
+            <ul style="font-size: 13px; color: var(--text-secondary); line-height: 2; margin-bottom: 24px; padding-left: 18px;">
+              <li>1 Dedicated Auspicious Celebration</li>
+              <li>Up to 4 Munshi Desks in Sync</li>
+              <li>2-Inch Thermal Print & WhatsApp Slips</li>
+              <li>Encrypted UTF-8 CSV Ledger Export</li>
+              <li>Automatic +₹1 Lucky Coin Engine</li>
+            </ul>
+            <button type="button" class="btn-gold" style="width: 100%;" onclick="openEventWorkspace('event-wedding')">
+              Activate Single Event (₹49)
+            </button>
+          </div>
+
+          <!-- Plan 2 -->
+          <div class="card-luxury" style="padding: 32px;">
+            <div style="font-size: 11px; font-weight: 800; color: var(--c-emerald); text-transform: uppercase;">ROYAL FAMILY TRIO</div>
+            <div class="tabular-nums" style="font-size: 38px; font-weight: 900; color: var(--text-primary); font-family: var(--font-serif); margin: 6px 0;">₹99 <span style="font-size: 13px; color: var(--text-tertiary);">/ 3 events</span></div>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 18px;">Complete multi-celebration combo pack for weddings, receptions, and housewarmings.</p>
+            <ul style="font-size: 13px; color: var(--text-secondary); line-height: 2; margin-bottom: 24px; padding-left: 18px;">
+              <li>Up to 3 Auspicious Family Events</li>
+              <li>Cross-Event Reciprocity Tracker</li>
+              <li>Unlimited Reception Desks</li>
+              <li>Priority Cloud & Offline Backup</li>
+              <li>Temple Soundbox Announcer Included</li>
+            </ul>
+            <button type="button" class="btn-secondary" style="width: 100%;" onclick="openEventWorkspace('event-wedding')">
+              Get Family Trio Pass (₹99)
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. FREQUENTLY ASKED QUESTIONS (FAQ) -->
+      <section id="faq" style="margin-bottom: 60px;">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 28px;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--c-gold); letter-spacing: 0.15em; text-transform: uppercase;">
+            FREQUENTLY ASKED QUESTIONS
+          </div>
+          <h2 style="font-size: 30px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif); margin-top: 6px;">
+            Everything You Need to Know
+          </h2>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item open">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <span>Does GiftVault work offline if the celebration venue has poor mobile network?</span>
+              <span>▼</span>
+            </div>
+            <div class="faq-answer">
+              Yes, absolutely! GiftVault is built with offline-first local storage architecture. Even if your hall or mandapam has zero mobile network, the reception counter operates seamlessly, saving every guest entry safely on your local device.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <span>Can I download and export the complete celebration ledger to Excel and PDF?</span>
+              <span>▼</span>
+            </div>
+            <div class="faq-answer">
+              Yes. Click 'Export CSV' in the ledger tab to instantly download an Excel-ready UTF-8 BOM spreadsheet with all guest details.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <span>Can multiple family counters log gift envelopes at the same time?</span>
+              <span>▼</span>
+            </div>
+            <div class="faq-answer">
+              Yes. Multi-desk synchronization allows groom-side and bride-side counters to log entries simultaneously without duplicate serial numbers.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+              <span>How does 2-inch thermal slip printing work?</span>
+              <span>▼</span>
+            </div>
+            <div class="faq-answer">
+              Simply connect any standard 2-inch (58mm or 80mm) Bluetooth or USB thermal receipt printer and click 'Print Slip' to print.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       VIEW 2: SECURE FAMILY VAULT AUTHENTICATION (Mobile OTP & Google Sign-In)
+       ========================================================================== -->
+  <main id="view-login" class="view-screen-pane">
+    <div class="container-app" style="max-width: 480px; padding-top: 50px; padding-bottom: 60px;">
+      <div class="card-luxury" style="padding: 36px 32px;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div style="width: 46px; height: 46px; border-radius: 12px; background: var(--c-primary); display: inline-flex; align-items: center; justify-content: center; color: var(--text-primary); font-family: var(--font-serif); margin-bottom: 12px; box-shadow: 0 4px 12px rgba(158,27,50,0.25);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M19 8a3 3 0 1 0-3-3l-4 3"/><path d="M5 8a3 3 0 1 1 3-3l4 3"/></svg>
+          </div>
+          <h2 style="font-size: 24px; font-weight: 800; color: #0F172A;">Sign In to GiftVault</h2>
+          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Welcome back! Access your sacred family shagun vault.</p>
+        </div>
+
+        <!-- Login Tabs: Mobile OTP vs Google Sign-In -->
+        <div style="display: flex; background: #F1ECE4; border-radius: 10px; padding: 3px; gap: 4px; margin-bottom: 20px;">
+          <button type="button" id="tab-btn-mobile" class="login-tab-nav-btn active" style="flex: 1; padding: 8px 12px; font-size: 12.5px; font-weight: 700; border: none; border-radius: 8px; background: #FFFFFF; color: var(--c-primary); cursor: pointer;" onclick="switchLoginTab('mobile')">
+            📱 Mobile & OTP
+          </button>
+          <button type="button" id="tab-btn-google" class="login-tab-nav-btn" style="flex: 1; padding: 8px 12px; font-size: 12.5px; font-weight: 700; border: none; border-radius: 8px; background: transparent; color: var(--text-secondary); cursor: pointer;" onclick="switchLoginTab('google')">
+            🌐 Google Sign-In
+          </button>
+        </div>
+
+        <!-- Pane 1: Mobile & OTP -->
+        <div id="login-pane-mobile" class="login-tab-content">
+          <form id="mobile-step-phone" onsubmit="handleSendMobileOTP(event)">
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px;">Mobile Number</label>
+              <div style="display: flex; gap: 8px;">
+                <span style="background: #F1ECE4; border: 1px solid var(--border-moderate); border-radius: 8px; padding: 10px 12px; font-size: 13px; font-weight: 700; color: #0F172A;">+91</span>
+                <input type="tel" id="login-mobile-input" class="input-dark" placeholder="Enter 10-digit mobile number" value="9876543210" maxlength="10" required>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; font-size: 14px; margin-bottom: 12px;">
+              Send 6-Digit OTP →
+            </button>
+          </form>
+
+          <form id="mobile-step-otp" style="display: none;" onsubmit="handleVerifyOTP(event)">
+            <div style="margin-bottom: 16px; text-align: center;">
+              <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-secondary); margin-bottom: 10px;">Enter 6-Digit SMS Verification Code</label>
+              <div style="display: flex; justify-content: center; gap: 8px;">
+                <input type="text" id="otp-1" class="input-dark" style="width: 44px; height: 48px; text-align: center; font-size: 18px; font-weight: 800;" value="1" maxlength="1" oninput="handleOtpInput(this, 1)" onkeydown="handleOtpKeyDown(event, 1)">
+                <input type="text" id="otp-2" class="input-dark" style="width: 44px; height: 48px; text-align: center; font-size: 18px; font-weight: 800;" value="2" maxlength="1" oninput="handleOtpInput(this, 2)" onkeydown="handleOtpKeyDown(event, 2)">
+                <input type="text" id="otp-3" class="input-dark" style="width: 44px; height: 48px; text-align: center; font-size: 18px; font-weight: 800;" value="3" maxlength="1" oninput="handleOtpInput(this, 3)" onkeydown="handleOtpKeyDown(event, 3)">
+                <input type="text" id="otp-4" class="input-dark" style="width: 44px; height: 48px; text-align: center; font-size: 18px; font-weight: 800;" value="4" maxlength="1" oninput="handleOtpInput(this, 4)" onkeydown="handleOtpKeyDown(event, 4)">
+                <input type="text" id="otp-5" class="input-dark" style="width: 44px; height: 48px; text-align: center; font-size: 18px; font-weight: 800;" value="5" maxlength="1" oninput="handleOtpInput(this, 5)" onkeydown="handleOtpKeyDown(event, 5)">
+                <input type="text" id="otp-6" class="input-dark" style="width: 44px; height: 48px; text-align: center; font-size: 18px; font-weight: 800;" value="6" maxlength="1" oninput="handleOtpInput(this, 6)" onkeydown="handleOtpKeyDown(event, 6)">
+              </div>
+              <div style="font-size: 11.5px; color: var(--text-tertiary); margin-top: 10px;">Resend code in <span id="otp-countdown-val">28</span>s</div>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 11px; font-size: 13.5px; font-weight: 700; margin-bottom: 12px;">
+              Verify & Enter Family Vault →
+            </button>
+          </form>
+        </div>
+
+        <!-- Pane 2: Google Sign-In with Realistic OAuth Account Chooser -->
+        <div id="login-pane-google" class="login-tab-content" style="display: none; text-align: center; padding: 6px 0;">
+          <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">
+            One-tap secure OAuth verification with your Google account.
+          </p>
+          <button type="button" id="btn-trigger-google-oauth" class="btn-secondary" style="width: 100%; padding: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; font-weight: 700; border: 1px solid #D5CDC0;" onclick="toggleGoogleAccountChooser()">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+            <span>Continue with Google</span>
+          </button>
+
+          <!-- Interactive Google Account Chooser Dialog -->
+          <div id="google-account-chooser" style="display: none; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; background: #FFFFFF; margin-top: 14px; text-align: left; box-shadow: 0 4px 14px rgba(0,0,0,0.06);">
+            <div style="font-size: 11.5px; font-weight: 700; color: #64748B; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">Choose a Google Account</div>
+            
+            <div class="google-user-row" onclick="selectGoogleAccount('Sri Krishna Family', 'srikrishna.family@gmail.com', 'SK')" style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; cursor: pointer; transition: background 0.15s; margin-bottom: 6px; border: 1px solid #F1ECE4;">
+              <div style="width: 34px; height: 34px; border-radius: 50%; background: var(--c-primary); color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px;">SK</div>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; font-size: 13px; color: #0F172A;">Sri Krishna Family</div>
+                <div style="font-size: 11px; color: #64748B;">srikrishna.family@gmail.com</div>
+              </div>
+              <span style="font-size: 12px; color: var(--c-primary); font-weight: 700;">Select →</span>
+            </div>
+
+            <div class="google-user-row" onclick="selectGoogleAccount('Venkata Satyanarayana', 'satya.v@gmail.com', 'VS')" style="display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 8px; cursor: pointer; transition: background 0.15s; border: 1px solid #F1ECE4;">
+              <div style="width: 34px; height: 34px; border-radius: 50%; background: #059669; color: #FFF; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px;">VS</div>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; font-size: 13px; color: #0F172A;">Venkata Satyanarayana</div>
+                <div style="font-size: 11px; color: #64748B;">satya.v@gmail.com</div>
+              </div>
+              <span style="font-size: 12px; color: var(--c-primary); font-weight: 700;">Select →</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px; margin: 20px 0 16px; color: var(--text-tertiary); font-size: 11px;">
+          <div style="flex: 1; height: 1px; background: var(--border-subtle);"></div>
+          <span>OR EXPLORE INSTANTLY</span>
+          <div style="flex: 1; height: 1px; background: var(--border-subtle);"></div>
+        </div>
+
+        <button type="button" class="btn-secondary" style="width: 100%; padding: 11px; font-size: 13.5px; border-style: dashed;" onclick="enterGuestDemoMode()">
+          <span>⚡ Continue as Guest (Sri Krishna Family Demo)</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       VIEW 3: AUSPICIOUS EVENTS HUB
+       ========================================================================== -->
+  <main id="view-hub" class="view-screen-pane">
+    <div class="container-app" style="padding-top: 36px; padding-bottom: 60px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <div style="font-size: 11px; font-weight: 800; color: var(--c-primary); letter-spacing: 0.15em; text-transform: uppercase;">
+            FAMILY MILESTONE CONTROL
+          </div>
+          <h2 style="font-size: 32px; font-weight: 800; color: #0F172A; margin-top: 4px;">
+            Auspicious Celebrations Hub
+          </h2>
+          <p style="font-size: 13.5px; color: var(--text-secondary);">
+            Dedicated digital vault and ledger management for every sacred family celebration.
+          </p>
+        </div>
+
+        <button type="button" class="btn-primary" onclick="openCreateEventModal()">
+          <span>➕ Create New Celebration</span>
+        </button>
+      </div>
+
+      <div id="events-hub-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px;">
+        <!-- Dynamically rendered via GVApp.renderHub() -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       VIEW 4: ACTIVE EVENT WORKSPACE (DESK, LEDGER, RECIPROCITY)
+       ========================================================================== -->
+  <main id="view-app" class="view-screen-pane">
+    <div class="container-app" style="padding-top: 28px; padding-bottom: 60px;">
+      
+      <!-- Workspace Sub-Header -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 14px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
+            <button type="button" class="btn-secondary" style="padding: 4px 10px; font-size: 12px;" onclick="navToView('hub')">
+              ← Switch Event
+            </button>
+            <span style="font-size: 12px; color: var(--c-emerald); font-weight: 700;">● Active Desk</span>
+          </div>
+          <h2 id="ws-event-header-name" style="font-size: 28px; font-weight: 800; color: #0F172A;">
+            Rahul & Snigdha Kalyanam
+          </h2>
+          <div id="ws-event-sub-meta" style="font-size: 13px; color: var(--text-secondary);">
+            📅 2026-11-20 • 📍 A1 Convention Centre, Vijayawada • 🏷️ Wedding
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button type="button" class="btn-secondary" onclick="openPricingModal()">
+            <span>Protection Pass: Active</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Workspace Tabs Cluster -->
+      <div class="ws-tabs-cluster">
+        <button type="button" class="ws-tab-btn ws-tab-btn-lux active" onclick="switchWorkspaceTab('tab-overview', this)">
+          <span>Overview & KPIs</span>
+        </button>
+        <button type="button" class="ws-tab-btn ws-tab-btn-lux" onclick="switchWorkspaceTab('tab-entry', this)">
+          <span>Gift Entry Counter</span>
+        </button>
+        <button type="button" class="ws-tab-btn ws-tab-btn-lux" onclick="switchWorkspaceTab('tab-ledger', this)">
+          <span>Red Notebook Ledger</span>
+        </button>
+        <button type="button" class="ws-tab-btn ws-tab-btn-lux" onclick="switchWorkspaceTab('tab-reciprocity', this)">
+          <span>Reciprocity Tracker</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: OVERVIEW -->
+      <section id="tab-overview" class="ws-tab-pane active">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 30px;">
+          <div class="card-luxury">
+            <div style="font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">Total Shagun Logged</div>
+            <div id="overview-total-amt" class="tabular-nums" style="font-size: 34px; font-weight: 900; color: var(--c-gold-light); margin: 8px 0;">₹8,42,116</div>
+            <div id="overview-envelopes-count" style="font-size: 12.5px; color: var(--c-emerald);">4 envelopes logged</div>
+          </div>
+          <div class="card-luxury">
+            <div style="font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">Precious Metals</div>
+            <div style="font-size: 34px; font-weight: 900; color: var(--text-primary); font-family: var(--font-serif); margin: 8px 0;">42.5g <span style="font-size: 18px; color: var(--text-secondary);">Gold</span></div>
+            <div style="font-size: 12.5px; color: var(--text-tertiary);">550g Auspicious Silver</div>
+          </div>
+          <div class="card-luxury">
+            <div style="font-size: 12px; font-weight: 700; color: var(--text-secondary); text-transform: uppercase;">Auspicious Average</div>
+            <div style="font-size: 34px; font-weight: 900; color: var(--text-primary); font-family: var(--font-serif); margin: 8px 0;">₹2,10,529</div>
+            <div style="font-size: 12.5px; color: var(--text-tertiary);">Auspicious +₹1 rounding applied</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: MUNSHI FAST ENTRY -->
+      <section id="tab-entry" class="ws-tab-pane" style="display: none;">
+        <div class="card-luxury" style="max-width: 760px; margin: 0 auto; padding: 36px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <div>
+              <div style="font-size: 11px; font-weight: 800; color: var(--c-gold); letter-spacing: 0.12em; text-transform: uppercase;">SHAGUN PRAAPTI</div>
+              <h3 style="font-size: 24px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif);">Gift Entry Counter</h3>
+            </div>
+            <button type="button" class="btn-secondary" onclick="startVoiceDictation()">
+              <span>Voice Dictation</span>
+            </button>
+          </div>
+
+          <form onsubmit="handleMunshiSubmit(event)">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px;">Guest Full Name *</label>
+                <input type="text" id="entry-name" class="input-dark" placeholder="e.g. Mastan Rao Garu" required>
+              </div>
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px;">Native City / Village</label>
+                <input type="text" id="entry-city" class="input-dark" placeholder="e.g. Chirala, Bapatla, Guntur">
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px;">Relationship</label>
+                <select id="entry-relation" class="input-dark">
+                  <option value="Brother-in-law / Brother-in-law">Brother-in-law / Brother-in-law</option>
+                  <option value="Father-in-law / Father-in-law">Father-in-law / Father-in-law</option>
+                  <option value="Uncle / Uncle">Uncle / Uncle</option>
+                  <option value="Maternal Uncle / Maternal Uncle">Maternal Uncle / Maternal Uncle</option>
+                  <option value="Friend / Friend">Friend / Friend</option>
+                  <option value="Relative / Relative" selected>Relative / Relative</option>
+                </select>
+              </div>
+              <div>
+                <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px;">Guest Mobile (WhatsApp)</label>
+                <input type="tel" id="entry-phone" class="input-dark" placeholder="+91 98480 XXXXX">
+              </div>
+            </div>
+
+            <!-- Mode Selection Buttons -->
+            <div style="margin-bottom: 18px;">
+              <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px;">Offering / Blessing Mode</label>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button type="button" class="mode-select-btn mode-btn btn-secondary active" onclick="selectEntryMode('Cash', this)">Cash</button>
+                <button type="button" class="mode-select-btn mode-btn btn-secondary" onclick="selectEntryMode('UPI', this)">UPI</button>
+                <button type="button" class="mode-select-btn mode-btn btn-secondary" onclick="selectEntryMode('Gold', this)">Gold</button>
+                <button type="button" class="mode-select-btn mode-btn btn-secondary" onclick="selectEntryMode('Silver', this)">Silver</button>
+              </div>
+            </div>
+
+            <div style="margin-bottom: 22px;">
+              <label style="display: block; font-size: 12px; font-weight: 700; color: var(--text-secondary); margin-bottom: 6px;">Cash Blessing Amount (₹) *</label>
+              <input type="number" id="entry-amount" class="input-dark tabular-nums" placeholder="5000" style="font-size: 20px; font-weight: 800; color: var(--c-gold);" required>
+              
+              <!-- Lucky Coin Quick Presets -->
+              <div style="display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap;">
+                <button type="button" class="btn-secondary" style="padding: 4px 10px; font-size: 12px;" onclick="applyAuspiciousAmount(501)">₹501</button>
+                <button type="button" class="btn-secondary" style="padding: 4px 10px; font-size: 12px;" onclick="applyAuspiciousAmount(1116)">₹1,116</button>
+                <button type="button" class="btn-secondary" style="padding: 4px 10px; font-size: 12px;" onclick="applyAuspiciousAmount(2116)">₹2,116</button>
+                <button type="button" class="btn-secondary" style="padding: 4px 10px; font-size: 12px;" onclick="applyAuspiciousAmount(5116)">₹5,116</button>
+                <button type="button" class="btn-secondary" style="padding: 4px 10px; font-size: 12px;" onclick="applyAuspiciousAmount(10116)">₹10,116</button>
+                <button type="button" class="btn-gold" style="padding: 4px 12px; font-size: 12px;" onclick="addOneRupeeCoin()">🪙 +₹1 Lucky Coin</button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-gold" style="width: 100%; padding: 14px; font-size: 15px;">
+              <span>Save Blessing & Announce</span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- TAB 3: RED NOTEBOOK LEDGER -->
+      <section id="tab-ledger" class="ws-tab-pane" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <h3 style="font-size: 24px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif);">Digital Red Notebook Ledger</h3>
+            <p style="font-size: 13px; color: var(--text-secondary);">Audited ledger of all celebration blessings with instant edit, search & export.</p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button type="button" class="btn-primary" style="padding: 8px 16px; font-size: 12.5px;" onclick="window.GVLedgerTable.exportPDF()">
+            <span>📄 Download Official PDF</span>
+          </button>
+          <button type="button" class="btn-secondary" style="padding: 8px 14px; font-size: 12.5px;" onclick="exportLedgerCSV()">
+              <span>Export CSV</span>
+            </button>
+            <button type="button" class="btn-gold" onclick="printLedgerSheet()">
+              <span>Print Ledger</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter bar -->
+        <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+          <input type="text" id="ledger-search-input" class="input-dark" placeholder="Search guest name, city, relationship... (Press '/' to focus)" oninput="filterLedgerTable()" style="max-width: 420px;">
+          <select id="ledger-filter-mode" class="input-dark" style="width: 180px;" onchange="filterLedgerTable()">
+            <option value="ALL">All Modes</option>
+            <option value="Cash">Cash Only</option>
+            <option value="UPI">UPI Only</option>
+            <option value="Gold">Gold & Silver</option>
+          </select>
+        </div>
+
+        <div class="table-luxury-wrap">
+          <table class="table-luxury">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Guest Name</th>
+                <th>Place</th>
+                <th>Relationship</th>
+                <th>Mode</th>
+                <th>Amount</th>
+                <th>Desk</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ws-full-ledger-body">
+              <!-- Dynamically populated via GVLedgerTable.render() -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 4: RECIPROCITY TRACKER -->
+      <section id="tab-reciprocity" class="ws-tab-pane" style="display: none;">
+        <div class="card-luxury" style="padding: 32px; text-align: center;">
+          <div style="font-size: 12px; font-weight: 800; color: var(--c-gold); text-transform: uppercase;">FAMILY RECIPROCITY TRACKER</div>
+          <h3 style="font-size: 24px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif); margin: 8px 0;">Cross-Event Shagun Balance</h3>
+          <p style="font-size: 13.5px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 24px;">
+            Complete audit summary of blessings given to relatives versus gifts received back.
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+            <div class="card-luxury">
+              <div style="font-size: 11.5px; color: var(--text-secondary);">GIVEN IN PAST CELEBRATIONS</div>
+              <div class="tabular-nums" style="font-size: 26px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif); margin-top: 6px;">₹6,25,000</div>
+            </div>
+            <div class="card-luxury">
+              <div style="font-size: 11.5px; color: var(--text-secondary);">RECEIVED IN THIS CELEBRATION</div>
+              <div class="tabular-nums" style="font-size: 26px; font-weight: 800; color: var(--c-gold-light); margin-top: 6px;">₹8,42,116</div>
+            </div>
+            <div class="card-luxury">
+              <div style="font-size: 11.5px; color: var(--text-secondary);">NET AUSPICIOUS BALANCE</div>
+              <div class="tabular-nums" style="font-size: 26px; font-weight: 800; color: var(--c-emerald); margin-top: 6px;">+₹2,17,116</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       GLOBAL FOOTER (Andhra & Telangana Cultural Tribute & Links)
+       ========================================================================== -->
+  <footer class="footer-master no-print">
+    <div class="container-app">
+      <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; flex-wrap: wrap;">
+        <div>
+          <div class="brand-lockup" style="margin-bottom: 12px;">
+            <div style="width:32px; height:32px; border-radius:8px; background:linear-gradient(135deg, #E5C365 0%, #D4AF37 100%); display:flex; align-items:center; justify-content:center; color:#06080F; font-weight:900;">
+              GV
+            </div>
+            <div class="brand-name" style="font-size: 18px;">GiftVault</div>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; max-width: 320px;">
+            The modern digital red notebook dedicated to sacred Indian celebrations.
+          </p>
+          <div style="margin-top: 14px; font-size: 12px; color: var(--c-gold);">
+            Auspicious • Prosperous • Blessed
+          </div>
+        </div>
+
+        <div>
+          <h5 style="color: var(--text-primary); font-family: var(--font-serif); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;">CELEBRATIONS</h5>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--text-secondary);">
+            <a href="#culture" style="color: inherit; text-decoration: none;">Royal Wedding</a>
+            <a href="#culture" style="color: inherit; text-decoration: none;">Sri Nilayam Housewarming</a>
+            <a href="#culture" style="color: inherit; text-decoration: none;">Chirala Tonsure & Haircut</a>
+            <a href="#culture" style="color: inherit; text-decoration: none;">Half Saree Ceremony</a>
+            <a href="#culture" style="color: inherit; text-decoration: none;">Maha Yagnam & Shanti</a>
+          </div>
+        </div>
+
+        <div>
+          <h5 style="color: var(--text-primary); font-family: var(--font-serif); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;">FEATURES</h5>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--text-secondary);">
+            <a href="#features" style="color: inherit; text-decoration: none;">Digital Red Ledger</a>
+            <a href="#features" style="color: inherit; text-decoration: none;">+₹1 Lucky Coin</a>
+            <a href="#features" style="color: inherit; text-decoration: none;">Harmonic Temple Chime</a>
+            <a href="#features" style="color: inherit; text-decoration: none;">2-inch Thermal Receipt</a>
+            <a href="#features" style="color: inherit; text-decoration: none;">Multi-Desk Synchronization</a>
+          </div>
+        </div>
+
+        <div>
+          <h5 style="color: var(--text-primary); font-family: var(--font-serif); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;">FAMILY ACCESS</h5>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--text-secondary);">
+            <button type="button" class="btn-gold" style="padding: 8px 14px; font-size: 12px;" onclick="navToView('login')">
+              Reception Desk Login
+            </button>
+            <button type="button" class="btn-secondary" style="padding: 8px 14px; font-size: 12px; margin-top: 6px;" onclick="enterGuestDemoMode()">
+              Guest Demo Hub
+            </button>
+            <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 8px;">
+              256-bit Local Vault Encryption
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--border-subtle); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--text-tertiary);">
+        <div>
+          © 2026 GiftVault Technologies. Crafted with devotion for Indian family celebrations.
+        </div>
+        <div style="display: flex; gap: 18px;">
+          <span>Privacy Vault</span>
+          <span>•</span>
+          <span>Mandapam Terms</span>
+          <span>•</span>
+          <span>Security Audit</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALS FRAMEWORK (CREATE EVENT, EDIT ENTRY, THERMAL SLIP, PRICING)
+       ========================================================================== -->
+
+  <!-- 1. Create Event Modal -->
+  <div id="modal-create-event" class="modal-backdrop modal-backdrop-lux">
+    <div class="modal-dialog">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-size: 22px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif);">Create Auspicious Celebration</h3>
+        <button type="button" class="btn-secondary" style="padding: 4px 10px;" onclick="closeCreateEventModal()">✕</button>
+      </div>
+
+      <form onsubmit="handleCreateEventSubmit(event)">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Event Type</label>
+            <select id="new-event-type" class="input-dark" onchange="handleEventTypeChange(this.value)">
+              <optgroup label="Core Chadavimpulu Celebrations (Core Gift Celebrations)">
+                <option value="Wedding" selected>💍 Wedding / Vivah (Wedding / Nikah) • Bride & Groom</option>
+                <option value="Reception">🥂 Wedding Reception / Walima (Reception / Walima) • Bride & Groom</option>
+                <option value="Khatna">🌙 Khatna / Circumcision Feast (Khatna / Circumcision) • Boy Only</option>
+                <option value="Tonsure">🪒 Tonsure / Aqiqah Ceremony (Tonsure / Aqiqah) • Boy / Girl</option>
+                <option value="HalfSaree">🌸 Half Saree Function (Half Saree Function) • Girl Only</option>
+                <option value="Housewarming">🏡 Housewarming / Griha Pravesh (Housewarming / Griha Pravesh) • Family</option>
+              </optgroup>
+              <optgroup label="Family Blessings & Milestones (Family Milestones)">
+                <option value="Birthday">🎂 1st Birthday Celebration (1st Birthday) • Boy / Girl</option>
+                <option value="Naming">👶 Naming / Cradle Ceremony (Naming / Cradle) • Boy / Girl</option>
+                <option value="Seemantham">🤰 Baby Shower / Seemantham (Baby Shower) • Mother-to-be</option>
+                <option value="Jubilee">👑 60th / 80th Jubilee (60th / 80th Jubilee) • Elders</option>
+              </optgroup>
+              <optgroup label="Custom Celebration">
+                <option value="Custom">➕ Custom Celebration (Custom Family Milestone)</option>
+              </optgroup>
+            </select>
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Date</label>
+            <input type="date" id="new-event-date" class="input-dark" value="2027-01-15" required>
+          </div>
+        </div>
+
+                <!-- Dynamic Custom Event Role & Tag Selector -->
+        <div id="custom-event-extra-fields" style="display: none; background: #F8F5F0; border: 1px dashed var(--border-moderate); border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div>
+              <label style="display: block; font-size: 11.5px; font-weight: 700; color: var(--text-secondary); margin-bottom: 4px;">Celebrant Role (Celebrant Role)</label>
+              <select id="new-event-role" class="input-dark" style="padding: 8px; font-size: 12px;">
+                <option value="Bride & Groom">Bride & Groom (Bride & Groom)</option>
+                <option value="Boy">Boy (Boy Only)</option>
+                <option value="Girl">Girl (Girl Only)</option>
+                <option value="Couple">Couple (Couple)</option>
+                <option value="Family" selected>Family (Family)</option>
+                <option value="Other">Other / Individual</option>
+              </select>
+            </div>
+            <div>
+              <label style="display: block; font-size: 11.5px; font-weight: 700; color: var(--text-secondary); margin-bottom: 4px;">Custom Tag (Category Name)</label>
+              <input type="text" id="new-event-custom-tag" class="input-dark" style="padding: 8px; font-size: 12px;" placeholder="e.g. Retirement, Pooja">
+            </div>
+          </div>
+        </div>
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Celebration Title</label>
+          <input type="text" id="new-event-title" class="input-dark" placeholder="e.g. Advait Tonsure & Haircut" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 14px; margin-bottom: 24px;">
+          <div>
+            <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Venue / Mandapam</label>
+            <input type="text" id="new-event-venue" class="input-dark" placeholder="e.g. Chirala Beach Shore Mandapam" required>
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Expected Guests</label>
+            <input type="number" id="new-event-guests" class="input-dark" value="350">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button type="submit" class="btn-gold" style="flex: 1; padding: 12px;">Create Celebration Vault</button>
+          <button type="button" class="btn-secondary" onclick="closeCreateEventModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Edit Entry Modal -->
+  <div id="modal-edit-entry" class="modal-backdrop modal-backdrop-lux">
+    <div class="modal-dialog">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3 style="font-size: 22px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif);">Edit Ledger Blessing</h3>
+        <button type="button" class="btn-secondary" style="padding: 4px 10px;" onclick="closeEditEntryModal()">✕</button>
+      </div>
+
+      <form onsubmit="handleEditEntrySubmit(event)">
+        <input type="hidden" id="edit-entry-sno">
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Guest Name</label>
+          <input type="text" id="edit-entry-name" class="input-dark" required>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px;">
+          <div>
+            <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">City / Village</label>
+            <input type="text" id="edit-entry-city" class="input-dark">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Relationship</label>
+            <input type="text" id="edit-entry-relation" class="input-dark">
+          </div>
+        </div>
+        <div style="margin-bottom: 24px;">
+          <label style="display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px;">Amount (₹)</label>
+          <input type="number" id="edit-entry-amount" class="input-dark tabular-nums" style="font-size: 18px; font-weight: 800; color: var(--c-gold);" required>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button type="submit" class="btn-gold" style="flex: 1; padding: 12px;">Save Changes</button>
+          <button type="button" class="btn-secondary" onclick="closeEditEntryModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Authentic 2-inch Thermal Slip Modal -->
+  <div id="modal-print-slip" class="modal-backdrop modal-backdrop-lux">
+    <div style="max-width: 360px; width: 100%;">
+      <div class="thermal-slip-card">
+        <div style="text-align: center; border-bottom: 1px dashed #CBD5E1; padding-bottom: 10px; margin-bottom: 12px;">
+          <div style="font-size: 16px; font-weight: 900; letter-spacing: 0.05em;">OFFICIAL BLESSING RECEIPT</div>
+          <div style="font-size: 11px; font-weight: 700; color: #475569; margin-top: 2px;">RECEPTION DESK SLIP</div>
+        </div>
+
+        <div style="font-size: 12.5px; line-height: 1.8; margin-bottom: 14px;">
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #64748B;">Slip No:</span>
+            <strong id="slip-sno" class="tabular-nums">#GV-101</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #64748B;">Guest:</span>
+            <strong id="slip-guest-name">Mastan Rao Garu</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #64748B;">Place:</span>
+            <strong id="slip-guest-city">Chirala</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #64748B;">Mode:</span>
+            <strong id="slip-mode">Cash</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: #64748B;">Time:</span>
+            <span id="slip-timestamp" style="font-size: 11px;">11/11/2026</span>
+          </div>
+        </div>
+
+        <div style="border-top: 2px dashed #94A3B8; border-bottom: 2px dashed #94A3B8; padding: 10px 0; text-align: center; margin-bottom: 14px;">
+          <div style="font-size: 11px; color: #64748B; letter-spacing: 0.08em;">BLESSING AMOUNT</div>
+          <div id="slip-amount" class="tabular-nums" style="font-size: 26px; font-weight: 900; color: #065F46;">₹15,117</div>
+        </div>
+
+        <div style="text-align: center; font-size: 10.5px; color: #64748B; line-height: 1.5;">
+          <div>GiftVault • Digital Shagun Vault</div>
+          <div>Munshi Signature: __________________</div>
+        </div>
+      </div>
+
+      <div class="no-print" style="display: flex; gap: 10px; margin-top: 14px;">
+        <button type="button" class="btn-secondary" style="flex: 1;" onclick="closePrintSlipModal()">Done</button>
+        <button type="button" class="btn-gold" style="flex: 1;" onclick="window.print()">Print Slip</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Pricing Plans Modal -->
+  <div id="modal-pricing-plans" class="modal-backdrop modal-backdrop-lux">
+    <div class="modal-dialog" style="max-width: 600px;">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="font-size: 11px; font-weight: 800; color: var(--c-gold); letter-spacing: 0.15em; text-transform: uppercase;">FAIR CELEBRATION PASS</div>
+        <h3 style="font-size: 26px; font-weight: 800; color: var(--text-primary); font-family: var(--font-serif); margin: 4px 0;">Per-Event Anti-Abuse Pass</h3>
+        <p style="font-size: 13px; color: var(--text-secondary);">No recurring subscription trap. Pay per celebration.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+        <div class="card-luxury" style="border: 2px solid var(--c-gold); padding: 22px;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--c-gold); text-transform: uppercase;">SINGLE CELEBRATION</div>
+          <div class="tabular-nums" style="font-size: 32px; font-weight: 900; color: var(--text-primary); font-family: var(--font-serif); margin: 4px 0;">₹49 <span style="font-size: 12px; color: var(--text-tertiary);">/ event</span></div>
+          <ul style="font-size: 12px; color: var(--text-secondary); line-height: 1.8; margin: 12px 0 16px; padding-left: 16px;">
+            <li>1 Dedicated Sacred Event</li>
+            <li>Up to 4 Munshi Desks in Sync</li>
+            <li>Thermal Print & CSV Export</li>
+          </ul>
+          <button type="button" class="btn-gold" style="width: 100%; justify-content: center;" onclick="showToast('Auspicious ₹49 Pass Activated!', 'gold'); closePricingModal();">
+            Activate ₹49 Pass
+          </button>
+        </div>
+
+        <div class="card-luxury" style="padding: 22px;">
+          <div style="font-size: 11px; font-weight: 800; color: var(--c-emerald); text-transform: uppercase;">FAMILY TRIO</div>
+          <div class="tabular-nums" style="font-size: 32px; font-weight: 900; color: var(--text-primary); font-family: var(--font-serif); margin: 4px 0;">₹99 <span style="font-size: 12px; color: var(--text-tertiary);">/ 3 events</span></div>
+          <ul style="font-size: 12px; color: var(--text-secondary); line-height: 1.8; margin: 12px 0 16px; padding-left: 16px;">
+            <li>Up to 3 Family Events</li>
+            <li>Reciprocity Across Events</li>
+            <li>Priority Multi-Desk Sync</li>
+          </ul>
+          <button type="button" class="btn-secondary" style="width: 100%; justify-content: center;" onclick="showToast('Royal Family ₹99 Pass Activated!', 'gold'); closePricingModal();">
+            Get Family Pass (₹99)
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="btn-secondary" style="width: 100%; justify-content: center;" onclick="closePricingModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container no-print"></div>
+
+  <!-- ==========================================================================
+       MODULAR SCRIPT SUITE (Senior Staff Architecture)
+       ========================================================================== -->
+  <script src="assets/js/core/icons.js"></script>
+  <script src="assets/js/core/store.js"></script>
+  <script src="assets/js/core/db.js"></script>
+  <script src="assets/js/core/keyboard.js"></script>
+  <script src="assets/js/i18n/translations.js"></script>
+  <script src="assets/js/components/hero3d.js"></script>
+  <script src="assets/js/components/estimator.js"></script>
+  <script src="assets/js/components/munshiDesk.js"></script>
+  <script src="assets/js/components/ledgerTable.js"></script>
+  <script src="assets/js/components/receiptModal.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

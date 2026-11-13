@@ -1,0 +1,40 @@
+name: gift_vault
+description: "GiftVault - Ultra-premium Indian wedding gift and shagun ledger app with photo/video proof, voice entry, and cloud sync."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+
+  # Local Storage & Database
+  shared_preferences: ^2.2.3
+  uuid: ^4.4.0
+  intl: ^0.20.3
+
+  # Typography & Icons
+  google_fonts: ^6.2.1
+  cupertino_icons: ^1.0.8
+
+  # QR Code & Payments
+  qr_flutter: ^4.1.0
+
+  # Export & Sharing
+  share_plus: ^9.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true

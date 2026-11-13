@@ -1,0 +1,1 @@
+ C:\\Project\\Gift\ Valut\\build\\web\\desktop.html C:\\Project\\Gift\ Valut\\build\\web\\manifest.json C:\\Project\\Gift\ Valut\\build\\web\\mobile.html:  C:\\Project\\Gift\ Valut\\web\\desktop.html C:\\Project\\Gift\ Valut\\web\\index.html C:\\Project\\Gift\ Valut\\web\\manifest.json C:\\Project\\Gift\ Valut\\web\\mobile.html

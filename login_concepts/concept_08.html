@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: radial-gradient(circle at 50% 25%, #252D37 0%, #161A20 55%, #0B0E12 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  color: #0F172A;
+}
+.concept-header {
+  max-width: 1040px;
+  width: 100%;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.concept-badge {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #F5D061;
+}
+.split-card {
+  max-width: 1020px;
+  width: 100%;
+  min-height: 580px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px -20px rgba(0,0,0,0.75), 0 0 0 1px rgba(255,255,255,0.1);
+  background: #FFFFFF;
+}
+.left-pane {
+  min-height: 580px;
+}
+.right-pane {
+  background: #FFFFFF;
+  padding: 44px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form-group { margin-bottom: 18px; }
+.lbl { display:block; font-size:11.5px; font-weight:700; color:#64748B; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px; }
+.input-row { display:flex; align-items:center; border:1.5px solid #E2E8F0; border-radius:12px; background:#F8FAFC; overflow:hidden; transition:border-color 0.2s; }
+.input-row:focus-within { border-color:#9E1B32; background:#FFF; }
+.code { padding:12px 14px; font-size:14px; font-weight:800; color:#0F172A; background:#F1F5F9; border-right:1px solid #E2E8F0; }
+.inp { border:none; outline:none; background:transparent; padding:12px 14px; font-size:14.5px; font-family:inherit; color:#0F172A; width:100%; }
+.btn-primary { width:100%; padding:13px 24px; font-size:14px; font-weight:700; border:none; border-radius:12px; cursor:pointer; font-family:inherit; transition:transform 0.15s; }
+.btn-primary:hover { transform:translateY(-1px); }
+.divider { display:flex; align-items:center; gap:12px; margin:18px 0; color:#94A3B8; font-size:11.5px; }
+.divider::before, .divider::after { content:''; flex:1; height:1px; background:#E2E8F0; }
+.btn-secondary { width:100%; padding:11px 20px; font-size:13.5px; font-weight:700; border:1.5px solid #E2E8F0; border-radius:12px; background:#FFF; color:#334155; cursor:pointer; font-family:inherit; margin-bottom:10px; }
+.btn-guest { width:100%; padding:10px 18px; font-size:12.5px; font-weight:700; border:1px dashed rgba(158,27,50,0.4); border-radius:12px; background:#FFF5F6; color:#9E1B32; cursor:pointer; font-family:inherit; }
+</style>
+</head>
+<body>
+  <div class="concept-header">
+    <div>
+      <div style="font-family:'Outfit',sans-serif; font-size:22px; font-weight:800;">Option 08: Dark Mode Imperial Noir & Gold</div>
+      <div style="font-size:12.5px; color:#94A3B8; margin-top:2px;">Deep midnight slate (#0A0D12) with glowing crimson borders, brushed auric gold accents, and pure high-contrast elegance.</div>
+    </div>
+    <div class="concept-badge">CONCEPT #08</div>
+  </div>
+  
+        <div class="split-card" style="background:#0F172A; border:1.5px solid rgba(212,175,55,0.4); color:#FFF;">
+          <div class="left-pane" style="background:linear-gradient(135deg, #1E1018 0%, #0A0205 100%); border-right:1px solid rgba(255,255,255,0.1); display:flex; flex-direction:column; justify-content:space-between; padding:44px;">
+            <div style="font-family:'Outfit',sans-serif; font-size:20px; font-weight:800; color:#F5D061;">GIFTVAULT NOIR</div>
+            <div style="text-align:center;">
+              <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg,#9E1B32,#4A0815); border:2px solid #F5D061; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; box-shadow:0 0 35px rgba(212,175,55,0.3);">
+                <span style="font-size:28px; font-weight:900; color:#F5D061;">👑</span>
+              </div>
+              <h2 style="font-family:'Outfit',sans-serif; font-size:24px; font-weight:800; color:#FFF; margin-bottom:8px;">Royal Family Heritage</h2>
+              <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; color:#CBD5E1; line-height:1.6;">Multi-event family ledger with generational memory.</p>
+            </div>
+            <div style="font-size:11px; color:#94A3B8;">100% PRIVATE • ZERO CLOUD DATA MINING</div>
+          </div>
+          <div class="right-pane" style="background:#0F172A; color:#FFF;">
+            <h1 style="font-family:'Outfit',sans-serif; font-size:26px; font-weight:800; color:#FFF; margin-bottom:6px;">Imperial Vault Sign-In</h1>
+            <p style="font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; color:#94A3B8; margin-bottom:24px;">Enter your phone number to access all family events.</p>
+            <div class="form-group"><label class="lbl" style="color:#CBD5E1;">Mobile Number</label><div class="input-row" style="background:#1E293B; border-color:#334155;"><span class="code" style="color:#F5D061;">+91</span><input class="inp" style="color:#FFF;" type="text" value="9876543210"></div></div>
+            <button class="btn-primary" style="background:linear-gradient(135deg,#F5D061,#D97706); color:#0F172A; font-weight:800;">Open Royal Vault &rarr;</button>
+            <div class="divider" style="color:#64748B;"><span style="background:#0F172A;">or</span></div>
+            <button class="btn-secondary" style="background:#1E293B; border-color:#334155; color:#FFF;">Google Fast-Sign</button>
+            <button class="btn-guest" style="color:#F5D061; border-color:rgba(212,175,55,0.4);">Continue in Guest Demo</button>
+          </div>
+        </div>
+        
+</body>
+</html>
