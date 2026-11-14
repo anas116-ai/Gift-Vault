@@ -3517,10 +3517,12 @@ body {
   box-sizing: border-box !important;
 }
 
-/* SECTION HEADERS TYPOGRAPHY: Bosch Display */
-h2, .section-title, #features h2, #culture h2, #pricing h2, #how-it-works h2, #faq h2 {
-  font-family: 'Bosch', 'Branch', serif !important;
+/* SECTION HEADERS TYPOGRAPHY: UNIVERSAL SEN BOLD 700 */
+h2, .section-title, .editorial-heading, #services h2, #features h2, #culture h2, #pricing h2, #how-it-works h2, #testimonials h2, #faq h2 {
+  font-family: 'Sen', sans-serif !important;
+  font-weight: 700 !important;
   color: #37000A !important;
+  letter-spacing: -0.015em !important;
 }
 
 

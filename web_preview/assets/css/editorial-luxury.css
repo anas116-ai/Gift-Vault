@@ -30,7 +30,7 @@
 
 .editorial-heading {
   font-family: 'Sen', sans-serif !important;
-  font-weight: 400 !important;
+  font-weight: 700 !important;
   font-size: clamp(30px, 3.4vw, 40px);
   color: #37000A;
   letter-spacing: -0.015em;
@@ -46,6 +46,35 @@
   text-align: center;
   max-width: 620px;
   margin: 0 auto 36px;
+}
+
+.nav-clean-link {
+  font-family: 'Sen', sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  color: #37000A !important;
+  text-decoration: none !important;
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.22s ease !important;
+}
+.nav-clean-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #FF1F3D;
+  transition: all 0.25s ease;
+  transform: translateX(-50%);
+  border-radius: 999px;
+}
+.nav-clean-link:hover {
+  color: #FF1F3D !important;
+}
+.nav-clean-link:hover::after {
+  width: 100%;
 }
 
 /* 6 Circular Services / Capabilities Row */
