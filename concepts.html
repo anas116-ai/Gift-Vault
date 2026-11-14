@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GiftVault - 12 Luxury Celebration & Gifting Masterpieces</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;600;700;800&family=Reem+Kufi+Fun:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #FAF6F0;
+      color: #37000A;
+      font-family: 'Sen', sans-serif;
+      padding: 40px 24px 80px;
+    }
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .header-box {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      color: #FF1F3D;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-family: 'Sen', sans-serif;
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 800;
+      color: #37000A;
+      margin-bottom: 12px;
+    }
+    p.subtext {
+      font-size: 15px;
+      color: #57534E;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 32px;
+    }
+    .concept-card {
+      background: #FFFFFF;
+      border: 1.5px solid rgba(197, 160, 89, 0.45);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(55, 0, 10, 0.08);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .concept-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(55, 0, 10, 0.16);
+      border-color: #D4AF37;
+    }
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      background: #37000A;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .concept-card:hover .card-img-wrap img {
+      transform: scale(1.04);
+    }
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(55, 0, 10, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid #D4AF37;
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+    .card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+    }
+    .card-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #37000A;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 13.5px;
+      color: #57534E;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .card-footer {
+      border-top: 1px solid rgba(62,78,80,0.12);
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tag-suggested {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1E5E3A;
+      background: rgba(30,94,58,0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    .btn-view-full {
+      font-size: 12px;
+      font-weight: 700;
+      color: #FF1F3D;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-view-full:hover {
+      text-decoration: underline;
+    }
+    .back-nav {
+      margin-bottom: 24px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #37000A;
+      text-decoration: none;
+      background: #FFFFFF;
+      border: 1.5px solid rgba(197, 160, 89, 0.45);
+      padding: 8px 18px;
+      border-radius: 999px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="back-nav">
+      <a href="/" class="back-btn">← Back to GiftVault Website</a>
+    </div>
+
+    <div class="header-box">
+      <div class="eyebrow">CURATED VISUAL ARTISTRY</div>
+      <h1>12 Luxury Celebration & Gifting Masterpieces</h1>
+      <p class="subtext">
+        Inspired by the prestigious elegance of high-end event planning. Each visual evokes sacred blessings, royal hospitality, and emotional prestige for Indian families and guests. Choose your favorites for the Hero Showcase and Login Sanctuary.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+      
+      <!-- Concept 1 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_1_royal_floral_arch_gift.jpg" alt="Concept 1">
+          <span class="card-badge">Concept #1</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Royal Palace Floral Arch & Gifting Casket</div>
+            <div class="card-desc">Lush arched floral installation with crimson roses, blush peonies, and warm chandeliers. Center ivory-gold gift casket on white marble pedestal.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">★ Top Pick: Hero Section</span>
+            <a href="assets/images/concept_1_royal_floral_arch_gift.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 2 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_2_palace_kalyana_mandapam.jpg" alt="Concept 2">
+          <span class="card-badge">Concept #2</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Palace Courtyard Kalyana Mandapam</div>
+            <div class="card-desc">Twilight sky over ornate sandstone jharokhas, marigold pillars, samai lamps, and a sacred red-and-gold silk gifting altar.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">Hero / Moments</span>
+            <a href="assets/images/concept_2_palace_kalyana_mandapam.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 3 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_3_editorial_modern_pavilion.jpg" alt="Concept 3">
+          <span class="card-badge">Concept #3</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Architectural Editorial Gifting Pavilion</div>
+            <div class="card-desc">Modern cream plaster arches, wine-burgundy botanicals, and a glowing marble plinth presenting a 24K gold bespoke gifting vault.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">Modern Hero / Editorial</span>
+            <a href="assets/images/concept_3_editorial_modern_pavilion.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 4 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_4_vibrant_sangeet_gifting.jpg" alt="Concept 4">
+          <span class="card-badge">Concept #4</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Festive Sangeet Gala & Shagun Treasure Box</div>
+            <div class="card-desc">Cascading magenta bougainvillea, fairy lights, royal zardozi velvet divan, and a glowing brass heirloom shagun treasure box.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">Festive Moments / Hero</span>
+            <a href="assets/images/concept_4_vibrant_sangeet_gifting.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 5 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_5_griha_pravesham_luxury.jpg" alt="Concept 5">
+          <span class="card-badge">Concept #5</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Illuminated Villa Griha Pravesham</div>
+            <div class="card-desc">Warm architectural facade lighting, glowing earthen diyas on marble steps, marigold toranams, and an auspicious welcome foyer.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">Griha Pravesham / Moments</span>
+            <a href="assets/images/concept_5_griha_pravesham_luxury.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 6 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_6_silver_jubilee_luxury.jpg" alt="Concept 6">
+          <span class="card-badge">Concept #6</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Silver Jubilee 25-Year Milestone Gala</div>
+            <div class="card-desc">Pure white hydrangeas, cream roses, crystal curtains, silver crest, and an ornate silver-trimmed milestone celebration gift chest.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">Milestone Moments</span>
+            <a href="assets/images/concept_6_silver_jubilee_luxury.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 7 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_7_cradle_naming_divine.jpg" alt="Concept 7">
+          <span class="card-badge">Concept #7</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Traditional Cradle & Naming Sanctuary</div>
+            <div class="card-desc">Intricately carved golden teakwood swing wrapped in jasmine and marigolds, glowing brass samai lamps, and auspicious return gifts.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">Sacred Blessings</span>
+            <a href="assets/images/concept_7_cradle_naming_divine.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 8 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_8_royal_velvet_gold_vault.jpg" alt="Concept 8">
+          <span class="card-badge">Concept #8</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Royal Velvet & 24K Gold Vault Sanctuary</div>
+            <div class="card-desc">Deep crimson velvet drapery with bullion fringe framing a jharokha arch, featuring an open 24K gold & pearl family heirloom casket.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">★ Top Pick: Login Portal</span>
+            <a href="assets/images/concept_8_royal_velvet_gold_vault.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 9 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_9_silk_ivory_sanctuary.jpg" alt="Concept 9">
+          <span class="card-badge">Concept #9</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Ethereal Silk & Ivory Jharokha Sanctuary</div>
+            <div class="card-desc">Carved white marble jharokha with morning golden sunbeams, ivory lacquer pedestal, green silk ribbon gift box, and white mogra blossoms.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">★ Top Pick: Login / Hero</span>
+            <a href="assets/images/concept_9_silk_ivory_sanctuary.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 10 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_10_auspicious_thaal_shagun.jpg" alt="Concept 10">
+          <span class="card-badge">Concept #10</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Sacred Silver Thaal & Shagun Envelopes</div>
+            <div class="card-desc">Chased silver pooja thaal with sacred akshat, silver coin, brass deepam with flame, and embossed crimson velvet shagun envelopes.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">Shagun Culture / Macro</span>
+            <a href="assets/images/concept_10_auspicious_thaal_shagun.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 11 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_11_palace_lantern_pavilion.jpg" alt="Concept 11">
+          <span class="card-badge">Concept #11</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Palace Courtyard Floating Lantern Pavilion</div>
+            <div class="card-desc">Blue hour twilight with glowing filigree lanterns, hanging wisteria, marigold garlands, and tiered pedestal of silk-wrapped gift hampers.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">Prestige Hero Option</span>
+            <a href="assets/images/concept_11_palace_lantern_pavilion.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Concept 12 -->
+      <div class="concept-card">
+        <div class="card-img-wrap">
+          <img src="assets/images/concept_12_avant_garde_royal_arch.jpg" alt="Concept 12">
+          <span class="card-badge">Concept #12</span>
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">Avant-Garde Pink Sandstone Jharokha Arch</div>
+            <div class="card-desc">Towering carved sandstone arch nestled in lush burgundy roses, with a modern gold pedestal holding an embroidered peacock shagun chest.</div>
+          </div>
+          <div class="card-footer">
+            <span class="tag-suggested">★ Top Pick: Hero / Login</span>
+            <a href="assets/images/concept_12_avant_garde_royal_arch.jpg" target="_blank" class="btn-view-full">Full Resolution ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
