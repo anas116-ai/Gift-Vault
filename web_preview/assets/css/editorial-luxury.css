@@ -482,3 +482,212 @@
   box-shadow: 0 28px 65px rgba(55, 0, 10, 0.45), 0 0 30px rgba(158, 228, 37, 0.25);
 }
 
+/* ==========================================================================
+   CODE-CRAFTED HERO SHOWCASE & IMMERSIVE FULLSCREEN LOGIN PORTAL
+   ========================================================================== */
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(-1deg); }
+}
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(6px) rotate(1deg); }
+}
+@keyframes pulseEmeraldGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(158, 228, 37, 0.6); }
+  50% { box-shadow: 0 0 0 8px rgba(158, 228, 37, 0); }
+}
+
+/* 1. Hero Architectural Stage (Pure Code Composition) */
+.hero-code-stage-arch {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  min-height: 480px;
+  margin: 0 auto;
+  border-radius: 240px 240px 32px 32px;
+  background: radial-gradient(circle at 50% 25%, rgba(255, 31, 61, 0.08) 0%, rgba(250, 246, 240, 0.96) 55%, #FAF6F0 100%);
+  border: 2px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 28px 70px -15px rgba(55, 0, 10, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+  padding: 34px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: visible;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.hero-code-stage-arch:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 34px 80px -12px rgba(55, 0, 10, 0.22), 0 0 0 2px rgba(212, 175, 55, 0.7) inset;
+}
+
+/* Inner Code-Crafted Royal Red Bahi-Khata Ledger */
+.hero-bahi-khata-ledger {
+  width: 100%;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(197, 160, 89, 0.45);
+  box-shadow: 0 16px 40px rgba(55, 0, 10, 0.10);
+  overflow: hidden;
+  margin-top: 10px;
+}
+.hero-bahi-khata-header {
+  background: linear-gradient(135deg, #37000A 0%, #4D0510 100%);
+  color: #FFFFFF;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #FF1F3D;
+}
+.hero-bahi-khata-body {
+  padding: 18px;
+}
+.hero-shagun-tally-box {
+  background: linear-gradient(145deg, #FAF8F5 0%, #F5EFE6 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.hero-ledger-slip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+  background: #FFFFFF;
+  border: 1px solid rgba(62, 78, 80, 0.12);
+  font-size: 12px;
+  font-family: 'Sen', sans-serif;
+  transition: all 0.2s ease;
+}
+.hero-ledger-slip-row:hover {
+  background: #FFFDF9;
+  border-color: #FF1F3D;
+  transform: translateX(2px);
+}
+
+/* Floating Cute Micro-Accents */
+.hero-floating-shagun-envelope {
+  position: absolute;
+  top: -16px;
+  left: -22px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(212, 175, 55, 0.6);
+  border-radius: 16px;
+  padding: 10px 14px;
+  box-shadow: 0 14px 32px rgba(55, 0, 10, 0.14);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 4;
+  animation: floatGentle 4s ease-in-out infinite;
+}
+.hero-floating-thermal-slip {
+  position: absolute;
+  bottom: -16px;
+  right: -20px;
+  background: rgba(55, 0, 10, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(158, 228, 37, 0.6);
+  border-radius: 14px;
+  padding: 10px 16px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 4;
+  animation: floatReverse 4.5s ease-in-out infinite;
+}
+
+/* 2. Full-Screen Immersive Login Portal */
+.login-immersive-fullscreen {
+  width: 100% !important;
+  max-width: 1280px !important;
+  min-height: calc(85vh - 40px) !important;
+  margin: 12px auto 40px !important;
+  display: grid !important;
+  grid-template-columns: 1.1fr 1fr !important;
+  background: #FFFFFF !important;
+  border-radius: 32px !important;
+  border: 1.5px solid rgba(197, 160, 89, 0.45) !important;
+  box-shadow: 0 32px 85px -15px rgba(55, 0, 10, 0.16) !important;
+  overflow: hidden !important;
+}
+@media (max-width: 960px) {
+  .login-immersive-fullscreen {
+    grid-template-columns: 1fr !important;
+    max-width: 580px !important;
+  }
+  .login-immersive-left {
+    display: none !important;
+  }
+}
+
+.login-immersive-left {
+  background: radial-gradient(circle at 20% 20%, #4D0510 0%, #37000A 60%, #1A0005 100%);
+  color: #FFFFFF !important;
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border-right: 1.5px solid rgba(212, 175, 55, 0.3);
+}
+.login-immersive-left h2,
+.login-master-left h2 {
+  color: #FFFFFF !important;
+}
+.login-immersive-right {
+  background: #FFFFFF;
+  padding: 52px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Floating Cute Micro-Accents Inset Alignment */
+.hero-floating-shagun-envelope {
+  position: absolute;
+  top: 14px;
+  left: -14px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(212, 175, 55, 0.6);
+  border-radius: 16px;
+  padding: 9px 14px;
+  box-shadow: 0 14px 32px rgba(55, 0, 10, 0.14);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 4;
+  animation: floatGentle 4s ease-in-out infinite;
+}
+.hero-floating-thermal-slip {
+  position: absolute;
+  bottom: 16px;
+  right: -12px;
+  background: rgba(55, 0, 10, 0.94);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(158, 228, 37, 0.6);
+  border-radius: 14px;
+  padding: 9px 15px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 4;
+  animation: floatReverse 4.5s ease-in-out infinite;
+}
+
+

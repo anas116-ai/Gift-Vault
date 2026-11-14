@@ -3303,7 +3303,7 @@ body.mobile-viewport-active .hide-mobile {
 
 .login-topbar-wrapper {
   width: 100% !important;
-  max-width: 1060px !important;
+  max-width: 1280px !important;
   margin: 0 auto 14px auto !important;
   display: flex !important;
   justify-content: flex-start !important;
@@ -3311,7 +3311,8 @@ body.mobile-viewport-active .hide-mobile {
 
 .login-master-frame {
   width: 100% !important;
-  max-width: 1060px !important;
+  max-width: 1280px !important;
+  min-height: calc(85vh - 40px) !important;
   margin: 0 auto !important;
   box-sizing: border-box !important;
 }
