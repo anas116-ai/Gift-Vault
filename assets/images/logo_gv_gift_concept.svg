@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="100%" height="100%">
+  <defs>
+    <!-- Deep Imperial Burgundy Obsidian Box Body -->
+    <linearGradient id="giftBoxLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4E0812" />
+      <stop offset="50%" stop-color="#2D0308" />
+      <stop offset="100%" stop-color="#140104" />
+    </linearGradient>
+
+    <linearGradient id="giftBoxRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A050D" />
+      <stop offset="50%" stop-color="#1F0206" />
+      <stop offset="100%" stop-color="#0E0103" />
+    </linearGradient>
+
+    <!-- 24K Royal Gold Ribbon Gradient -->
+    <linearGradient id="goldRibbon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9DD" />
+      <stop offset="25%" stop-color="#F5CB52" />
+      <stop offset="65%" stop-color="#D49922" />
+      <stop offset="100%" stop-color="#8A5A0D" />
+    </linearGradient>
+
+    <!-- Gold Ribbon Gleam / Highlight -->
+    <linearGradient id="goldRibbonLight" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E5B942" />
+      <stop offset="50%" stop-color="#FFF4CA" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+
+    <!-- Gold Ribbon Shadow -->
+    <linearGradient id="goldRibbonDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A66F12" />
+      <stop offset="100%" stop-color="#543303" />
+    </linearGradient>
+
+    <!-- Ambient Shadow Filter -->
+    <filter id="giftDropShadow" x="-20%" y="-15%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#D4AF37" flood-opacity="0.3" />
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#37000A" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <g id="gift-gv-emblem" filter="url(#giftDropShadow)">
+    
+    <!-- ============================================================
+         1. THE GIFT BOX BODY & LID: INTERTWINED 'G' AND 'V'
+         ============================================================ -->
+    
+    <!-- 'G' (Left Wing of Gift Box):
+         Outer boundary descends diagonally to bottom center,
+         Top horizontal arm forms the gift box shoulder,
+         Inner chiseled notch forms the 'G' crossbar -->
+    <!-- G Top Shoulder & Outer Descent -->
+    <path d="
+      M 32,76
+      L 98,76
+      L 82,102
+      L 58,102
+      L 88,154
+      L 104,126
+      L 124,126
+      L 110,152
+      L 110,186
+      L 32,76
+      Z
+    " fill="url(#giftBoxLeft)" />
+
+    <!-- 'V' (Right Wing of Gift Box & Deep Apex):
+         Descends to sharp bottom apex (110, 196) and rises to right shoulder (188, 76) -->
+    <path d="
+      M 110,196
+      L 110,152
+      L 142,98
+      L 164,98
+      L 124,166
+      L 188,76
+      Z
+    " fill="url(#giftBoxRight)" />
+
+    <!-- G Inward Keyhole Ribbon Bar (G Crossbar) in Chiseled Bevel -->
+    <polygon points="104,126 136,126 124,146 94,146" fill="url(#giftBoxLeft)" opacity="0.95" />
+
+    <!-- ============================================================
+         2. VERTICAL & DIAGONAL GOLD GIFT WRAPPING RIBBONS
+         ============================================================ -->
+    <!-- Gold Ribbon Stripe Running Down the Center of the Gift -->
+    <polygon points="104,76 116,76 116,190 104,170" fill="url(#goldRibbonLight)" />
+
+    <!-- Gold Accent Ribbon along the G Crossbar -->
+    <polygon points="98,126 128,126 122,136 92,136" fill="url(#goldRibbon)" />
+
+    <!-- ============================================================
+         3. OPULENT 24K GOLD GIFT BOW & RIBBON KNOT (TOP APEX)
+         ============================================================ -->
+    <!-- Left Bow Loop -->
+    <path d="
+      M 110,70
+      C 95,50 68,36 56,48
+      C 46,58 58,74 86,76
+      C 98,76 106,72 110,70
+      Z
+    " fill="url(#goldRibbonLight)" />
+    <!-- Left Bow Inner Shadow -->
+    <path d="
+      M 104,68
+      C 92,54 74,44 64,52
+      C 58,58 68,68 88,72
+      Z
+    " fill="url(#goldRibbonDark)" opacity="0.45" />
+
+    <!-- Right Bow Loop (Faceted Luxury Ribbon) -->
+    <path d="
+      M 110,70
+      C 125,50 152,36 164,48
+      C 174,58 162,74 134,76
+      C 122,76 114,72 110,70
+      Z
+    " fill="url(#goldRibbon)" />
+    <!-- Right Bow Inner Shadow -->
+    <path d="
+      M 116,68
+      C 128,54 146,44 156,52
+      C 162,58 152,68 132,72
+      Z
+    " fill="url(#goldRibbonDark)" opacity="0.45" />
+
+    <!-- Upper Ribbon Loop Peaks (3D Layering) -->
+    <path d="
+      M 94,48
+      C 102,32 118,32 126,48
+      C 118,52 102,52 94,48
+      Z
+    " fill="url(#goldRibbonLight)" />
+
+    <!-- Central Diamond Gift Knot (Center Jewel) -->
+    <polygon points="110,58 122,70 110,82 98,70" fill="url(#goldRibbonLight)" />
+    <!-- Center Knot Facet Highlight -->
+    <polygon points="110,58 122,70 110,66 102,64" fill="#FFFFFF" opacity="0.8" />
+    <circle cx="110" cy="70" r="3" fill="#FFFFFF" opacity="0.95" />
+
+    <!-- Left & Right Golden Ribbon Tails (Cascading Down Gently) -->
+    <!-- Left Ribbon Tail -->
+    <path d="
+      M 104,78
+      L 86,104
+      L 96,104
+      L 108,82
+      Z
+    " fill="url(#goldRibbon)" />
+    <!-- Right Ribbon Tail -->
+    <path d="
+      M 116,78
+      L 134,104
+      L 124,104
+      L 112,82
+      Z
+    " fill="url(#goldRibbonLight)" />
+
+  </g>
+</svg>

@@ -331,7 +331,50 @@ window.handleLanguageChange = (lang) => {
 };
 
 window.startVoiceDictation = () => {
-  window.GVApp.showToast('🎙️ మైక్ ఆక్టివేట్ అయింది. అతిథి పేరు మాట్లాడండి...', 'gold');
+  if (window.GVMunshiDesk && window.GVMunshiDesk.startVoiceDictation) {
+    window.GVMunshiDesk.startVoiceDictation();
+  } else {
+    window.GVApp.showToast('🎙️ మైక్ ఆక్టివేట్ అయింది. అతిథి పేరు మాట్లాడండి...', 'gold');
+  }
+};
+
+window.handleLoginSubmit = () => {
+  const phone = document.getElementById('login-phone') ? document.getElementById('login-phone').value : '9876543210';
+  localStorage.setItem('GV_AUTH_SESSION', JSON.stringify({ name: 'Sri Krishna Family', phone: '+91 ' + phone, initials: 'SK', provider: 'Mobile OTP' }));
+  if (window.GVApp) {
+    window.GVApp.checkAuthSession();
+    window.GVApp.showToast('✓ Welcome to Family Vault! Accessing ledgers...', 'emerald');
+    window.GVApp.navTo('hub');
+  }
+};
+
+window.switchAuthTab = (tab) => {
+  const signinForm = document.getElementById('auth-pane-signin');
+  const signupForm = document.getElementById('auth-pane-signup');
+  const btnIn = document.getElementById('tab-btn-signin');
+  const btnUp = document.getElementById('tab-btn-signup');
+  if (tab === 'signin') {
+    if (signinForm) signinForm.style.display = 'block';
+    if (signupForm) signupForm.style.display = 'none';
+    if (btnIn) { btnIn.classList.add('active'); btnIn.style.background = '#37000A'; btnIn.style.color = '#FFFFFF'; }
+    if (btnUp) { btnUp.classList.remove('active'); btnUp.style.background = 'transparent'; btnUp.style.color = '#37000A'; }
+  } else {
+    if (signinForm) signinForm.style.display = 'none';
+    if (signupForm) signupForm.style.display = 'block';
+    if (btnIn) { btnIn.classList.remove('active'); btnIn.style.background = 'transparent'; btnIn.style.color = '#37000A'; }
+    if (btnUp) { btnUp.classList.add('active'); btnUp.style.background = '#37000A'; btnUp.style.color = '#FFFFFF'; }
+  }
+};
+
+window.handleSignUpSubmit = () => {
+  const name = document.getElementById('signup-name') ? document.getElementById('signup-name').value : 'New Family';
+  const phone = document.getElementById('signup-phone') ? document.getElementById('signup-phone').value : '9876543210';
+  localStorage.setItem('GV_AUTH_SESSION', JSON.stringify({ name: name, phone: '+91 ' + phone, initials: name.substring(0, 2).toUpperCase(), provider: 'Family Registration' }));
+  if (window.GVApp) {
+    window.GVApp.checkAuthSession();
+    window.GVApp.showToast(`✓ Family Vault created for ${name}!`, 'emerald');
+    window.GVApp.navTo('hub');
+  }
 };
 
 // Global Events Database accessor (Backward-compatibility)

@@ -13,7 +13,7 @@
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #FF1F3D;
+  color: #9E1B32;
   margin-bottom: 8px;
   font-family: 'Absans', sans-serif;
 }
@@ -31,7 +31,7 @@
 .editorial-heading {
   font-family: 'Sen', sans-serif !important;
   font-weight: 700 !important;
-  font-size: clamp(30px, 3.4vw, 40px);
+  font-size: clamp(34px, 4vw, 44px); font-weight: 800 !important; letter-spacing: -0.02em;
   color: #37000A;
   letter-spacing: -0.015em;
   line-height: 1.22;
@@ -40,8 +40,8 @@
 }
 
 .editorial-subtext {
-  font-size: 14.5px;
-  color: #3E4E50;
+  font-size: 16px;
+  color: #4A3E3D;
   line-height: 1.6;
   text-align: center;
   max-width: 620px;
@@ -65,19 +65,63 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background: #FF1F3D;
+  background: #9E1B32;
   transition: all 0.25s ease;
   transform: translateX(-50%);
   border-radius: 999px;
 }
 .nav-clean-link:hover {
-  color: #FF1F3D !important;
+  color: #9E1B32 !important;
 }
 .nav-clean-link:hover::after {
   width: 100%;
 }
 
 /* 6 Circular Services / Capabilities Row */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.hero-stage-floating-chip {
+  animation: floatSlow 4.5s ease-in-out infinite;
+}
+
+.card-animate {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAF6EE 100%) !important;
+  border: 1.2px solid rgba(212, 175, 55, 0.32) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 24px rgba(55,0,10,0.04) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.card-animate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 22px 22px 0;
+  border-color: transparent #D49924 transparent transparent;
+  opacity: 0.6;
+  transition: opacity 0.25s ease;
+}
+.card-animate:hover {
+  transform: translateY(-5px) !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 16px 36px rgba(184, 134, 11, 0.12), 0 4px 12px rgba(55,0,10,0.04) !important;
+}
+.card-animate:hover::after {
+  opacity: 1;
+}
+
 .circular-services-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -125,8 +169,8 @@
 }
 .circular-service-item:hover .circular-icon-bubble {
   background: #37000A;
-  color: #9EE425;
-  border-color: #9EE425;
+  color: #D4AF37;
+  border-color: #D4AF37;
   box-shadow: 0 10px 24px rgba(55, 0, 10, 0.25);
   transform: scale(1.06);
 }
@@ -136,7 +180,7 @@
   transition: stroke 0.3s ease;
 }
 .circular-service-item:hover .circular-icon-bubble svg {
-  stroke: #9EE425;
+  stroke: #D4AF37;
 }
 
 .circular-service-title {
@@ -153,20 +197,20 @@
   max-width: 160px;
 }
 
-/* 5 Portrait Celebration Moments Gallery (Ultra-High-Definition Highlighted) */
+/* 5 Portrait Celebration Moments Gallery (Half Image + Half Light Tone with Seamless Transition) */
 .gallery-cards-strip {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
   margin-bottom: 64px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .gallery-cards-strip {
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 680px) {
   .gallery-cards-strip {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -175,109 +219,123 @@
 
 .gallery-portrait-card {
   position: relative;
-  border-radius: 26px;
+  border-radius: 24px;
   overflow: hidden;
-  height: 380px;
-  background: #200006;
+  height: 335px !important;
+  background: #FFFFFF;
   border: 1.5px solid rgba(197, 160, 89, 0.35);
-  box-shadow: 0 16px 36px rgba(55, 0, 10, 0.12);
+  box-shadow: 0 12px 32px rgba(55, 0, 10, 0.06);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 18px 16px;
   cursor: pointer;
 }
 .gallery-portrait-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 28px 65px -10px rgba(55, 0, 10, 0.35), 0 0 25px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 24px 50px rgba(55, 0, 10, 0.14), 0 0 22px rgba(212, 175, 55, 0.22);
   border-color: #D4AF37;
 }
 
-.gallery-portrait-card img {
-  position: absolute;
-  inset: 0;
+/* Top Half: Celebration Visual with Feathered Bottom Blend */
+.gallery-card-top-half {
+  position: relative;
+  width: 100%;
+  height: 195px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #2D050C;
+}
+.gallery-card-top-half img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 0;
+  display: block;
 }
-.gallery-portrait-card:hover img {
-  transform: scale(1.1);
+.gallery-portrait-card:hover .gallery-card-top-half img {
+  transform: scale(1.08);
 }
-
-.gallery-card-gradient {
+.gallery-card-top-half::after {
+  content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(20, 0, 4, 0.15) 0%, rgba(30, 0, 6, 0.25) 40%, rgba(25, 0, 5, 0.88) 75%, rgba(15, 0, 3, 0.98) 100%);
-  z-index: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--card-tint, #FFFFFF) 100%);
+  pointer-events: none;
 }
 
+/* Floating Badge on Top Half */
 .gallery-top-badge {
-  position: relative;
+  position: absolute;
+  top: 14px;
+  left: 14px;
   z-index: 2;
-  align-self: flex-start;
   font-size: 10px;
   font-weight: 800;
-  color: #FFFFFF;
-  background: rgba(35, 0, 6, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #37000A;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.6);
   padding: 4px 12px;
   border-radius: 999px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
 }
 
-.gallery-card-bottom {
-  position: relative;
-  z-index: 2;
+/* Bottom Half: Soft Light Tinted Tone with Typography & Action */
+.gallery-card-bottom-half {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px 18px 18px;
+  background: var(--card-tint, #FFFDF9);
 }
 
 .gallery-card-title {
   font-family: 'Sen', sans-serif;
-  font-size: 17.5px;
+  font-size: 18px;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #37000A;
   margin-bottom: 5px;
   letter-spacing: -0.01em;
 }
 
 .gallery-card-sub {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.88);
-  line-height: 1.45;
-  margin-bottom: 14px;
+  font-size: 12.5px;
+  color: #57534E;
+  line-height: 1.5;
+  margin-bottom: 12px;
 }
 
 .gallery-card-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
   width: 100%;
-  padding: 8px 14px;
-  font-size: 12px;
-  font-weight: 700;
-  font-family: 'Sen', sans-serif;
+  height: 38px;
   border-radius: 999px;
   background: #FFFFFF;
   color: #37000A;
-  border: 1.5px solid #FFFFFF;
+  border: 1.5px solid rgba(197, 160, 89, 0.5);
+  font-family: 'Sen', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   transition: all 0.25s ease;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-.gallery-card-btn:hover {
-  background: #9EE425;
-  color: #37000A;
-  border-color: #9EE425;
-  box-shadow: 0 6px 18px rgba(158, 228, 37, 0.45);
-  transform: translateY(-1px);
+.gallery-portrait-card:hover .gallery-card-btn {
+  background: #37000A;
+  color: #FFFFFF;
+  border-color: #37000A;
+  box-shadow: 0 6px 16px rgba(55,0,10,0.18);
 }
+
 
 /* 3 Luxury Testimonial Cards */
 .luxury-testimonials-grid {
@@ -306,7 +364,7 @@
 .luxury-testimonial-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 36px rgba(55, 0, 10, 0.1);
-  border-color: #FF1F3D;
+  border-color: #9E1B32;
 }
 
 .stars-row {
@@ -336,13 +394,13 @@
   height: 38px;
   border-radius: 50%;
   background: #37000A;
-  color: #9EE425;
+  color: #D4AF37;
   font-size: 12.5px;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid #FF1F3D;
+  border: 1.5px solid #9E1B32;
   flex-shrink: 0;
 }
 
@@ -426,7 +484,7 @@
   gap: 8px;
 }
 .cta-banner-btn:hover {
-  background: #9EE425;
+  background: #D4AF37;
   color: #37000A;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(158, 228, 37, 0.45);
@@ -474,11 +532,11 @@
 
 .pricing-card-royal {
   background: linear-gradient(150deg, #37000A 0%, #200006 100%);
-  border: 2px solid #FF1F3D;
+  border: 2px solid #9E1B32;
   box-shadow: 0 20px 50px rgba(55, 0, 10, 0.32);
 }
 .pricing-card-royal:hover {
-  border-color: #9EE425;
+  border-color: #D4AF37;
   box-shadow: 0 28px 65px rgba(55, 0, 10, 0.45), 0 0 30px rgba(158, 228, 37, 0.25);
 }
 
@@ -499,7 +557,168 @@
   50% { box-shadow: 0 0 0 8px rgba(158, 228, 37, 0); }
 }
 
-/* 1. Hero Architectural Stage (Pure Code Composition) */
+/* 1. Hero Seamless Celebration Stage (Naturally Blends into Ivory Canvas) */
+.hero-seamless-stage-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-seamless-stage-halo {
+  position: absolute;
+  inset: -18px;
+  border-radius: 270px 270px 50px 50px;
+  background: radial-gradient(ellipse at 50% 40%, rgba(212, 175, 55, 0.22) 0%, rgba(158, 27, 50, 0.06) 50%, rgba(250, 247, 242, 0) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-seamless-stage-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-seamless-stage-halo {
+  position: absolute;
+  inset: -18px;
+  border-radius: 270px 270px 50px 50px;
+  background: radial-gradient(ellipse at 50% 40%, rgba(212, 175, 55, 0.22) 0%, rgba(158, 27, 50, 0.06) 50%, rgba(250, 247, 242, 0) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-flagship-stage-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 490px;
+  border-radius: 250px 250px 36px 36px;
+  overflow: hidden;
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 20px 55px -10px rgba(55, 0, 10, 0.12), 0 0 35px rgba(212, 175, 55, 0.10);
+  background: #FAF6F0;
+  aspect-ratio: 4 / 4.8;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-flagship-stage-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 65px -8px rgba(55, 0, 10, 0.18), 0 0 45px rgba(212, 175, 55, 0.22);
+  border-color: rgba(212, 175, 55, 0.7);
+}
+.hero-flagship-stage-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-flagship-stage-frame:hover img {
+  transform: scale(1.03);
+}
+
+/* Multi-Auth Switcher & Google Button */
+.auth-tabs-toggle {
+  display: flex;
+  background: #FAF7F2;
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  border-radius: 999px;
+  padding: 3px;
+  margin-bottom: 20px;
+}
+.auth-tab-btn {
+  flex: 1;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  font-family: 'Sen', sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  color: #57534E;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.auth-tab-btn::after,
+.auth-tab-btn.active::after {
+  display: none !important;
+  content: none !important;
+}
+.auth-tab-btn.active {
+  background: #37000A !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(55, 0, 10, 0.25) !important;
+}
+.login-master-card .btn-tactile-primary,
+.login-master-card #btn-login-submit,
+.login-master-card #btn-signup-submit {
+  max-width: 360px !important;
+  width: 100% !important;
+  height: 38px !important;
+  border-radius: 999px !important;
+  box-sizing: border-box !important;
+}
+.login-master-card #btn-guest-demo {
+  max-width: 360px !important;
+  width: 100% !important;
+  height: 34px !important;
+  border-radius: 999px !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  padding: 0 16px !important;
+}
+.btn-google-auth {
+  width: 100%;
+  max-width: 360px;
+  height: 38px !important;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(62, 78, 80, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Sen', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #37000A;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-google-auth:hover {
+  background: #FAF8F5;
+  border-color: #37000A;
+  box-shadow: 0 4px 14px rgba(55,0,10,0.08);
+}
+.auth-divider-line {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 18px 0;
+  color: #78716C;
+  font-size: 12px;
+  font-family: 'Sen', sans-serif;
+}
+.auth-divider-line::before,
+.auth-divider-line::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #EBE5DB;
+}
+.auth-divider-line:not(:empty)::before {
+  margin-right: 14px;
+}
+.auth-divider-line:not(:empty)::after {
+  margin-left: 14px;
+}
+
+/* 1b. Hero Architectural Stage (Pure Code Composition) */
 .hero-code-stage-arch {
   position: relative;
   width: 100%;
@@ -541,7 +760,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid #FF1F3D;
+  border-bottom: 2px solid #9E1B32;
 }
 .hero-bahi-khata-body {
   padding: 18px;
@@ -571,7 +790,7 @@
 }
 .hero-ledger-slip-row:hover {
   background: #FFFDF9;
-  border-color: #FF1F3D;
+  border-color: #9E1B32;
   transform: translateX(2px);
 }
 
@@ -691,3 +910,359 @@
 }
 
 
+
+/* ==========================================================================
+   EVENTS BY JESSIE REFERENCE-INSPIRED EDITORIAL LUXURY ENHANCEMENTS
+   ========================================================================== */
+
+/* Eyebrow: Spaced uppercase with delicate dots */
+.hero-eyebrow-minimal {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Sen', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  color: #9E1B32;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero-eyebrow-minimal .eyebrow-dot {
+  color: #D4AF37;
+  font-size: 10px;
+}
+
+/* Arched Celebration Cards (Exact reference-inspired arch silhouette) */
+.gallery-portrait-card {
+  border-radius: 130px 130px 22px 22px !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.35) !important;
+  box-shadow: 0 14px 36px rgba(55, 0, 10, 0.06) !important;
+}
+.gallery-card-top-half {
+  border-radius: 128px 128px 0 0 !important;
+  height: 205px !important;
+}
+
+/* Circular Services Bubble: Soft Cream with Gold Rim */
+.circular-icon-bubble {
+  width: 74px !important;
+  height: 74px !important;
+  border-radius: 50% !important;
+  background: #FFFDF9 !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.45) !important;
+  box-shadow: 0 6px 18px rgba(55, 0, 10, 0.05) !important;
+  color: #37000A !important;
+}
+.circular-service-item:hover .circular-icon-bubble {
+  background: #37000A !important;
+  color: #D4AF37 !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 10px 26px rgba(55, 0, 10, 0.22) !important;
+}
+.circular-service-item:hover .circular-icon-bubble svg {
+  stroke: #D4AF37 !important;
+}
+
+
+
+
+/* Hero Seamless Celebration Stage (Directly Synced with Page Canvas - Zero Card Box) */
+.hero-flagship-stage-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 500px;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  aspect-ratio: auto !important;
+  transition: transform 0.4s ease;
+}
+.hero-flagship-stage-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: none !important;
+  border: none !important;
+}
+.hero-flagship-stage-frame img {
+  width: 100%;
+  height: auto;
+  border: none !important;
+  box-shadow: none !important;
+  display: block;
+}
+
+/* Universal Grid Alignment: Strict 1240px Bounds with 24px Parallel Margins */
+.nav-container-luxury {
+  max-width: 1240px !important;
+  width: 100% !important;
+  height: 64px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  box-sizing: border-box !important;
+}
+#view-landing {
+  max-width: 1240px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 24px 24px 80px !important;
+}
+.hero-cinematic-grid {
+  width: 100% !important;
+}
+
+
+/* ==========================================================================
+   THREEUI <CharacterCarousel /> FILMSTRIP CAROUSEL (DOM + CSS)
+   Exact Source: SHA-256 4c98939e0e2b (canonical-source character-filmstrip.html)
+   ========================================================================== */
+.character-filmstrip-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.character-filmstrip-stage {
+  --pointer-x: 50%;
+  position: relative;
+  width: 100%;
+  height: 480px;
+  min-height: 440px;
+  overflow: hidden;
+  isolation: isolate;
+  perspective: 1450px;
+  cursor: grab;
+  touch-action: none;
+  background: transparent !important;
+}
+
+.character-filmstrip-stage:active {
+  cursor: grabbing;
+}
+
+.character-filmstrip-deck {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transform-style: preserve-3d;
+}
+
+.character-filmstrip-card {
+  --focus: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(210px, 20vw, 280px);
+  aspect-ratio: 0.72;
+  padding: 8px;
+  overflow: hidden;
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  border-radius: 18px;
+  color: #37000A;
+  background: linear-gradient(165deg, #FFFFFF 0%, #FAF6EE 55%, #F4ECE0 100%);
+  box-shadow:
+    0 calc(10px + var(--focus) * 26px) calc(18px + var(--focus) * 40px)
+      rgba(55, 0, 10, calc(0.12 + var(--focus) * 0.24)),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.88);
+  appearance: none;
+  outline: none;
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: left;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.character-filmstrip-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  z-index: 3;
+  border: 1px solid rgba(212, 175, 55, calc(0.18 + var(--focus) * 0.32));
+  border-radius: 13px;
+  pointer-events: none;
+}
+
+.character-filmstrip-card:focus-visible {
+  box-shadow:
+    0 26px 50px rgba(55, 0, 10, 0.35),
+    0 0 0 4px rgba(212, 175, 55, 0.5);
+}
+
+.character-card-portrait {
+  position: absolute;
+  inset: 8px 8px 27%;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  background: #2D050C;
+}
+
+.character-card-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(calc(1.02 + (1 - var(--focus)) * 0.06));
+  transition: transform 0.4s ease;
+}
+
+.character-card-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 4;
+  font-family: 'Sen', sans-serif;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: #37000A;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  padding: 3px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.character-card-footer {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  left: 8px;
+  height: calc(27% - 8px);
+  display: grid;
+  grid-template-columns: clamp(28px, 3.2vw, 36px) 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #FFFFFF;
+  border-radius: 0 0 12px 12px;
+  border-top: 1px solid rgba(212, 175, 55, 0.24);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.character-card-index {
+  display: grid;
+  width: clamp(24px, 2.8vw, 32px);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1.5px solid #D4AF37;
+  border-radius: 50%;
+  background: #37000A;
+  color: #D4AF37;
+  font: 700 clamp(9px, 0.8vw, 12px)/1 'Sen', sans-serif;
+}
+
+.character-card-meta {
+  min-width: 0;
+}
+
+.character-card-name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #37000A;
+  font-family: 'Sen', sans-serif;
+  font-size: clamp(12px, 1.1vw, 15px);
+  font-weight: 700;
+}
+
+.character-card-role {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #9E1B32;
+  font-size: clamp(10px, 0.9vw, 12px);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.btn-filmstrip-nav:hover {
+  background: #37000A !important;
+  color: #D4AF37 !important;
+  border-color: #D4AF37 !important;
+  transform: translateY(-2px);
+}
+
+
+/* Standardized Small Animated Tactile Button (Matches Navbar Sign-In) */
+.btn-tactile-primary,
+
+.btn-pricing-gold {
+  height: 38px !important;
+  border-radius: 999px !important;
+  font-family: 'Sen', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  padding: 0 20px !important;
+  background: #37000A !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid #D4AF37 !important;
+  box-shadow: 0 4px 14px rgba(55, 0, 10, 0.22) !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease !important;
+}
+
+.btn-tactile-primary:hover,
+.btn-hero-demo:hover,
+.btn-pricing-white:hover,
+.btn-pricing-gold:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(55, 0, 10, 0.3), 0 0 15px rgba(212, 175, 55, 0.4) !important;
+  filter: brightness(1.08) !important;
+}
+
+/* Quick City Pills & Smart Voice Animations */
+.btn-city-pill {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #FAF7F2;
+  border: 1px solid rgba(62,78,80,0.22);
+  font-size: 11px;
+  font-weight: 700;
+  color: #37000A;
+  font-family: 'Sen', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-city-pill:hover {
+  background: #37000A;
+  color: #FFFFFF;
+  border-color: #D4AF37;
+  transform: translateY(-1px);
+}
+#tab-entry .btn-tactile-primary,
+#btn-smart-voice-master {
+  max-width: none !important;
+  white-space: nowrap !important;
+}
+#tab-entry button[type="submit"] {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+  50% { box-shadow: 0 0 22px rgba(212, 175, 55, 0.5); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}

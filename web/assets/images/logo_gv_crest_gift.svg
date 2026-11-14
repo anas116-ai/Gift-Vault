@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="crestBox" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#460710" />
+      <stop offset="50%" stop-color="#240307" />
+      <stop offset="100%" stop-color="#0E0103" />
+    </linearGradient>
+    <linearGradient id="crestBevel" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#240307" />
+      <stop offset="100%" stop-color="#600D1A" />
+    </linearGradient>
+    <linearGradient id="gold24" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9DD" />
+      <stop offset="25%" stop-color="#F5CB52" />
+      <stop offset="70%" stop-color="#D49922" />
+      <stop offset="100%" stop-color="#8A5A0D" />
+    </linearGradient>
+    <linearGradient id="goldGleam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#FDE896" />
+      <stop offset="100%" stop-color="#D49922" />
+    </linearGradient>
+    <filter id="crestShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#D4AF37" flood-opacity="0.32" />
+    </filter>
+  </defs>
+
+  <g id="royal-gift-crest" filter="url(#crestShadow)">
+    <!-- 1. THE GIFT BOX (BURGUNDY SHIELD) -->
+    <!-- Outer Shield Box -->
+    <path d="
+      M 36,66
+      L 164,66
+      L 150,126
+      L 100,186
+      L 50,126
+      Z
+    " fill="url(#crestBox)" />
+
+    <!-- 2. THE 'G' RIBBON (LEFT WRAP) -->
+    <path d="
+      M 48,76
+      L 100,76
+      L 90,92
+      L 66,92
+      L 66,122
+      L 100,146
+      L 100,128
+      L 86,128
+      L 86,114
+      L 112,114
+      L 112,154
+      L 54,124
+      Z
+    " fill="url(#gold24)" />
+
+    <!-- 3. THE 'V' RIBBON (RIGHT & APEX WRAP) -->
+    <path d="
+      M 118,76
+      L 132,76
+      L 100,172
+      L 88,172
+      L 100,154
+      L 120,92
+      L 108,92
+      Z
+    " fill="url(#goldGleam)" />
+
+    <!-- 4. GIFT LID FLAP -->
+    <polygon points="32,60 168,60 164,66 36,66" fill="url(#crestBevel)" />
+    <line x1="32" y1="63" x2="168" y2="63" stroke="url(#gold24)" stroke-width="1.5" />
+
+    <!-- 5. OPULENT 24K GOLD GIFT BOW ATOP -->
+    <!-- Left Loop -->
+    <path d="
+      M 100,60
+      C 82,36 54,32 44,44
+      C 34,56 50,66 78,64
+      C 90,64 98,62 100,60
+      Z
+    " fill="url(#goldGleam)" />
+    <!-- Right Loop -->
+    <path d="
+      M 100,60
+      C 118,36 146,32 156,44
+      C 166,56 150,66 122,64
+      C 110,64 102,62 100,60
+      Z
+    " fill="url(#gold24)" />
+    <!-- Center Ribbon Knot Diamond -->
+    <polygon points="100,52 108,60 100,68 92,60" fill="url(#goldGleam)" stroke="#D49922" stroke-width="1" />
+    <circle cx="100" cy="60" r="2.5" fill="#FFFFFF" />
+  </g>
+</svg>

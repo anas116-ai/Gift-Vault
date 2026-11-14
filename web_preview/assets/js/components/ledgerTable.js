@@ -16,24 +16,43 @@ window.GVLedgerTable = {
     const entries = event.entries || [];
 
     entries.forEach(item => {
+      const esc = window.GVUtils ? window.GVUtils.escapeHtml : (s => s);
+      const safeSno = esc(item.sno);
+      const safeName = esc(item.name);
+      const safePlace = esc(item.place);
+      const safeRelation = esc(item.relation);
+      const safeMode = esc(item.mode);
+      const safeRecorder = esc(item.recorder || 'Desk 1');
+      const safeAmount = Number(item.amount) || 0;
+
       const row = document.createElement('tr');
       row.id = `row-${item.sno.replace(/[^a-zA-Z0-9]/g, '')}`;
       row.innerHTML = `
-        <td><strong class="tabular-nums" style="color:var(--c-primary); font-weight:800;">${item.sno}</strong></td>
-        <td><strong style="color:#0F172A; font-size:13.5px;">${item.name}</strong></td>
-        <td style="color:#475569;">${item.place}</td>
-        <td><span style="font-size:12px; color:#64748B; background:#F8F5F0; padding:2px 8px; border-radius:4px; border:1px solid #EBE5DB;">${item.relation}</span></td>
-        <td><span style="background:var(--c-primary-light); color:var(--c-primary); padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700; border:1px solid var(--c-primary-border);">${item.mode}</span></td>
-        <td class="tabular-nums" style="font-weight:800; color:var(--c-primary); font-size:14.5px;">₹${item.amount.toLocaleString('en-IN')}</td>
-        <td><span style="font-size:11.5px; color:#94A3B8;">${item.recorder || 'Desk 1'}</span></td>
+        <td><strong class="tabular-nums" style="color:var(--c-primary); font-weight:800;">${safeSno}</strong></td>
+        <td><strong style="color:#0F172A; font-size:13.5px;">${safeName}</strong></td>
+        <td style="color:#475569;">${safePlace}</td>
+        <td>
+          ${item.photo ? `
+            <div style="display:flex; align-items:center; gap:6px;">
+              <img src="${item.photo}" onclick="window.GVLedgerTable.viewPhotoProof('${safeSno}')" style="width:36px; height:36px; object-fit:cover; border-radius:8px; border:1.5px solid #D4AF37; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.15); transition:transform 0.2s;" onmouseenter="this.style.transform='scale(1.1)'" onmouseleave="this.style.transform='scale(1)'" title="Click to view verified gift photo">
+              <span style="font-size:10px; font-weight:700; color:#047857; background:#D1FAE5; padding:1px 6px; border-radius:4px; border:1px solid #10B981; cursor:pointer;" onclick="window.GVLedgerTable.viewPhotoProof('${safeSno}')">📸 Proof</span>
+            </div>
+          ` : `
+            <span style="font-size:11px; color:#94A3B8; font-style:italic;">No Photo</span>
+          `}
+        </td>
+        <td><span style="font-size:12px; color:#64748B; background:#F8F5F0; padding:2px 8px; border-radius:4px; border:1px solid #EBE5DB;">${safeRelation}</span></td>
+        <td><span style="background:var(--c-primary-light); color:var(--c-primary); padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700; border:1px solid var(--c-primary-border);">${safeMode}</span></td>
+        <td class="tabular-nums" style="font-weight:800; color:var(--c-primary); font-size:14.5px;">₹${safeAmount.toLocaleString('en-IN')}</td>
+        <td><span style="font-size:11.5px; color:#94A3B8;">${safeRecorder}</span></td>
         <td style="white-space:nowrap;">
-          <button type="button" class="btn-secondary" style="padding:4px 9px; font-size:11.5px;" onclick="window.GVReceiptModal.open('${item.sno}', '${item.name}', '${item.place}', '${item.mode}', '₹${item.amount.toLocaleString('en-IN')}')">
+          <button type="button" class="btn-secondary" style="padding:4px 9px; font-size:11.5px;" onclick="window.GVReceiptModal.open('${safeSno}', '${safeName.replace(/'/g, "\\'")}', '${safePlace.replace(/'/g, "\\'")}', '${safeMode}', '₹${safeAmount.toLocaleString('en-IN')}')">
             ${window.GVIcons.printer} <span>Slip</span>
           </button>
-          <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:11.5px; margin-left:4px;" onclick="window.GVLedgerTable.openEdit('${item.sno}')">
+          <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:11.5px; margin-left:4px;" onclick="window.GVLedgerTable.openEdit('${safeSno}')">
             ${window.GVIcons.edit}
           </button>
-          <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:11.5px; margin-left:4px; color:#EF4444;" onclick="window.GVLedgerTable.deleteEntry('${item.sno}')">
+          <button type="button" class="btn-secondary" style="padding:4px 8px; font-size:11.5px; margin-left:4px; color:#EF4444;" onclick="window.GVLedgerTable.deleteEntry('${safeSno}')">
             ${window.GVIcons.trash}
           </button>
         </td>
@@ -293,5 +312,35 @@ window.GVLedgerTable = {
     printWin.document.write(htmlContent);
     printWin.document.close();
     window.GVApp.showToast(`📄 PDF report generated for ${event.title}!`, 'emerald');
+  },
+
+  viewPhotoProof(sno) {
+    const event = window.GVStore.getActiveEvent();
+    if (!event || !event.entries) return;
+    const entry = event.entries.find(e => e.sno === sno);
+    if (!entry || !entry.photo) {
+      window.GVApp.showToast('ఈ ఎంట్రీకి ఫోటో ప్రూఫ్ జోడించబడలేదు.', 'gold');
+      return;
+    }
+
+    const modal = document.getElementById('modal-photo-proof');
+    const img = document.getElementById('proof-modal-img');
+    const snoEl = document.getElementById('proof-modal-sno');
+    const guestEl = document.getElementById('proof-modal-guest');
+    const placeEl = document.getElementById('proof-modal-place');
+    const amtEl = document.getElementById('proof-modal-amount');
+
+    if (img) img.src = entry.photo;
+    if (snoEl) snoEl.innerText = entry.sno;
+    if (guestEl) guestEl.innerText = entry.name;
+    if (placeEl) placeEl.innerText = `${entry.place} • ${entry.relation}`;
+    if (amtEl) amtEl.innerText = `₹${entry.amount.toLocaleString('en-IN')} (${entry.mode})`;
+
+    if (modal) modal.style.display = 'flex';
+  },
+
+  closePhotoProof() {
+    const modal = document.getElementById('modal-photo-proof');
+    if (modal) modal.style.display = 'none';
   }
 };

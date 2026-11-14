@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- Rich Imperial Burgundy Velvet Gift Box Gradient -->
+    <linearGradient id="luxeBoxBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#460711" />
+      <stop offset="45%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#120104" />
+    </linearGradient>
+
+    <!-- Gift Box Lid Highlight -->
+    <linearGradient id="luxeLidBg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#640E1B" />
+    </linearGradient>
+
+    <!-- 24K Royal Gold Satin Ribbon Gradient -->
+    <linearGradient id="goldSatin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9DE" />
+      <stop offset="25%" stop-color="#F5CB52" />
+      <stop offset="65%" stop-color="#D49922" />
+      <stop offset="100%" stop-color="#8C5C0F" />
+    </linearGradient>
+
+    <!-- Gold Gleam / Specular Highlight -->
+    <linearGradient id="goldGleam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#FDE896" />
+      <stop offset="100%" stop-color="#D49922" />
+    </linearGradient>
+
+    <!-- Ribbon Deep Fold Shadow -->
+    <linearGradient id="goldShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B87D17" />
+      <stop offset="100%" stop-color="#5E3B05" />
+    </linearGradient>
+
+    <!-- Ambient Shadow -->
+    <filter id="royalGiftGlow" x="-25%" y="-20%" width="150%" height="145%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4.5" flood-color="#D4AF37" flood-opacity="0.35" />
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <g id="signature-gift-gv" filter="url(#royalGiftGlow)">
+    <!-- ==================== 1. THE LUXURY GIFT BOX BODY ==================== -->
+    <!-- The Gift Box Container (Rounded luxury square box) -->
+    <rect x="34" y="60" width="132" height="122" rx="18" fill="url(#luxeBoxBg)" stroke="url(#goldSatin)" stroke-width="1.4" />
+
+    <!-- Gift Box Lid Overhang Line -->
+    <path d="M 34,74 L 166,74" stroke="url(#goldSatin)" stroke-width="1.8" stroke-dasharray="none" />
+    <rect x="32" y="60" width="136" height="14" rx="7" fill="url(#luxeLidBg)" stroke="url(#goldSatin)" stroke-width="1.2" />
+
+    <!-- ==================== 2. GOLD SATIN 'G' RIBBON (LEFT WING) ==================== -->
+    <path d="
+      M 50,86
+      L 94,86
+      L 94,100
+      L 66,100
+      L 66,150
+      L 94,150
+      L 94,124
+      L 80,124
+      L 80,112
+      L 106,112
+      L 106,164
+      L 50,164
+      Z
+    " fill="url(#goldSatin)" />
+
+    <!-- G Ribbon Chamfer Highlight -->
+    <polygon points="50,86 94,86 88,94 56,94" fill="url(#goldGleam)" />
+    <polygon points="80,112 106,112 100,120 80,120" fill="url(#goldGleam)" />
+
+    <!-- ==================== 3. GOLD SATIN 'V' RIBBON (RIGHT WING) ==================== -->
+    <path d="
+      M 112,86
+      L 128,86
+      L 139,142
+      L 150,86
+      L 166,86
+      L 147,164
+      L 131,164
+      Z
+    " fill="url(#goldGleam)" />
+
+    <!-- V Ribbon Inner Bevel Shadow -->
+    <polygon points="128,86 139,142 133,142 122,86" fill="url(#goldShadow)" opacity="0.6" />
+
+    <!-- Vertical Ribbon Dividing Seam (Down Center of Box) -->
+    <line x1="109" y1="74" x2="109" y2="182" stroke="url(#goldSatin)" stroke-width="1.5" stroke-opacity="0.4" />
+
+    <!-- ==================== 4. EXQUISITE 24K GOLD SATIN GIFT BOW ATOP LID ==================== -->
+    <!-- Left Ribbon Bow Loop (Sleek, fluid satin curve) -->
+    <path d="
+      M 100,60
+      C 76,32 46,28 36,40
+      C 26,52 44,66 74,63
+      C 88,63 96,61 100,60
+      Z
+    " fill="url(#goldGleam)" />
+    <!-- Left Loop Inner Hollow Depth -->
+    <path d="
+      M 94,58
+      C 76,38 54,36 46,44
+      C 40,50 54,58 76,57
+      Z
+    " fill="url(#goldShadow)" opacity="0.45" />
+
+    <!-- Right Ribbon Bow Loop -->
+    <path d="
+      M 100,60
+      C 124,32 154,28 164,40
+      C 174,52 156,66 126,63
+      C 112,63 104,61 100,60
+      Z
+    " fill="url(#goldSatin)" />
+    <!-- Right Loop Inner Hollow Depth -->
+    <path d="
+      M 106,58
+      C 124,38 146,36 154,44
+      C 160,50 146,58 124,57
+      Z
+    " fill="url(#goldShadow)" opacity="0.45" />
+
+    <!-- Upper Loop Crest (Center Lift) -->
+    <path d="
+      M 86,42
+      C 94,26 106,26 114,42
+      C 106,46 94,46 86,42
+      Z
+    " fill="url(#goldGleam)" />
+
+    <!-- Central Diamond Ribbon Knot (Shagun Jewel Knot) -->
+    <polygon points="100,50 110,60 100,70 90,60" fill="url(#goldGleam)" stroke="#D49922" stroke-width="1" />
+    <circle cx="100" cy="60" r="2.8" fill="#FFFFFF" />
+
+    <!-- Hanging Satin Ribbon Tails -->
+    <!-- Left Ribbon Tail (Waving gently) -->
+    <path d="
+      M 92,66
+      C 82,78 72,94 66,108
+      L 74,108
+      C 80,96 88,82 96,70
+      Z
+    " fill="url(#goldSatin)" opacity="0.9" />
+    <!-- Right Ribbon Tail -->
+    <path d="
+      M 108,66
+      C 118,78 128,94 134,108
+      L 126,108
+      C 120,96 112,82 104,70
+      Z
+    " fill="url(#goldGleam)" opacity="0.9" />
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+
+  <defs>
+    <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9DD" />
+      <stop offset="25%" stop-color="#F5CB52" />
+      <stop offset="70%" stop-color="#D49922" />
+      <stop offset="100%" stop-color="#8A5A0D" />
+    </linearGradient>
+    <linearGradient id="gGleam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#FDE896" />
+      <stop offset="100%" stop-color="#D49922" />
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#460711" />
+      <stop offset="50%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#120104" />
+    </linearGradient>
+    <linearGradient id="gDarkFacet" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#5E0D19" />
+    </linearGradient>
+    <filter id="cShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3.5" stdDeviation="4" flood-color="#D4AF37" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <g filter="url(#cShadow)">
+    <polygon points="100,24 170,64 170,144 100,184 30,144 30,64" fill="url(#gDark)" stroke="url(#gGold)" stroke-width="1.5" />
+    <!-- Geometric ribbon facets forming G and V -->
+    <polygon points="30,64 100,104 100,184 30,144" fill="url(#gDarkFacet)" />
+    <!-- G chiseled inside left -->
+    <path d="M 44,76 L 86,98 L 78,110 L 56,98 L 56,132 L 86,146 L 86,128 L 72,122 L 74,114 L 94,122 L 94,158 L 44,136 Z" fill="url(#gGold)" />
+    <!-- V chiseled inside right -->
+    <path d="M 106,104 L 118,108 L 136,150 L 156,90 L 144,84 L 130,136 L 114,98 Z" fill="url(#gGleam)" />
+    <!-- Diamond Ribbon Knot -->
+    <polygon points="100,16 112,24 100,32 88,24" fill="url(#gGleam)" />
+    <circle cx="100" cy="24" r="2.5" fill="#FFF" />
+  </g>
+</svg>

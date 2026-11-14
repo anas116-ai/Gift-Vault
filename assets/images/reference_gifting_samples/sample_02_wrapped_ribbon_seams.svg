@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+
+  <defs>
+    <!-- Deep Obsidian Burgundy Gradient -->
+    <linearGradient id="refDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#36050C" />
+      <stop offset="50%" stop-color="#1E0206" />
+      <stop offset="100%" stop-color="#0E0103" />
+    </linearGradient>
+
+    <!-- Obsidian Bevel Highlight -->
+    <linearGradient id="refDarkFacet" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E0206" />
+      <stop offset="100%" stop-color="#4C0A14" />
+    </linearGradient>
+
+    <!-- 24K Champagne Gold Gradient -->
+    <linearGradient id="refGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8D6" />
+      <stop offset="25%" stop-color="#F2C74B" />
+      <stop offset="70%" stop-color="#D49922" />
+      <stop offset="100%" stop-color="#885A0D" />
+    </linearGradient>
+
+    <!-- Gold Gleam -->
+    <linearGradient id="refGoldGleam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#FDE896" />
+      <stop offset="100%" stop-color="#D49922" />
+    </linearGradient>
+
+    <filter id="refShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3.5" stdDeviation="4" flood-color="#D4AF37" flood-opacity="0.32" />
+    </filter>
+  </defs>
+
+  <g filter="url(#refShadow)">
+    <!-- Outer Inverted Triangle Gift Parcel -->
+    <path d="
+      M 30,50
+      L 94,50
+      L 80,76
+      L 54,76
+      L 88,142
+      L 100,118
+      L 126,118
+      L 114,142
+      L 100,166
+      L 136,92
+      L 150,92
+      L 100,188
+      Z
+    " fill="url(#refDark)" />
+
+    <!-- Top-Right Gold Corner Triangle -->
+    <polygon points="128,50 170,50 148,92" fill="url(#refGold)" />
+
+    <!-- GIFTING ELEMENT: Golden Ribbon Stripe Running Down the Center -->
+    <polygon points="98,50 102,50 102,176 98,176" fill="url(#refGoldGleam)" />
+
+    <!-- Horizontal Ribbon Band Across the G Crossbar -->
+    <polygon points="100,118 126,118 122,126 96,126" fill="url(#refGold)" />
+
+    <!-- Gift Bow atop -->
+    <path d="M 100,50 C 85,30 65,30 58,40 C 50,50 64,54 86,51 Z" fill="url(#refGoldGleam)" />
+    <path d="M 100,50 C 115,30 135,30 142,40 C 150,50 136,54 114,51 Z" fill="url(#refGold)" />
+    <circle cx="100" cy="50" r="3.5" fill="url(#refGoldGleam)" />
+  </g>
+</svg>

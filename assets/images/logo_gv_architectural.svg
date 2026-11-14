@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- Deep Obsidian Burgundy Gradient -->
+    <linearGradient id="obsidianGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38060D" />
+      <stop offset="50%" stop-color="#220307" />
+      <stop offset="100%" stop-color="#0F0103" />
+    </linearGradient>
+
+    <!-- Obsidian Highlight Facet -->
+    <linearGradient id="obsidianFacet" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#220307" />
+      <stop offset="100%" stop-color="#540C15" />
+    </linearGradient>
+
+    <!-- 24K Royal Champagne Gold -->
+    <linearGradient id="goldPure" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5D1" />
+      <stop offset="28%" stop-color="#F2C749" />
+      <stop offset="68%" stop-color="#D49922" />
+      <stop offset="100%" stop-color="#875A0E" />
+    </linearGradient>
+
+    <!-- Gold Gleam -->
+    <linearGradient id="goldFacetLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#FCE187" />
+      <stop offset="100%" stop-color="#D49922" />
+    </linearGradient>
+
+    <filter id="luxeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3.5" flood-color="#D4AF37" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <g id="architectural-gv" filter="url(#luxeGlow)">
+    <!-- THE 'G' & 'V' INTERLOCKING CHISELED MONOGRAM -->
+    <!-- Segment 1: G Top-Left Bar -->
+    <polygon points="32,46 92,46 76,74 48,74" fill="url(#obsidianFacet)" />
+
+    <!-- Segment 2: Outer Left Diagonal Descent (Outer Shield Boundary) -->
+    <polygon points="32,46 48,74 100,166 100,192 18,46" fill="url(#obsidianGrad)" />
+
+    <!-- Segment 3: V Main Right Ascending Wing -->
+    <polygon points="100,192 100,166 148,82 172,82" fill="url(#obsidianFacet)" />
+
+    <!-- Segment 4: Inner G Chiseled Keyhook & Crossbar -->
+    <!-- The upward inner slope of V that bends into the G crossbar -->
+    <polygon points="100,166 122,128 102,128 92,146" fill="url(#obsidianGrad)" />
+    <!-- G Crossbar Spur -->
+    <polygon points="102,128 136,128 126,110 88,110" fill="url(#obsidianFacet)" />
+
+    <!-- Segment 5: The Shagun Crown Jewel (Tri-faceted 24K Gold Accent at Top Right) -->
+    <!-- Facet A: Brilliant Top Facet -->
+    <polygon points="124,46 182,46 156,82" fill="url(#goldFacetLight)" />
+    <!-- Facet B: Inner Gold Accent -->
+    <polygon points="124,46 156,82 142,66" fill="url(#goldPure)" />
+    <!-- Facet C: Shimmer Peak Highlight -->
+    <circle cx="153" cy="64" r="2" fill="#FFFFFF" opacity="0.9" />
+  </g>
+</svg>

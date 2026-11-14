@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+
+  <defs>
+    <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9DD" />
+      <stop offset="25%" stop-color="#F5CB52" />
+      <stop offset="70%" stop-color="#D49922" />
+      <stop offset="100%" stop-color="#8A5A0D" />
+    </linearGradient>
+    <linearGradient id="gGleam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#FDE896" />
+      <stop offset="100%" stop-color="#D49922" />
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#460711" />
+      <stop offset="50%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#120104" />
+    </linearGradient>
+    <linearGradient id="gDarkFacet" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#5E0D19" />
+    </linearGradient>
+    <filter id="cShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3.5" stdDeviation="4" flood-color="#D4AF37" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <g filter="url(#cShadow)">
+    <!-- Outer sleeve box -->
+    <rect x="34" y="56" width="132" height="124" rx="12" fill="url(#gDarkFacet)" stroke="url(#gGold)" stroke-width="1.5" />
+    <!-- Inner pulled-out drawer -->
+    <rect x="42" y="72" width="116" height="96" rx="8" fill="url(#gDark)" stroke="url(#gGold)" stroke-width="1" />
+    <!-- Gold ribbon pull tab (G and V loop) -->
+    <path d="M 100,72 L 100,50 C 90,40 75,44 75,54 C 75,64 90,68 100,60" fill="none" stroke="url(#gGold)" stroke-width="4" />
+    <path d="M 100,72 L 100,50 C 110,40 125,44 125,54 C 125,64 110,68 100,60" fill="none" stroke="url(#gGleam)" stroke-width="4" />
+    <!-- GV Drawer Face Stamping -->
+    <text x="100" y="132" font-family="'Cinzel', serif" font-size="32" font-weight="900" fill="url(#gGleam)" text-anchor="middle" letter-spacing="2">GV</text>
+  </g>
+</svg>

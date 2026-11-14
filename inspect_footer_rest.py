@@ -1,6 +1,0 @@
-with open('index.html', 'r', encoding='utf-8') as f:
-    text = f.read()
-
-pos = text.find('footer-master')
-if pos != -1:
-    print(text[pos+1000:pos+3500])

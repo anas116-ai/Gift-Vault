@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- Imperial Burgundy/Obsidian Gradient -->
+    <linearGradient id="bgVaultDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A0812" />
+      <stop offset="50%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#120104" />
+    </linearGradient>
+
+    <!-- Obsidian Chisel Highlight -->
+    <linearGradient id="bgVaultChisel" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#6E121E" />
+    </linearGradient>
+
+    <!-- 24K Royal Gold Gradient -->
+    <linearGradient id="goldLuxe" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8D6" />
+      <stop offset="30%" stop-color="#F2C84B" />
+      <stop offset="70%" stop-color="#D49B22" />
+      <stop offset="100%" stop-color="#8F5F0E" />
+    </linearGradient>
+
+    <!-- Gold Gleam Reflection -->
+    <linearGradient id="goldGleam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#FDE896" />
+      <stop offset="100%" stop-color="#D49B22" />
+    </linearGradient>
+
+    <!-- Gold Deep Shadow -->
+    <linearGradient id="goldShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B87C17" />
+      <stop offset="100%" stop-color="#5E3A04" />
+    </linearGradient>
+
+    <filter id="royalShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#D4AF37" flood-opacity="0.28" />
+    </filter>
+  </defs>
+
+  <g id="gv-royal-crest" filter="url(#royalShadow)">
+    <!-- OUTER SHIELD OUTLINE (Subtle hairline luxury rim) -->
+    <polygon points="100,12 184,54 184,118 100,188 16,118 16,54" fill="none" stroke="url(#goldLuxe)" stroke-width="1.2" stroke-opacity="0.35" />
+
+    <!-- ==================== THE 'G' EMBLEM (LEFT WING) ==================== -->
+    <!-- G Top Horizontal Beam -->
+    <polygon points="40,54 100,54 88,72 52,72" fill="url(#bgVaultChisel)" />
+    <!-- G Left Vertical/Angled Wall -->
+    <polygon points="40,54 52,72 52,118 34,108" fill="url(#bgVaultDark)" />
+    <!-- G Lower Curve into Vault Center -->
+    <polygon points="34,108 52,118 84,136 76,152 34,124" fill="url(#bgVaultDark)" />
+    <!-- G Inward Vault Crossbar / Key Notch -->
+    <polygon points="84,136 112,136 104,118 78,118" fill="url(#goldLuxe)" />
+
+    <!-- ==================== THE 'V' EMBLEM (VAULT APEX & RIGHT WING) ==================== -->
+    <!-- V Left Diagonal Drop to Base -->
+    <polygon points="86,96 100,172 114,172 102,96" fill="url(#bgVaultDark)" />
+    <!-- V Right Main Pillar Ascending to Crest -->
+    <polygon points="100,172 114,172 164,74 146,74" fill="url(#bgVaultChisel)" />
+    <!-- V Outer Right Shield Boundary -->
+    <polygon points="164,74 146,74 158,112 168,106" fill="url(#bgVaultDark)" />
+
+    <!-- ==================== SHAGUN JEWEL (APEX DIAMOND CROWN) ==================== -->
+    <!-- Top Apex Floating Auspicious Shagun Diamond -->
+    <!-- Facet 1: Top Light Face -->
+    <polygon points="100,20 120,38 100,44 80,38" fill="url(#goldGleam)" />
+    <!-- Facet 2: Left Shadow Face -->
+    <polygon points="80,38 100,44 100,50 74,40" fill="url(#goldShadow)" />
+    <!-- Facet 3: Right Brilliance Face -->
+    <polygon points="120,38 100,44 100,50 126,40" fill="url(#goldLuxe)" />
+
+    <!-- Micro Jewel Accents: 3 Auspicious Gold Dots (Prosperity/Lakshmi Kataksham) -->
+    <circle cx="100" cy="184" r="2.5" fill="url(#goldLuxe)" />
+    <circle cx="20" cy="54" r="1.8" fill="url(#goldLuxe)" opacity="0.6" />
+    <circle cx="180" cy="54" r="1.8" fill="url(#goldLuxe)" opacity="0.6" />
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+
+  <defs>
+    <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9DD" />
+      <stop offset="25%" stop-color="#F5CB52" />
+      <stop offset="70%" stop-color="#D49922" />
+      <stop offset="100%" stop-color="#8A5A0D" />
+    </linearGradient>
+    <linearGradient id="gGleam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#FDE896" />
+      <stop offset="100%" stop-color="#D49922" />
+    </linearGradient>
+    <linearGradient id="gDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#460711" />
+      <stop offset="50%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#120104" />
+    </linearGradient>
+    <linearGradient id="gDarkFacet" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#280308" />
+      <stop offset="100%" stop-color="#5E0D19" />
+    </linearGradient>
+    <filter id="cShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3.5" stdDeviation="4" flood-color="#D4AF37" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <g filter="url(#cShadow)">
+    <!-- Tech chamfered gift box -->
+    <polygon points="56,60 144,60 164,80 164,156 144,176 56,176 36,156 36,80" fill="url(#gDark)" stroke="url(#gGold)" stroke-width="2" />
+    <!-- PCB traces forming G and V -->
+    <path d="M 52,90 L 86,90 L 86,102 L 68,102 L 68,142 L 86,142 L 86,124 L 78,124" fill="none" stroke="url(#gGold)" stroke-width="4" stroke-linecap="round" />
+    <circle cx="52" cy="90" r="3" fill="url(#gGleam)" />
+    <path d="M 112,90 L 126,142 L 148,90" fill="none" stroke="url(#gGleam)" stroke-width="4" stroke-linecap="round" />
+    <circle cx="112" cy="90" r="3" fill="url(#gGleam)" />
+    <circle cx="148" cy="90" r="3" fill="url(#gGleam)" />
+    <!-- Glowing digital gift bow -->
+    <polygon points="100,42 120,52 100,60 80,52" fill="url(#gGleam)" />
+    <circle cx="100" cy="51" r="2.5" fill="#FFF" />
+  </g>
+</svg>
