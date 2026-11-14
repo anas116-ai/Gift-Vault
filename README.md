@@ -1,20 +1,23 @@
 <div align="center">
 
-  <img src="assets/images/logo_gv_monogram.svg" alt="GiftVault Royal Emblem" width="100" height="100" />
+  <a href="https://github.com/anas116-ai/Gift-Vault">
+    <img src="docs/images/giftvault_logo_card.png" alt="GiftVault Sacred Emblem" width="130" height="130" style="border-radius: 28px;" />
+  </a>
 
-  # GiftVault (గిఫ్ట్‌వాల్ట్) 🎁
+  # GiftVault (గిఫ్ట్‌వాల్ట్)
+
   ### *Sacred Indian Family Shagun Vault & Digital Red Notebook*
 
   <p align="center">
     <strong>డిజిటల్ నవ్య తాంబూల &amp; శకునాల భాండాగారం</strong><br>
-    <em>Modernizing Generational Indian Celebration Gifting with 100% Offline Privacy, Hands-Free Voice Dictation &amp; 2-Inch Thermal Slips.</em>
+    <em>Generational Indian Celebration Gifting • 100% Offline Local Privacy • Hands-Free Voice Dictation • 2-Inch Thermal Slips</em>
   </p>
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
   [![Slopdar Score](https://img.shields.io/badge/Slopdar-0%2F100%20(Hand--Crafted)-brightgreen)](#-code-craftsmanship--slopdar-audit)
   [![Offline Architecture](https://img.shields.io/badge/Privacy-100%25%20Offline%20First-success)](#-zero-cloud-leak-architecture)
-  [![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20PWA%20%7C%20Desktop-blue)](#)
-  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+  [![Code Style](https://img.shields.io/badge/Code%20Style-Vanilla%20%26%20Zero--Bloat-blue)](#)
+  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
 
 </div>
 
@@ -26,17 +29,22 @@
 
 ---
 
-## 🌟 Why GiftVault? (సమస్య &amp; పరిష్కారం)
+## 🌟 The Generational Challenge & Solution (సమస్య &amp; పరిష్కారం)
 
-In Indian weddings (*వివాహం*), housewarmings (*గృహప్రవేశం*), silver jubilees (*రజతోత్సవం*), and cradle ceremonies (*పుట్టెంటకలు / నామకరణం*), guests bless the host family with cash gifts (*Moyyulu*, *Chadhivimpu*, *Tamboolam*, *Shagun*). 
+In Indian weddings (*రాయల్ వివాహం*), housewarmings (*గృహప్రవేశం*), silver jubilees (*రజతోత్సవం*), and cradle ceremonies (*పుట్టెంటకలు / నామకరణం*), guests present auspicious cash gifts (*Moyyulu*, *Chadhivimpu*, *Tamboolam*, *Shagun*).
 
-Traditionally, volunteers at chaotic reception desks record these gifts inside a red physical notebook (**Munshi Book / బహీ-ఖాతా**). This physical system frequently suffers from:
-* ❌ **Handwriting Illegibility**: Misreading relatives' names or native places after the event.
-* ❌ **Lost Slips & Calculation Errors**: Misplaced envelopes and incorrect cash totals under heavy rush.
-* ❌ **Privacy & Loss Risks**: Anyone can peek at the open book, or the physical diary can be lost/damaged.
-* ❌ **Reciprocity Blindness**: Spending hours searching old paper diaries to know how much a relative gave when you attend their daughter's wedding 3 years later.
+Traditionally, volunteer relatives record these in a physical red notebook (**Munshi Book / బహీ-ఖాతా**). Under heavy reception rush, this paper system creates major friction:
 
-**GiftVault** eliminates every single pain point with an elegant, offline-first digital sanctuary tailored for authentic Indian celebration culture.
+```
+┌──────────────────────────────────────────────┐       ┌──────────────────────────────────────────────┐
+│       TRADITIONAL PAPER NOTEBOOK             │       │              GIFTVAULT SANCTUARY             │
+├──────────────────────────────────────────────┤  VS   ├──────────────────────────────────────────────┤
+│ ❌ Illegible handwriting & spelling mistakes │  ──>  │ ✅ Hands-free Telugu & English Voice Parsing │
+│ ❌ Lost cash envelopes & misplaced slips     │  ──>  │ ✅ Instant 2-Inch Bluetooth Thermal Receipts │
+│ ❌ Zero physical security or confidentiality │  ──>  │ ✅ 100% Offline Local IndexedDB Encryption   │
+│ ❌ Hours searching diaries for reciprocity   │  ──>  │ ✅ Instant search across family generations  │
+└──────────────────────────────────────────────┘       └──────────────────────────────────────────────┘
+```
 
 ---
 
@@ -46,38 +54,42 @@ Traditionally, volunteers at chaotic reception desks record these gifts inside a
 
 ---
 
-## ✨ Key Features (ప్రధాన ఫీచర్లు)
+## ✨ Flagship Capabilities (కీలక ఫీచర్లు)
 
-| Feature | Description | Cultural Context |
-| :--- | :--- | :--- |
-| 🎙️ **Hands-Free Voice Dictation** | Speak naturally in Telugu or English (*"Mastan Rao Garu, Chirala, 15000 cash"*). GiftVault automatically parses Name, City, Amount, and Gift Mode. | Frees volunteers' hands during reception desk rush. |
-| 📸 **Live Webcam Photo Proofs** | Snap instant webcam or file photos of gold ornaments, diamond presents, or high-denomination gift envelopes. | Official verification preventing misplaced gift items. |
-| 🧾 **2-Inch ESC/POS Thermal Slips** | One-click printing of professional blessing slips via portable Bluetooth thermal receipt printers. | Dropped inside return gift (*తాంబూలం*) hampers for elders. |
-| 🪙 **₹1 Lucky Coin Protocol** | One-key `+` hotkey automatically turns round sums into auspicious blessings (`₹5,000` ➔ `₹5,001`, `₹15,116` ➔ `₹15,117`). | Traditional Indian *దక్షిణ* custom of adding ₹1 lucky coin. |
-| 🛡️ **100% Offline-First Security** | Powered entirely by local browser IndexedDB. Works without internet in rural mandapams with zero cloud leak. | Complete family financial confidentiality. |
-| 📊 **Generational Reciprocity Ledger** | Instant search filter to see what each family gave at previous celebrations across generations. | Enables accurate gift reciprocity for future family visits. |
-| 🔔 **Temple Chime Soundbox** | Plays an auspicious sacred temple chime upon saving each verified gift entry. | Audible confirmation for the guest and volunteer. |
-| 📁 **Instant CSV & PDF Export** | Export complete itemized spreadsheets sorted by serial number, city, or relation with one click. | Seamless handover to family elders and accountants. |
+* 🎙️ **Hands-Free Telugu & English Voice Dictation**:
+  Speak naturally (*"Mastan Rao Garu, Chirala, 15000 cash"*). GiftVault automatically parses the Guest Name, Native Town, Amount, and Gift Mode into discrete fields.
+* 📸 **Live Webcam & File Gift Photo Proofs**:
+  Capture instant webcam verification snapshots of high-value gifts, gold ornaments, or shagun envelopes right at the reception counter.
+* 🧾 **2-Inch ESC/POS Thermal Receipt Printing**:
+  Instantly print professional blessing slips on portable Bluetooth thermal receipt printers to place inside return gift (*తాంబూలం*) hampers for elders.
+* 🪙 **Auspicious ₹1 Lucky Coin Protocol**:
+  One-key <kbd>+</kbd> shortcut instantly adds the sacred ₹1 coin to round amounts (`₹5,000` ➔ `₹5,001`, `₹15,116` ➔ `₹15,117`).
+* 🛡️ **100% Offline-First Security (Zero Cloud Leak Protocol)**:
+  Runs completely inside your browser via local IndexedDB. No celebration financial data ever touches remote cloud servers.
+* 📊 **Generational Reciprocity Ledger**:
+  Instant search filter allows you to verify what each relative gave at past celebrations when you attend their future events.
+* 🔔 **Temple Chime Soundbox Confirmation**:
+  Plays an authentic sacred temple chime upon saving each verified gift entry.
+* 📁 **Instant CSV & Printable Ledger Export**:
+  Export complete itemized spreadsheets sorted by serial number, city, or relation with one click.
 
 ---
 
 ## ⌨️ Rapid-Fire Keyboard Shortcuts (మున్షి హాట్‌కీస్)
 
-GiftVault is engineered for keyboard-only efficiency so volunteers never need to touch a mouse:
+GiftVault is engineered for lightning-speed reception desks so volunteers never need to touch a mouse:
 
 | Shortcut | Action | Description |
 | :---: | :--- | :--- |
-| <kbd>N</kbd> | **New Entry Desk** | Instantly switches to the gift logging desk and focuses the guest name field. |
+| <kbd>N</kbd> | **New Entry Desk** | Switches to the gift logging desk and auto-focuses the guest name field. |
 | <kbd>/</kbd> | **Quick Ledger Search** | Focuses the live search filter to look up any guest, city, or relation. |
-| <kbd>+</kbd> or <kbd>=</kbd> | **+₹1 Lucky Coin** | Inside the Amount field, automatically increments amount by ₹1 for auspicious blessing. |
-| <kbd>Enter ↵</kbd> | **Save &amp; Print** | Saves entry, plays sacred confirmation chime, and triggers thermal slip preview. |
+| <kbd>+</kbd> or <kbd>=</kbd> | **+₹1 Lucky Coin** | Inside Amount field, automatically increments sum by ₹1 for auspicious blessing. |
+| <kbd>Enter ↵</kbd> | **Save &amp; Print** | Saves entry, triggers confirmation chime, and opens thermal slip preview. |
 | <kbd>Esc</kbd> | **Dismiss Modal** | Closes any active receipt preview, photo proof, or camera dialog. |
 
 ---
 
-## 🏛️ Repository Architecture
-
-GiftVault follows an uncompromising, dependency-light, zero-bloat architecture:
+## 🏛️ Clean Repository Architecture
 
 ```
 GiftVault/
@@ -107,11 +119,6 @@ GiftVault/
 
 ## 🚀 Quick Start (ప్రారంభించండి)
 
-### Prerequisites
-* Any modern web browser (Chrome, Edge, Firefox, Safari).
-* Python 3.8+ (optional, for local development server).
-
-### Run Locally
 ```bash
 # 1. Clone the repository
 git clone https://github.com/anas116-ai/Gift-Vault.git
